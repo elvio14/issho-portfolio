@@ -223,9 +223,12 @@ p {
 }
 
 .add-button{
-  width: 65%;
+  width: 29vw;
 }
 
+.input-number{
+  width: 9vw;
+}
 .add-button:active{
   background-color: red;
 
