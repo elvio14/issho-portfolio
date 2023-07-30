@@ -37,7 +37,7 @@ watch(showCheckout, ()=>{
 <template>
   <div id="backgroundContainer">
     <div class="header">
-      <img alt="Issho Logo" class="logo" src="./assets/ISSHO.PNG" width="180" height="180" />
+      <img alt="Issho Logo" class="logo" src="./assets/issho.png" width="180" height="180" />
 
       <div class="wrapper">
         <HelloWorld />
