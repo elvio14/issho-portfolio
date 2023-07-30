@@ -26,9 +26,10 @@ app.use((req, res, next) =>{
 })
 
 app.use(express.urlencoded({extended: true}))
+
 const corsOptions = {
     allowedHeaders: ['Content-Type', 'token'],
-    origin: ['http://localhost:5000/']
+    origin: ['http://localhost:5000/', 'https://vercel.com/andrewelvio14-gmailcom/issho-portfolio/3ZkRJsXaYMmazZEyvtSdtZWywSom']
 }
 app.use(cors(corsOptions))
 
