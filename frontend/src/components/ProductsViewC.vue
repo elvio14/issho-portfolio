@@ -219,7 +219,7 @@ p {
 }
 
 .add-to-cart{
-  width: 43vw;
+  width: 40vw;
 }
 
 .add-button{
