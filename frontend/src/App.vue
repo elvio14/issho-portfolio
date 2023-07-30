@@ -8,7 +8,7 @@ import Checkout from './Checkout.vue'
 import OrderPlaced from './components/OrderPlaced.vue'
 import PlanetPopup from './components/PlanetPopup.vue'
 import AboutPopup from './components/AboutPopup.vue'
-import FaqPopup from './components/faqPopup.vue'
+import FaqPopup from './components/FaqPopup.vue'
 
 const showCheckout = ref(false)
 
