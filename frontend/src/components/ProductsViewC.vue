@@ -130,18 +130,20 @@ h3{
   display: inline-block;
 }
 .add-button{
-  font-weight: 800;
+  font-weight: 600;
+  position: relative;
+  max-width: 30rem;
+  left:10%;
   color: var(--green-text);
   border: none;
   height: 2rem;
-  width: 68%;
   cursor: pointer;
   background-color: white;
   transition: background-color 0.5s ease;
 }
 
 .add-button:hover{
-  background-color: var(--green-light);
+  color: orange;
   
 }
 .add-button:active{
@@ -221,13 +223,12 @@ p {
 .add-to-cart{
   width: 40vw;
 }
-
-.add-button{
-  width: 29vw;
+.input-number{
+  width: 8vw;
 }
 
-.input-number{
-  width: 9vw;
+.add-button{
+  left: 7%;
 }
 .add-button:active{
   background-color: red;
@@ -247,10 +248,6 @@ p {
 /* PC VIEW */
 @media (min-width: 851px){
 
-  .relative-container{
-    position: relative;
-    height: 33vw;
-}
 .product-grid{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
