@@ -12,8 +12,8 @@ export default defineConfig({
     rollupOptions: {
       external: ['mime'],
       input: {
-        main: 'src/index.html',
-        login: 'src/login.html'
+        main: './index.html',
+        login: './login.html'
       }
     }
   },
