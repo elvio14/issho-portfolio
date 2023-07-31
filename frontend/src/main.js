@@ -4,6 +4,7 @@ import App from './App.vue'
 import Admin from './Admin.vue'
 import Login from './Login.vue'
 import routerAdmin from './router/routerAdmin.js'
+import routerIndex from './router/routerIndex.js'
 
 
 import './assets/main.css'
@@ -12,6 +13,7 @@ import './assets/main.css'
 
 const app = createApp(App)
 app.use(createPinia());
+app.use(routerIndex)
 
 const admin = createApp(Admin)
 admin.use(createPinia())
