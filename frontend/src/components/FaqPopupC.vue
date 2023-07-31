@@ -76,7 +76,7 @@ export default {
 
 @media (max-width: 850px){
     .container-in{
-        top:10%
+        top:14%
     }
 
     .text-container{

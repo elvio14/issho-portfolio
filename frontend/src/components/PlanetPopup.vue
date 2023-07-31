@@ -101,7 +101,7 @@ We will be directing our donations to Ontario nonprofit partners who have a focu
 
 @media (max-width: 850px){
     .container-in{
-        margin-top:10%
+        margin-top:14%
     }
 
     .text-container{

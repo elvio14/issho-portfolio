@@ -46,13 +46,21 @@ export default {
                     They work with farmers who focus on the care of their land and the grains they produce. The result is healthier flour with unique flavour profiles that reflect the land from where it grew.
                 </h3>
             </div>
-            <img src="../assets/isshotemp.png" style="width: 60%; margin-top: 2rem;">
+            <img src="../assets/isshotemp.png" class="bottom-logo">
         </div> 
     </div>
     </div>
     
 </template>
 <style scoped>
+    .bottom-logo{
+        width: 12vw;
+        margin-top:3rem;
+        position: relative;
+        display: flex;
+        left: 50%;
+        transform: translateX(-50%);
+    }   
    .text-container{
     width: 60%;
     display: inline-block;
@@ -91,8 +99,11 @@ export default {
     }
 
 @media (max-width: 850px){
+    .bottom-logo{
+        width: 40vw;
+    }
     .container-in{
-        margin-top:10%
+        margin-top:14%
     }
 
     .text-container{
