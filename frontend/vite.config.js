@@ -11,6 +11,10 @@ export default defineConfig({
   build: {
     rollupOptions: {
       external: ['mime'],
+      input: {
+        main: 'src/index.html',
+        login: 'src/login.html'
+      }
     }
   },
   resolve: {
