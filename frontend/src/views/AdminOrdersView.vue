@@ -52,6 +52,7 @@ export default {
                 })
                 const data = response.json()
                 console.log(data)
+                fetchOrders()
             }catch(error){
                 console.log(error)
             }
@@ -74,6 +75,7 @@ export default {
                 })
                 const data = response.json()
                 console.log(data)
+                fetchOrders()
             }catch(error){
                 console.log(error)
             }
@@ -96,6 +98,7 @@ export default {
                 })
                 const data = response.json()
                 console.log(data)
+                fetchOrders()
             }catch(error){
                 console.log(error)
             }
@@ -118,6 +121,7 @@ export default {
                 })
                 const data = response.json()
                 console.log(data)
+                fetchOrders()
             }catch(error){
                 console.log(error)
             }

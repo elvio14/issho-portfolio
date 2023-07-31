@@ -41,7 +41,23 @@ export default {
         <form @submit.prevent="loginAdmin">
             <input type="text" v-model="username" placeholder="Username"><br/>
             <input type="text" v-model="password" placeholder="Password">
-            <button type="submit">Login</button>
+            <button type="submit">Login</button><br/>
+            
         </form>
     </div>
 </template>
+<style scoped>
+    input {
+        padding: 0.8rem;
+        margin: 0.5rem;
+    }
+    button {
+        padding: 0.8rem;
+        border: none;
+        border: 2px solid aquamarine;
+        background-color: white;
+    }
+    button:hover{
+        background-color: aquamarine;
+    }
+</style>

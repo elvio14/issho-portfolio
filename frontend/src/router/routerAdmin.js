@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import AdminOrdersViewVue from '../views/AdminOrdersView.vue'
 
 const routerAdmin = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,7 +8,7 @@ const routerAdmin = createRouter({
     {
       path: '/',
       name: 'Orders',
-      component: () => import('../views/AdminOrdersView.vue')
+      component: AdminOrdersViewVue
     },
     {
       path: '/admin',

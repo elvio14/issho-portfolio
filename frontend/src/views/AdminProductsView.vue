@@ -31,6 +31,7 @@ export default {
                 if(response.ok){
                     const data = await response.json()
                     console.log(data)
+                    fetchProducts()
                 } else {
                     console.error("Error deleting product.", await response.text())
                 }
