@@ -10,17 +10,14 @@ const routerAdmin = createRouter({
       component: () => import('../views/AdminOrdersView.vue')
     },
     {
+      path: '/admin',
+      name: 'Admin',
+      component: () => import('../Admin.vue')
+    },
+    {
       path: '/upload',
       name: 'upload',
       component: () => import('../views/AdminUploadView.vue')
-    },{
-      path: '/login',
-      name: 'login',
-      component: () => import('../Login.vue')
-    },{
-      path: '/admin',
-      name: 'admin',
-      component: () => import('../Admin.vue')
     },{
       path: '/adminproducts',
       name: 'adminproducts',

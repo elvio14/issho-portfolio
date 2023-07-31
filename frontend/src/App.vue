@@ -35,6 +35,7 @@ watch(showCheckout, ()=>{
 </script>
 
 <template>
+<div class="root">
   <div id="backgroundContainer">
     <div class="header">
       <img alt="Issho Logo" class="logo" src="./assets/isshotemp.png" width="180" height="180" />
@@ -103,6 +104,8 @@ watch(showCheckout, ()=>{
     <button class="close-order" @click="orderIsPlaced = false, showCheckout = false">x</button>
     <OrderPlaced :orderPlaced="orderIsPlaced"/>
   </div>
+
+</div>
 </template>
 
 
