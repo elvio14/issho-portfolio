@@ -18,7 +18,10 @@ export default {
         onMounted(fetchProducts);
 
         const deleteProduct = async (product)=> {
-            try{
+            const isConfirmed = window.confirm("Are you sure you want to delete this product? It will immediately reflect on the webstore.")
+
+            if (isConfirmed){
+                try{
                 const productID = product._id
                 const response = await fetch(`${backend}/api/products/${productID}`, {
                     method: 'DELETE',
@@ -40,6 +43,8 @@ export default {
             } catch(error){
                 console.log(error)
             }
+            }
+            
         }
 
     return {
