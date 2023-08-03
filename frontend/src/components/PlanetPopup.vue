@@ -23,16 +23,14 @@ export default {
                 <img src="../assets/planetCircle.png" class="planetCircle">
                 <h1>1% for the Planet</h1>
                 <div class="text-container">
-                    <h3 class="p">
-                The Organization
-
-1% for the Planet is a global organization that exists to ensure our planet and future generations thrive. They inspire businesses and individuals to support environmental nonprofits through membership and everyday actions.
+                    <h4 class="p">
+                1% for the Planet is a global organization that exists to ensure our planet and future generations thrive. They inspire businesses and individuals to support environmental nonprofits through membership and everyday actions.
             <br/><br/> They make environmental giving easy and effective through partnership advising, impact storytelling and third-party certification.
 Started in 2002 by Yvon Chouinard, founder of Patagonia, and Craig Mathews, founder of Blue Ribbon Flies, business members and individual members have given hundreds of millions of dollars to approved nonprofit partners.
 <br/><br/>Today, 1% for the Planet’s global network consists of thousands of businesses, individuals and environmental nonprofits working toward a better future for all.
 Follow the link to learn more about the organization: <a href="https://www.onepercentfortheplanet.org/">1% for the Planet</a>
-                </h3>
-                <h3>
+                </h4>
+                <h4>
                 Why did we join?
 
 As individuals, we believe that it's our responsibility to take care of the planet.  Apart from recycling, composting and minimizing our plastic usage, we believe that we must do more. 
@@ -44,7 +42,7 @@ By joining 1% for the Planet, we are  implementing an environmental tax on ourse
 ​<br/><br/>
 
 We will be directing our donations to Ontario nonprofit partners who have a focus on water, land, and wildlife preservation.
-                </h3>
+                </h4>
                 </div>
                 <img src="../assets/PlanetTrigger.jpg" class="bottom-img pc">
                 <img src="../assets/planetVertical.png" class="bottom-img mobile">
