@@ -31,22 +31,6 @@ export default {
                     We have always believed that delicious baked goods should not only bring joy to your taste buds but also contribute to a healthier and greener planet. That's why we are thrilled to announce our latest partnership with NRBI, an innovative delivery company that shares our passion for sustainability. Together, we are introducing a zero-emission cycling delivery system that ensures your orders arrive fresh, on time, and with minimal impact on the environment.    
                 </h3><br/>
                 <div class="center-heading">
-                    <h1>Pedaling Towards a Greener Future</h1>
-                </div>
-                <h3>
-                    As concerns about climate change continue to grow, it is essential for businesses to take meaningful steps towards reducing their carbon footprint. Our partnership with NRBI represents a significant commitment to sustainability and environmental responsibility. NRBI's zero-emission cycling fleet allows us to deliver our delightful treats without contributing to harmful greenhouse gas emissions.
-                    <br/><br/>
-                    By embracing this eco-friendly delivery system, we are collectively helping to combat air pollution, reduce traffic congestion, and create a cleaner, healthier environment for everyone. Every pedal-powered delivery brings us closer to a greener future—one delicious package at a time.
-                </h3><br/>
-                <div class="center-heading">
-                    <h1>Flat Delivery Fee: Affordable and Eco-Conscious</h1>
-                </div>
-                <h3>
-                    We understand that convenience and affordability are essential factors for our customers. With the new NRBI zero emission cycling delivery system, we are introducing a $10 flat delivery fee for all orders, regardless of size. Whether you're ordering a single pastry to satisfy a craving or treating your friends and family to an assortment of goodies, you can now enjoy sustainable and budget-friendly delivery options.
-                    <br/><br/>
-                    By adopting a flat delivery fee, we aim to encourage more customers to choose the eco-conscious option without worrying about additional costs. Together, we can make a difference and show that sustainability doesn't have to come at a premium price.
-                </h3>
-                <div class="center-heading">
                     <h1>Delivery Zone: Check Our <a href="https://www.nrbi.co/service-area" target="_blank">Website</a> for Details</h1>
                 </div>
                 <h3>
@@ -63,6 +47,23 @@ export default {
                 </div>
                 <h3>We believe that every individual action matters when it comes to preserving the environment. That's why we are proud to offer no minimum order requirements for our zero-emission cycling deliveries. Whether you're treating yourself to a single cookie or ordering a full box of pastries, every order counts in our collective effort to reduce carbon emissions.</h3>
                 <h3>By removing minimum order restrictions, we aim to make sustainable choices accessible to all our customers. So, whether it's a small treat for yourself or a gift for a loved one, you can make a positive impact on the planet with every order.</h3>
+                
+                <div class="center-heading">
+                    <h1>Pedaling Towards a Greener Future</h1>
+                </div>
+                <h3>
+                    As concerns about climate change continue to grow, it is essential for businesses to take meaningful steps towards reducing their carbon footprint. Our partnership with NRBI represents a significant commitment to sustainability and environmental responsibility. NRBI's zero-emission cycling fleet allows us to deliver our delightful treats without contributing to harmful greenhouse gas emissions.
+                    <br/><br/>
+                    By embracing this eco-friendly delivery system, we are collectively helping to combat air pollution, reduce traffic congestion, and create a cleaner, healthier environment for everyone. Every pedal-powered delivery brings us closer to a greener future—one delicious package at a time.
+                </h3><br/>
+                <div class="center-heading">
+                    <h1>Flat Delivery Fee: Affordable and Eco-Conscious</h1>
+                </div>
+                <h3>
+                    We understand that convenience and affordability are essential factors for our customers. With the new NRBI zero emission cycling delivery system, we are introducing a $10 flat delivery fee for all orders, regardless of size. Whether you're ordering a single pastry to satisfy a craving or treating your friends and family to an assortment of goodies, you can now enjoy sustainable and budget-friendly delivery options.
+                    <br/><br/>
+                    By adopting a flat delivery fee, we aim to encourage more customers to choose the eco-conscious option without worrying about additional costs. Together, we can make a difference and show that sustainability doesn't have to come at a premium price.
+                </h3>
                 <div class="center-heading">
                     <h1>Join Us on the Journey</h1>
                 </div>
