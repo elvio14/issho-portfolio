@@ -167,6 +167,7 @@ h3{
     width: 30px;
     height: 30px;
     background-color: white;
+    color: black;
     border: none;
     cursor:pointer;
     font-weight: 1000;

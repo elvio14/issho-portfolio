@@ -38,10 +38,10 @@ Follow the link to learn more about the organization: <a href="https://www.onepe
 As individuals, we believe that it's our responsibility to take care of the planet.  Apart from recycling, composting and minimizing our plastic usage, we believe that we must do more. 
 
  
-<br/>
+<br/><br/>
 By joining 1% for the Planet, we are  implementing an environmental tax on ourselves.  It's a small price to pay to try and help preserve our home for future generations. 
 
-​<br/>
+​<br/><br/>
 
 We will be directing our donations to Ontario nonprofit partners who have a focus on water, land, and wildlife preservation.
                 </h3>

@@ -9,6 +9,7 @@ import OrderPlaced from './components/OrderPlaced.vue'
 import PlanetPopup from './components/PlanetPopup.vue'
 import AboutPopup from './components/AboutPopup.vue'
 import FaqPopup from './components/FaqPopupC.vue'
+import DeliveryPopup from './components/DeliveryPopup.vue'
 
 const showCheckout = ref(false)
 
@@ -21,6 +22,8 @@ const planetPopupRef = ref(false)
 const aboutPopupRef = ref(false)
 
 const faqPopupRef = ref(false)
+
+const deliveryPopupRef = ref(false)
 
 watch(orderIsPlaced, (value)=>{
   showCheckout.value = !value
@@ -47,6 +50,7 @@ watch(showCheckout, ()=>{
         <nav>
           <button class="a-button" @click="planetPopupRef = true">1% for the Planet</button>
           <button class="a-button" @click="aboutPopupRef = true">About</button>
+          <button class="a-button" @click="deliveryPopupRef = true">Delivery</button>
           <button class="a-button" @click="faqPopupRef = true">FAQ</button>
         </nav>
       </div>
@@ -64,11 +68,18 @@ watch(showCheckout, ()=>{
       <AboutPopup @update:about-popup="aboutPopupRef = $event" />
     </div>
 
+    <div v-if="deliveryPopupRef">
+      <DeliveryPopup @update:delivery-popup="deliveryPopupRef = $event" />
+    </div>
+
     <div v-if="faqPopupRef">
       <FaqPopup @update:faq-popup="faqPopupRef = $event"/>
     </div>
 
     <div class="shop-view">
+      <div style="text-align: center;">
+        <h2>Shop</h2>
+      </div>
       <ShopView/>
     </div>
     <div class="cart" v-if="showCart">
@@ -125,6 +136,7 @@ watch(showCheckout, ()=>{
 }
 .a-button{
   background-color: white;
+  color: black;
 }
 .close-order{
   position: absolute;
@@ -190,6 +202,8 @@ nav {
     grid-row-start: 2;
   }
 
+
+
 nav button{
   border: none;
   margin-right: 1rem;
@@ -207,6 +221,13 @@ button:hover {
 
 /* MOBILE VIEW */
 @media (max-width: 850px){
+
+  nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
   .cart{
     position: fixed;
     width: 95vw;
