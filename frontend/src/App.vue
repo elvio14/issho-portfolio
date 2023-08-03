@@ -222,6 +222,10 @@ button:hover {
 /* MOBILE VIEW */
 @media (max-width: 850px){
 
+  nav button{
+    margin: 0;
+  }
+
   nav {
     display: grid;
     grid-template-columns: 1fr 1fr;
