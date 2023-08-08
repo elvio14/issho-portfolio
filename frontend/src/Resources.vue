@@ -1,22 +1,38 @@
 <script setup>
+import ResourceWeeds from './components/resources/ResourceWeeds.vue';
 import ResourceWelcome from './components/resources/ResourceWelcome.vue';
 import {ref} from 'vue'
 
 const showWelcome = ref(false)
+const showWeeds = ref(false)
 </script>
 <template>
 <div class="root">
     <div class="thumbnail-container">
-        <img class="thumbnail" @click="showWelcome = true" src="./assets/easterBunnies.jpg">
-        <img class="thumbnail" src="./assets/weeds.jpg">
-        <img class="thumbnail" src="./assets/beeWasp.jpg">
-        <img class="thumbnail" src="./assets/localHoney.jpg">
-        <img class="thumbnail" src="./assets/wheat.jpg">
-        <img class="thumbnail" src="./assets/sourdough.jpg">
-
+        <div class="thumbnail-div">
+            <img class="thumbnail" @click="showWelcome = true" src="./assets/easterBunnies.jpg">
+        </div>
+        <div class="thumbnail-div">
+            <img class="thumbnail" @click="showWeeds = true" src="./assets/weeds.jpg">
+        </div>
+        <div class="thumbnail-div">
+            <img class="thumbnail" src="./assets/beeWasp.jpg">
+        </div>
+        <div class="thumbnail-div">
+            <img class="thumbnail" src="./assets/localHoney.jpg">
+        </div>
+        <div class="thumbnail-div">
+            <img class="thumbnail" src="./assets/wheat.jpg">
+        </div>
+        <div class="thumbnail-div">
+            <img class="thumbnail" src="./assets/sourdough.jpg">
+        </div>
     </div>
     <div v-if="showWelcome">
         <ResourceWelcome @update:welcome-resource="showWelcome = $event"/>
+    </div>
+    <div v-if="showWeeds">
+        <ResourceWeeds @update:weeds-resource="showWeeds = $event"/>
     </div>
     
 </div>
@@ -40,5 +56,6 @@ const showWelcome = ref(false)
     width: 400px;
     height: 240px;
     object-fit: cover;
+    cursor: pointer;
 }
 </style>

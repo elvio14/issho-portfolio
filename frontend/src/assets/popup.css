@@ -1,14 +1,7 @@
 .center-heading{
     text-align: center;
 }
-.bottom-logo{
-    width: 12vw;
-    margin-top:3rem;
-    position: relative;
-    display: flex;
-    left: 50%;
-    transform: translateX(-50%);
-}   
+
 .text-container{
 width: 60%;
 display: inline-block;
@@ -22,6 +15,7 @@ text-align: justify;
   width: 100vw;
   height: 100vh;
   z-index: 1;
+  cursor: pointer;
 }
 .container-in{
     width: 90vw;
@@ -42,12 +36,27 @@ text-align: justify;
     margin-bottom: 6rem;
 }
 
+.image-center{
+    width: 60%;
+    display:inline-block;
+}
+
+.text-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+/* MOBILE */
 @media (max-width: 850px){
 .container-in{
     margin-top:14%
 }
 
 .text-container{
+    width: 95%;
+}
+
+.image-center{
     width: 95%;
 }
 }
