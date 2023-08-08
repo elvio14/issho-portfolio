@@ -6,10 +6,10 @@ import {ref, watch} from 'vue'
 import CartCounter from './components/CartCounter.vue'
 import Checkout from './Checkout.vue'
 import OrderPlaced from './components/OrderPlaced.vue'
-import PlanetPopup from './components/PlanetPopup.vue'
-import AboutPopup from './components/AboutPopup.vue'
-import FaqPopup from './components/FaqPopupC.vue'
-import DeliveryPopup from './components/DeliveryPopup.vue'
+import PlanetPopup from './components/popups/PlanetPopup.vue'
+import AboutPopup from './components/popups/AboutPopup.vue'
+import FaqPopup from './components/popups/FaqPopupC.vue'
+import DeliveryPopup from './components/popups/DeliveryPopup.vue'
 
 const showCheckout = ref(false)
 
@@ -121,6 +121,13 @@ watch(showCheckout, ()=>{
 
 
 <style scoped>
+.resources{
+  display: fixed;
+  top: 50%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
 .banner{
   text-align: center;
   max-width: 90%;
