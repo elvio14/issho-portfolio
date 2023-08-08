@@ -52,6 +52,12 @@ watch(showCheckout, ()=>{
           <button class="a-button" @click="aboutPopupRef = true">About</button>
           <button class="a-button" @click="deliveryPopupRef = true">Delivery</button>
           <button class="a-button" @click="faqPopupRef = true">FAQ</button>
+          <a 
+          class="a-no-hover"
+          href="../resources.html">
+            <button class="a-button" >Resources</button>
+          </a>
+          
         </nav>
       </div>
     </div>
@@ -121,12 +127,9 @@ watch(showCheckout, ()=>{
 
 
 <style scoped>
-.resources{
-  display: fixed;
-  top: 50%;
-  right: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
+.a-no-hover:hover{
+  background-color: white;
+  cursor: default;
 }
 .banner{
   text-align: center;

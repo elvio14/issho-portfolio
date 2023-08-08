@@ -8,6 +8,11 @@ const showWeeds = ref(false)
 </script>
 <template>
 <div class="root">
+    <div class="title">
+        <img src="./assets/isshotemp.png" alt="issho logo" class="logo">
+        <h1 class="title-h1">Resources</h1><br><br>
+        <a href="../index.html">Back to Home</a>
+    </div>
     <div class="thumbnail-container">
         <div class="thumbnail-div">
             <img class="thumbnail" @click="showWelcome = true" src="./assets/easterBunnies.jpg">
@@ -37,11 +42,19 @@ const showWeeds = ref(false)
     
 </div>
 </template>
-<style>
-.red{
-    color: red;
+<style scoped>
+.title-h1{
+    display: inline;
+    margin-left: 1rem;
 }
-
+.title{
+    position: absolute;
+    left: 5%;
+    top: 4%;
+}
+.logo{
+    width: 4vw;
+}
 .thumbnail-container{
     position: absolute;
     top: 50%;
@@ -57,5 +70,33 @@ const showWeeds = ref(false)
     height: 240px;
     object-fit: cover;
     cursor: pointer;
+}
+
+@media (max-width: 850px){
+    .title{
+        text-align: center;
+    }
+    
+    .logo{
+        position: relative;
+        width: 15vw;
+    }
+    .title-h1{
+        position: relative;
+        margin-left: 0px;
+    }
+    .thumbnail-container{
+        top: 65%;
+        max-width: 95vw;
+    }
+
+    .thumbnail{
+        width: 40vw;
+    }
+
+    .title{
+        left: 50%;
+        transform: translateX(-50%);
+    }
 }
 </style>
