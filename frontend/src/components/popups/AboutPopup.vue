@@ -68,6 +68,15 @@ export default {
     display:inline-block;
 }
 
+.bottom-logo{
+    display: block;
+    width: 10vw;
+    position: relative;
+    top: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 @media (max-width: 850px){
 .bottom-logo{
     width: 40vw;

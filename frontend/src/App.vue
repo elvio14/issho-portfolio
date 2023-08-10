@@ -173,6 +173,7 @@ const goToResources = ()=>{
   right:35px;
 }
 .cart-x{
+  color: black;
   position: absolute;
   font-size: large;
   left: 0px;
