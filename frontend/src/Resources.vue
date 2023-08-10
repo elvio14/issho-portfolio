@@ -16,21 +16,27 @@ const showWeeds = ref(false)
     <div class="thumbnail-container">
         <div class="thumbnail-div">
             <img class="thumbnail" @click="showWelcome = true" src="./assets/easterBunnies.jpg">
+            <h2 class="thumbnail-title">Welcome</h2>
         </div>
         <div class="thumbnail-div">
             <img class="thumbnail" @click="showWeeds = true" src="./assets/weeds.jpg">
+            <h2 class="thumbnail-title">Weeds</h2>
         </div>
         <div class="thumbnail-div">
             <img class="thumbnail" src="./assets/beeWasp.jpg">
+            <h2 class="thumbnail-title">Bee vs Wasp</h2>
         </div>
         <div class="thumbnail-div">
             <img class="thumbnail" src="./assets/localHoney.jpg">
+            <h2 class="thumbnail-title">Local Honey</h2>
         </div>
         <div class="thumbnail-div">
             <img class="thumbnail" src="./assets/wheat.jpg">
+            <h2 class="thumbnail-title">Wheat</h2>
         </div>
         <div class="thumbnail-div">
             <img class="thumbnail" src="./assets/sourdough.jpg">
+            <h2 class="thumbnail-title">Sourdough</h2>
         </div>
     </div>
     <div v-if="showWelcome">
@@ -43,6 +49,19 @@ const showWeeds = ref(false)
 </div>
 </template>
 <style scoped>
+.thumbnail-title{
+    color: black;
+    position:absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+.thumbnail-div{
+    text-align: center;
+    position: relative;
+}
+
 .title-h1{
     display: inline;
     margin-left: 1rem;
@@ -70,6 +89,8 @@ const showWeeds = ref(false)
     height: 240px;
     object-fit: cover;
     cursor: pointer;
+    z-index: 1;
+    opacity: 0.5;
 }
 
 @media (max-width: 850px){
@@ -88,6 +109,7 @@ const showWeeds = ref(false)
     .thumbnail-container{
         margin-top: 260px;
         max-width: 95vw;
+        padding-bottom: 4rem;
     }
 
     .thumbnail{
