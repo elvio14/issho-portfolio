@@ -20,9 +20,10 @@ export default {
         <div class="overlay" @click="emitClose"></div>
         <div class="container-in">
         <div class="content">
-            <img src="https://static.wixstatic.com/media/937c8c_928aa69b7a464f0480fa05e22ae80d87~mv2.jpg/v1/fill/w_960,h_547,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/937c8c_928aa69b7a464f0480fa05e22ae80d87~mv2.jpg" class="img-center">
             
             <div class="text-container"> 
+                <img class="img-center" src="https://static.wixstatic.com/media/937c8c_928aa69b7a464f0480fa05e22ae80d87~mv2.jpg/v1/fill/w_960,h_547,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/937c8c_928aa69b7a464f0480fa05e22ae80d87~mv2.jpg">
+
                 <div class="center-heading">
                     <h1>Delivery with NRBI</h1>
                     <h3 style="margin-top: -1.5rem; margin-bottom: 2rem;">Embracing Sustainability: Our Zero Emission Cycling Delivery Partnership with NRBI</h3>
@@ -77,3 +78,8 @@ export default {
     </div>
     
 </template>
+<style scoped>
+.map{
+    width: 100vw;
+}
+</style>

@@ -34,6 +34,9 @@ watch(showCheckout, ()=>{
   showCart.value = false
 })
 
+const goToResources = ()=>{
+  window.location.href = '../resources.html'
+}
 
 </script>
 
@@ -52,11 +55,7 @@ watch(showCheckout, ()=>{
           <button class="a-button" @click="aboutPopupRef = true">About</button>
           <button class="a-button" @click="deliveryPopupRef = true">Delivery</button>
           <button class="a-button" @click="faqPopupRef = true">FAQ</button>
-          <a 
-          class="a-no-hover"
-          href="../resources.html">
-            <button class="a-button" >Resources</button>
-          </a>
+          <button class="a-button" @click="goToResources">Resources</button>
           
         </nav>
       </div>
@@ -224,6 +223,7 @@ nav button{
   font-size: 15px;
   border: 1px solid var(--green-popup);
 }
+
 
 button:hover {
   background-color: var(--green-light);
