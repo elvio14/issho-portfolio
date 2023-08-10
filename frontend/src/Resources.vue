@@ -86,7 +86,7 @@ const showWeeds = ref(false)
         margin-left: 0px;
     }
     .thumbnail-container{
-        top: 75%;
+        margin-top: 200px;
         max-width: 95vw;
     }
 

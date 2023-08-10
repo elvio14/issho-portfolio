@@ -49,6 +49,9 @@ export default {
 
 </template>
 <style scoped>
+button{
+    color: black;
+}
  .remove-button{
     border: none;
     height: 1.5rem;
