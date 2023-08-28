@@ -1,10 +1,14 @@
 <script setup>
-import ResourceWeeds from './components/resources/ResourceWeeds.vue';
-import ResourceWelcome from './components/resources/ResourceWelcome.vue';
+import ResourceWeeds from './components/resources/ResourceWeeds.vue'
+import ResourceWelcome from './components/resources/ResourceWelcome.vue'
+import ResourceHoney from './components/resources/ResourceHoney.vue'
+import ResourceFlour from './components/resources/ResourceFlour.vue'
 import {ref} from 'vue'
 
 const showWelcome = ref(false)
 const showWeeds = ref(false)
+const showHoney = ref(false)
+const showFlour = ref(false)
 </script>
 <template>
 <div class="root">
@@ -14,36 +18,42 @@ const showWeeds = ref(false)
         <a href="../index.html">Back to Home</a>
     </div>
     <div class="thumbnail-container">
-        <div class="thumbnail-div">
-            <img class="thumbnail" @click="showWelcome = true" src="./assets/easterBunnies.jpg">
+        <div class="thumbnail-div" @click="showWelcome = true">
+            <img class="thumbnail" src="./assets/easterBunnies.jpg">
             <h2 class="thumbnail-title">Welcome</h2>
         </div>
-        <div class="thumbnail-div">
-            <img class="thumbnail" @click="showWeeds = true" src="./assets/weeds.jpg">
+        <div class="thumbnail-div" @click="showWeeds = true">
+            <img class="thumbnail"  src="./assets/weeds.jpg">
             <h2 class="thumbnail-title">Weeds</h2>
         </div>
-        <div class="thumbnail-div">
+        <!-- <div class="thumbnail-div">
             <img class="thumbnail" src="./assets/beeWasp.jpg">
             <h2 class="thumbnail-title">Bee vs Wasp</h2>
-        </div>
-        <div class="thumbnail-div">
+        </div> -->
+        <div class="thumbnail-div" @click="showHoney = true">
             <img class="thumbnail" src="./assets/localHoney.jpg">
             <h2 class="thumbnail-title">Local Honey</h2>
         </div>
-        <div class="thumbnail-div">
+        <div class="thumbnail-div" @click="showFlour = true">
             <img class="thumbnail" src="./assets/wheat.jpg">
-            <h2 class="thumbnail-title">Wheat</h2>
+            <h2 class="thumbnail-title">Flour</h2>
         </div>
-        <div class="thumbnail-div">
+        <!-- <div class="thumbnail-div">
             <img class="thumbnail" src="./assets/sourdough.jpg">
             <h2 class="thumbnail-title">Sourdough</h2>
-        </div>
+        </div> -->
     </div>
     <div v-if="showWelcome">
         <ResourceWelcome @update:welcome-resource="showWelcome = $event"/>
     </div>
     <div v-if="showWeeds">
         <ResourceWeeds @update:weeds-resource="showWeeds = $event"/>
+    </div>
+    <div v-if="showHoney">
+        <ResourceHoney @update:honey-resource="showHoney = $event"/>
+    </div>
+    <div v-if="showFlour">
+        <ResourceFlour @update:flour-resource="showFlour = $event"/>
     </div>
     
 </div>
@@ -56,6 +66,7 @@ const showWeeds = ref(false)
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
+    cursor: pointer;
 }
 .thumbnail-div{
     text-align: center;

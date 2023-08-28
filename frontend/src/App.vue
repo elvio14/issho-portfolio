@@ -10,6 +10,9 @@ import PlanetPopup from './components/popups/PlanetPopup.vue'
 import AboutPopup from './components/popups/AboutPopup.vue'
 import FaqPopup from './components/popups/FaqPopupC.vue'
 import DeliveryPopup from './components/popups/DeliveryPopup.vue'
+import AboutCoffee from './components/popups/AboutCoffee.vue'
+import AboutHoney from './components/popups/AboutHoney.vue'
+import AboutFlour from './components/popups/AboutFlour.vue'
 
 const showCheckout = ref(false)
 
@@ -24,6 +27,14 @@ const aboutPopupRef = ref(false)
 const faqPopupRef = ref(false)
 
 const deliveryPopupRef = ref(false)
+
+const showAbout = ref(false)
+
+const aboutCoffeeRef = ref(false)
+
+const aboutHoneyRef = ref(false)
+
+const aboutFlourRef = ref(false)
 
 watch(orderIsPlaced, (value)=>{
   showCheckout.value = !value
@@ -52,12 +63,19 @@ const goToResources = ()=>{
       <div class="nav-container">
         <nav>
           <button class="a-button" @click="planetPopupRef = true">1% for the Planet</button>
-          <button class="a-button" @click="aboutPopupRef = true">About</button>
           <button class="a-button" @click="deliveryPopupRef = true">Delivery</button>
           <button class="a-button" @click="faqPopupRef = true">FAQ</button>
           <button class="a-button" @click="goToResources">Resources</button>
-          
+          <button class="a-button" @click="showAbout = !showAbout">About</button>
         </nav>
+        <transition name="drop">
+          <div v-if="showAbout" class="dropdown">
+            <a class="drop-item" href="#" @click="aboutCoffeeRef = true">Coffee we carry</a>
+            <a class="drop-item" href="#" @click="aboutHoneyRef = true">Honey we carry</a>
+            <a class="drop-item" href="#" @click="aboutFlourRef = true">Flour we use</a>
+            <a class="drop-item" href="#" @click="aboutPopupRef = true">Us</a>
+          </div>
+        </transition>
       </div>
     </div>
     <div class="banner">
@@ -65,8 +83,21 @@ const goToResources = ()=>{
       <h2>"Helping the planet, one cookie at a time." </h2>
     </div>
     
+    
     <div v-if="planetPopupRef">
       <PlanetPopup @update:planet-popup="planetPopupRef = $event"/>
+    </div>
+
+    <div v-if="aboutCoffeeRef">
+      <AboutCoffee @update:aboutCoffee-popup="aboutCoffeeRef = $event" />
+    </div>
+
+    <div v-if="aboutHoneyRef">
+      <AboutHoney @update:aboutHoney-popup="aboutHoneyRef = $event" />
+    </div>
+
+    <div v-if="aboutFlourRef">
+      <AboutFlour @update:aboutFlour-popup="aboutFlourRef = $event" />
     </div>
 
     <div v-if="aboutPopupRef">
@@ -126,6 +157,33 @@ const goToResources = ()=>{
 
 
 <style scoped>
+.drop-enter-active, .drop-leave-active {
+  transition: all 300ms;
+}
+.drop-enter-from, .drop-leave-to {
+  opacity: 0;
+  height: 0;
+}
+.drop-enter-to, .drop-leave-from {
+  opacity: 1;
+  height: 200px;
+}
+.drop-item{
+  color: white;
+  cursor: pointer;
+}
+.dropdown{
+  z-index: 1;
+  padding: 0.5rem;
+  background-color: var(--green-popup);
+  color: white;
+  display: grid;
+  position: relative;
+  width: 140px;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  height: 200px;
+}
 .a-no-hover:hover{
   background-color: white;
   cursor: default;
@@ -280,6 +338,12 @@ button:hover {
     grid-row-start: 3;
     padding-top: 1.5rem;
   }
+
+  .dropdown{
+    top: 0%;
+    left: 0%;
+    width: 43%;
+  }
 }
 
 /* PC VIEW */
@@ -326,5 +390,8 @@ button:hover {
     margin-top: 1rem;
   }
 
+  .dropdown{
+    left: 73.8%;
+  }
 }
 </style>

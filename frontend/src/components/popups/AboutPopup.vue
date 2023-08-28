@@ -1,5 +1,4 @@
 <script>
-import {ref, onMounted, onBeforeUnmount} from 'vue'
 import '../../assets/popup.css'
 
 export default {
@@ -20,7 +19,7 @@ export default {
         <div class="overlay" @click="emitClose"></div>
         <div class="container-in">
         <div class="content">
-            <img src="../../assets/martinYukaBeeTemp.jpg" id="bee">
+            <img src="../../assets/martinYukaBrad.jpg" class="banner">
             
             <div class="text-container">
                 <div class="center-heading">
@@ -63,7 +62,7 @@ export default {
     
 </template>
 <style scoped>
-#bee{
+.banner{
     width: 60%;
     display:inline-block;
 }
@@ -82,7 +81,7 @@ export default {
     width: 40vw;
 }
 
-#bee{
+.banner{
     width: 95%;
 }
 }
