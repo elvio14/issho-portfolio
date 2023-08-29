@@ -2,7 +2,7 @@
 import ShopView from './views/ShopView.vue'
 import HelloWorld from './components/HelloWorld.vue'
 import Cart from './components/Cart.vue'
-import {ref, watch} from 'vue'
+import {BaseTransition, ref, watch, onMounted} from 'vue'
 import CartCounter from './components/CartCounter.vue'
 import Checkout from './Checkout.vue'
 import OrderPlaced from './components/OrderPlaced.vue'
@@ -35,6 +35,26 @@ const aboutCoffeeRef = ref(false)
 const aboutHoneyRef = ref(false)
 
 const aboutFlourRef = ref(false)
+
+const tabs = ref(null)
+
+const showTab = ref('pastries')
+
+onMounted(()=>{
+  tabs.value = document.querySelectorAll('.shop-tab')
+})
+
+const activateTab = (id) => {
+  tabs.value.forEach(tab => {
+    tab.classList.remove('tab-active')
+  })
+  const activeTab = document.getElementById(`${id}`)
+  if(activeTab){
+    activeTab.classList.add('tab-active')
+    showTab.value = `${id}`
+  }
+} 
+
 
 watch(orderIsPlaced, (value)=>{
   showCheckout.value = !value
@@ -115,8 +135,12 @@ const goToResources = ()=>{
     <div class="shop-view">
       <div style="text-align: center;">
         <h2>Shop</h2>
+        <button class="shop-tab a-button tab-active" id="pastries" @click="activateTab('pastries')">Pastries</button>
+        <button class="shop-tab a-button" id="coffee" @click="activateTab('coffee')">Coffee</button>
       </div>
-      <ShopView/>
+      <div v-if="showTab === 'pastries'">
+        <ShopView/>
+      </div>
     </div>
     <div class="cart" v-if="showCart">
       <button class="cart-x" @click="showCart = false">X</button>
@@ -157,6 +181,7 @@ const goToResources = ()=>{
 
 
 <style scoped>
+
 .drop-enter-active, .drop-leave-active {
   transition: all 300ms;
 }
@@ -183,6 +208,7 @@ const goToResources = ()=>{
   grid-template-columns: 1fr;
   gap: 1rem;
   height: 200px;
+  border-radius: 1rem;
 }
 .a-no-hover:hover{
   background-color: white;
@@ -204,6 +230,27 @@ const goToResources = ()=>{
 .a-button{
   background-color: white;
   color: black;
+  border: none;
+  margin-right: 1rem;
+  padding : 1rem;
+  cursor: pointer;
+  background-color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  border: 1px solid var(--green-popup);
+  border-radius: 1rem;
+}
+
+.shop-tab{
+  border-bottom: none;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+  border-bottom-left-radius: 0rem;
+  border-bottom-right-radius: 0rem;
+  
+}
+.tab-active{
+  background-image: linear-gradient(var(--green-light), white) 
 }
 .close-order{
   position: absolute;
@@ -269,19 +316,6 @@ nav {
     font-size: 18px;
     grid-row-start: 2;
   }
-
-
-
-nav button{
-  border: none;
-  margin-right: 1rem;
-  padding : 1rem;
-  cursor: pointer;
-  background-color: white;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 15px;
-  border: 1px solid var(--green-popup);
-}
 
 
 button:hover {
