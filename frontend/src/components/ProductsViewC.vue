@@ -231,7 +231,7 @@ p {
 }
 .input-number{
   width: 8vw;
-  margin-left: -1rem;
+  margin-left: -0.5rem;
 }
 
 .add-button{
