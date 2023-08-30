@@ -125,7 +125,9 @@ h3{
   margin-bottom: -1rem;
 }
 .add-to-cart{
-  border: solid var(--green-popup);
+  border: 1px solid var(--green-popup);
+  border-radius: 1rem;
+  padding: 0.1rem;
   width: 12vw;
   display: inline-block;
 }
@@ -151,9 +153,11 @@ h3{
 }
 .input-number{
   text-align: center;
-  width: 30%;
+  margin-left: 1rem;
+  width: 20%;
   border: none;
   height: 2rem;
+  background-color: none;
 }
 .product-photo {
     border-radius: 2rem;
@@ -202,6 +206,7 @@ p {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 2rem;
     margin:auto;
+    text-align: center;
 }
 
 .product-photo{
@@ -226,6 +231,7 @@ p {
 }
 .input-number{
   width: 8vw;
+  margin-left: -1rem;
 }
 
 .add-button{
