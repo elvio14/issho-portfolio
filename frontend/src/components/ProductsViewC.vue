@@ -154,7 +154,7 @@ h3{
 .input-number{
   text-align: center;
   margin-left: 1rem;
-  width: 20%;
+  width: 15%;
   border: none;
   height: 2rem;
   background-color: none;
