@@ -115,7 +115,7 @@ export default {
 
 .product-title{
   height: 4.5rem;
-  text-align: center;
+  /* text-align: center; */
   margin-bottom: 1rem;
 }
 .product-grid-item{
