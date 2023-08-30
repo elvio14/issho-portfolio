@@ -231,11 +231,10 @@ p {
 }
 .input-number{
   width: 8vw;
-  margin-left: -0.5rem;
 }
 
 .add-button{
-  left: 7%;
+  left: 2%;
 }
 .add-button:active{
   background-color: red;
