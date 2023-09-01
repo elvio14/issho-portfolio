@@ -7,16 +7,14 @@ export default {
         const store = useCartStore()
         const { items } = storeToRefs(store)
 
-
-        const removeItem = (index) => {
-            items.value.splice(index, 1)
-        }
         const subtotal = computed(()=>
             items.value.reduce((sum, item) => sum + item.price * item.quantity, 0)
-            )
+        )
 
-        const total = subtotal.value + 1000
-        const totalFixed = (total/100).toFixed(2)
+        
+        const total = computed(()=>{
+            return subtotal.value + 1000
+        })
 
         const setTotal = (total)=>{
             store.setOrderTotal(total)
@@ -25,8 +23,12 @@ export default {
             emit('update:showCheckoutProp', true)
             setTotal(total)
         }
+        const removeItem = (index) => {
+            items.value.splice(index, 1)
+            getTotal()
+        }
         
-        return { items, removeItem, subtotal, checkoutDirect, total, totalFixed };
+        return { items, removeItem, subtotal, checkoutDirect, total };
     },
 }
 </script>
@@ -41,7 +43,7 @@ export default {
         <div class="subtotal">
             <h3>Subtotal: ${{ (subtotal/100).toFixed(2) }}</h3>
             <h3>Delivery fee: $10.00</h3>
-            <h3>Total: ${{ totalFixed }} </h3>
+            <h3>Total: ${{ (total/100).toFixed(2) }} </h3>
             <button class="checkout-button" @click="checkoutDirect">Checkout</button>
         </div>
     </div>
