@@ -9,9 +9,6 @@ import AdminLogin from './components/AdminLogin.vue';
     <AdminLogin/>
     
     </div>
-    <span> (for portfolio viewing purposes, use: <br/>
-                    username: admin,
-                    password: admin)</span>
     
 </template>
 <style scoped>
