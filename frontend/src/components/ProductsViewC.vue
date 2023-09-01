@@ -3,7 +3,10 @@ import { ref, reactive, onMounted, computed } from 'vue'
 import { useCartStore} from '../stores/cartStore.js'
 
 export default {
-  setup() {
+  props: {
+    viewCategory: String,
+  },
+  setup(props) {
     const backend = import.meta.env.VITE_BACKEND_URL
     const products = ref([]);
     const loading = ref(true);
@@ -12,8 +15,6 @@ export default {
     const showButton = ref(false)
     const selectedDesc = ref('');
     const selectedTitle = ref('');
-    const top = ref('');
-    const right = ref('');
     const selectedQuantity = ref(1);
     let nonReactiveSelectedQuantity = 1;
     const store = useCartStore()
@@ -66,6 +67,10 @@ export default {
         });
     });
 
+    const filteredProducts = computed(()=>{
+      return products.value.filter(product => product.category.includes(props.viewCategory))
+    })
+
     
     return {
       products,
@@ -74,8 +79,6 @@ export default {
       showPopup,
       selectedDesc,
       selectedTitle,
-      top,
-      right,
       selectedQuantity,
       togglePopup,
       closeDiv,
@@ -84,14 +87,15 @@ export default {
       cartItems,
       showButton,
       triggerButton,
-      backend
+      backend,
+      filteredProducts
     };
   },
 };
 </script>
 <template>    
     <div class="product-grid">
-        <div v-for="product in products" :key="product.id" class="product-grid-item" ref="productItems">
+        <div v-for="product in filteredProducts" :key="product.id" class="product-grid-item" ref="productItems">
               <img class="product-photo" :src="`${backend}/uploads/${product.img}`" @click="togglePopup(product)" />
               <div class="product-title">
                 <h3>{{ product.title }}</h3>

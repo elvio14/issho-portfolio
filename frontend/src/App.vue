@@ -139,7 +139,10 @@ const goToResources = ()=>{
         <button class="shop-tab a-button" id="coffee" @click="activateTab('coffee')">Coffee</button>
       </div>
       <div v-if="showTab === 'pastries'">
-        <ShopView/>
+        <ShopView viewCategoryView="pastry" />
+      </div>
+      <div v-if="showTab === 'coffee'">
+        <ShopView viewCategoryView="coffee" />
       </div>
     </div>
     <div class="cart" v-if="showCart">

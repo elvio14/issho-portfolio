@@ -1,10 +1,22 @@
-<script setup>
+<script>
 import ProductsViewC from '../components/ProductsViewC.vue'
+
+export default {
+  props: {
+    viewCategoryView: String
+  },
+  setup(props){
+    return props
+  },
+  components: {
+    ProductsViewC
+  }
+}
 </script>
 <template>
     <div class="grid-container">
     <div class="shop-container">
-        <ProductsViewC/>
+        <ProductsViewC  :viewCategory="viewCategoryView"/>
     </div>
     </div>
 </template>
