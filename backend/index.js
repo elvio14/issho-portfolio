@@ -30,7 +30,10 @@ app.use(express.urlencoded({extended: true}))
 
 const corsOptions = {
     allowedHeaders: ['Content-Type', 'token'],
-    origin: ['http://localhost:5000/', 'https://vercel.com/andrewelvio14-gmailcom/issho-portfolio/3ZkRJsXaYMmazZEyvtSdtZWywSom']
+    origin: [
+    'http://localhost:5000/', 
+    'https://vercel.com/andrewelvio14-gmailcom/issho-portfolio/3ZkRJsXaYMmazZEyvtSdtZWywSom',
+    'https://issho-deploy-465e55c6c2f1.herokuapp.com/']
 }
 app.use(cors(corsOptions))
 
