@@ -19,12 +19,12 @@ import {v2 as cloudinary} from 'cloudinary'
 export const app = express()
 app.use(express.json());
 dotenv.config();
-// app.use((req, res, next) =>{
-//     res.header('Access-Control-Allow-Origin', '*')
-//     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-//     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, token')
-//     next()
-// })
+app.use((req, res, next) =>{
+    res.header('Access-Control-Allow-Origin', '*')
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, token')
+    next()
+})
 
 app.use(express.urlencoded({extended: true}))
 
