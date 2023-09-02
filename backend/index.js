@@ -20,7 +20,7 @@ export const app = express()
 app.use(express.json());
 dotenv.config();
 app.use((req, res, next) =>{
-    res.header('Access-Control-Allow-Origin', 'https://issho-deploy-465e55c6c2f1.herokuapp.com/')
+    res.header('Access-Control-Allow-Origin', 'https://issho-deploy-465e55c6c2f1.herokuapp.com')
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, token')
     next()
@@ -33,7 +33,7 @@ const corsOptions = {
     origin: [
     'http://localhost:5000/', 
     'https://vercel.com/andrewelvio14-gmailcom/issho-portfolio/3ZkRJsXaYMmazZEyvtSdtZWywSom',
-    'https://issho-deploy-465e55c6c2f1.herokuapp.com/']
+    'https://issho-deploy-465e55c6c2f1.herokuapp.com']
 }
 app.use(cors(corsOptions))
 
