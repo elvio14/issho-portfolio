@@ -12,8 +12,9 @@ import cors from 'cors'
 import { upload } from './multer.js'
 import fs from 'fs'
 import path from 'path'
-import { fileURLToPath } from 'url';
+import { fileURLToPath } from 'url'
 import { dirname } from 'path'
+import {v2 as cloudinary} from 'cloudinary'
 
 export const app = express()
 app.use(express.json());
@@ -58,6 +59,22 @@ app.get('/uploaded-filenames', (req,res)=> {
     })
 })
 
+cloudinary.config({ 
+    cloud_name: 'dy6sxilvq', 
+    api_key: '494449584914118', 
+    api_secret: process.env.CLOUDINARY_API_SECRET
+  })
+
+app.post('/upload', upload.single('file'), (req, res) => {
+    const file = req.file.path
+
+    cloudinary.uploader.upload(file, (error,result)=>{
+        if (error){
+            return res.status(500).json({error: error.message})
+        }
+        res.json(result)
+    })
+})
 
 
 mongoose
