@@ -33,7 +33,7 @@ const corsOptions = {
     origin: [
     'http://localhost:5000/', 
     'https://vercel.com/andrewelvio14-gmailcom/issho-portfolio/3ZkRJsXaYMmazZEyvtSdtZWywSom',
-    'https://issho-deploy-465e55c6c2f1.herokuapp.com']
+    'https://issho-deploy-465e55c6c2f1.herokuapp.com/api/products']
 }
 app.use(cors(corsOptions))
 
