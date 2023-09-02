@@ -62,6 +62,8 @@ app.get('/uploaded-filenames', (req,res)=> {
     })
 })
 
+app.use('/upload', express.static('upload'))
+
 cloudinary.config({ 
     cloud_name: 'dy6sxilvq', 
     api_key: '494449584914118', 
