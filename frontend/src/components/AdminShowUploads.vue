@@ -1,13 +1,16 @@
 <script>
 import {ref, onMounted} from 'vue'
-import { v2 as cloudinary} from 'cloudinary'
+
 export default {
     setup(){
         const backend = import.meta.env.VITE_BACKEND_URL
         const images = ref([])
         const getImages = onMounted(async () => {
             fetch(`${backend}/getimages`)
-                .then(response => response.json())
+                .then(response => {
+                    console.log(response)
+                    return response.json()
+                })
                 .then(data => {
                     images.value = data
                 })

@@ -83,7 +83,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 })
 
 app.get('/getimages', (req,res) => {
-    cloudinary.video.api.resources_by_asset_folder('issho', {max_results: 100}, (error, result) => {
+    cloudinary.v2.api.resources_by_asset_folder('issho', {max_results: 100}, (error, result) => {
         if(error) {
             return res.status(400).json({error})
         }
