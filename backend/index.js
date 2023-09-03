@@ -33,8 +33,7 @@ const corsOptions = {
     origin: [
     'http://localhost:5000/', 
     'https://vercel.com/andrewelvio14-gmailcom/issho-portfolio/3ZkRJsXaYMmazZEyvtSdtZWywSom',
-    'https://issho-deploy-465e55c6c2f1.herokuapp.com/api/products',
-    'https://issho-deploy-465e55c6c2f1.herokuapp.com/api/get-images'
+    'https://issho-deploy-465e55c6c2f1.herokuapp.com/api/products'
 ]
 }
 app.use(cors(corsOptions))
@@ -68,7 +67,7 @@ app.use('/upload', express.static('upload'))
 
 cloudinary.config({ 
     cloud_name: 'dy6sxilvq', 
-    api_key: process.env.CLOUDINARY_API_KEY, 
+    api_key: '494449584914118', 
     api_secret: process.env.CLOUDINARY_API_SECRET
   })
 
@@ -82,6 +81,17 @@ app.post('/upload', upload.single('file'), (req, res) => {
         res.json(result)
     })
 })
+
+app.get('/getimages', (req,res) => {
+    cloudinary.video.api.resources_by_asset_folder('issho', {max_results: 100}, (error, result) => {
+        if(error) {
+            return res.status(400).json({error})
+        }
+        res.status(200).json(result.resources)
+    })
+}
+
+)
 
 mongoose
     .connect(

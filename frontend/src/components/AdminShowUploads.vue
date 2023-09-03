@@ -6,17 +6,14 @@ export default {
         const backend = import.meta.env.VITE_BACKEND_URL
         const images = ref([])
         const getImages = onMounted(async () => {
-            cloudinary.v2.api.resources_by_asset_folder("issho",
-            {max_results: 100},
-            function(error, result) {
-                if (error){
-                    console.log(error)
-                } else {
-                    images.value = result.resources
-                }
-            }
-
-            )
+            fetch(`${backend}/getimages`)
+                .then(response => response.json())
+                .then(data => {
+                    images.value = data
+                })
+                .catch(error => {
+                    console.error(error)
+                })
         })
 
         return { 
@@ -26,7 +23,7 @@ export default {
 }
 </script>
 <template>
-    <button @click="getUploads">Refetch Images</button>
+    <button @click="getImages">Refetch Images</button>
     <div class="grid">
         <div v-for="image in images" :key="image" class="grid-item">
             <img :src="`https://res.cloudinary.com/dy6sxilvq/image/upload/v1693695612/issho/${image.public_id}`"><br/>
