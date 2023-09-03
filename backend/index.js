@@ -66,8 +66,9 @@ app.use('/upload', express.static('upload'))
 
 cloudinary.config({ 
     cloud_name: 'dy6sxilvq', 
-    api_key: '494449584914118', 
-    api_secret: process.env.CLOUDINARY_API_SECRET
+    api_key: process.env.CLOUDINARY_API_KEY, 
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+    folder: 'issho'
   })
 
 app.post('/upload', upload.single('file'), (req, res) => {
@@ -81,6 +82,17 @@ app.post('/upload', upload.single('file'), (req, res) => {
     })
 })
 
+const cloudURL = `https://api.cloudinary.com/v1_1/${cloud_name}/resources/image?folder=${folder}&api_key=${api_key}`
+
+app.get('/api/get-images', async (req, res) => {
+    try{
+        const cloudinaryResponse = await fetch(cloudURL)
+        const data = await cloudinaryResponse.json()
+        res.json(data)
+    }catch(error) {
+        res.status(500).json(error)
+    }
+})
 
 mongoose
     .connect(

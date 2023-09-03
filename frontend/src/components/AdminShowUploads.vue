@@ -3,20 +3,24 @@ import {ref, onMounted} from 'vue'
 export default {
     setup(){
         const backend = import.meta.env.VITE_BACKEND_URL
-        const uploads = ref([])
+        const images = ref([])
         const getUploads = onMounted(async () => {
             try{
-                const response = await fetch(`${backend}/uploaded-filenames`)
+                const response = await fetch(`${backend}/api/get-images`)
                 const data = await response.json()
-                console.log(data)
-                uploads.value = data
+                images.value = data.resources
+                images.array.forEach(image => {
+                    const fileName = `${image.public_id}.${image.format}`
+                console.log(fileName)
+                
+                });
             } catch(error) {
                 console.log(error)
             }
         })
 
         return { 
-            uploads, getUploads, backend
+            images, getUploads, backend
         }
     }
 }
@@ -24,9 +28,9 @@ export default {
 <template>
     <button @click="getUploads">Refetch Images</button>
     <div class="grid">
-        <div v-for="upload in uploads" :key="upload" class="grid-item">
-            <img :src="`${backend}/uploads/${upload}`"><br/>
-            <p>{{ upload }}</p>
+        <div v-for="image in images" :key="image" class="grid-item">
+            <img :src="`https://res.cloudinary.com/dy6sxilvq/image/upload/v1693695612/issho/${image.public_id}`"><br/>
+            <p>{{ image.fileName }}</p>
         </div>
     </div>
 </template>
