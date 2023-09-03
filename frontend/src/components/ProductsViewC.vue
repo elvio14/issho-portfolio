@@ -1,6 +1,7 @@
 <script>
-import { ref, reactive, onMounted, computed } from 'vue'
+import { ref, reactive, onMounted, computed, getCurrentInstance } from 'vue'
 import { useCartStore} from '../stores/cartStore.js'
+import {cld} from '../main.js'
 
 export default {
   props: {
@@ -19,6 +20,10 @@ export default {
     let nonReactiveSelectedQuantity = 1;
     const store = useCartStore()
     const cartItems = ref(store.items)
+
+    const getImageURL =(publicId) => {
+      return `https://res.cloudinary.com/dy6sxilvq/image/upload/issho/${publicId}`
+    }
 
     const togglePopup = (product) => {
       selectedDesc.value = product.desc;
@@ -88,7 +93,8 @@ export default {
       showButton,
       triggerButton,
       backend,
-      filteredProducts
+      filteredProducts,
+      getImageURL
     };
   },
 };
@@ -96,7 +102,13 @@ export default {
 <template>    
     <div class="product-grid">
         <div v-for="product in filteredProducts" :key="product.id" class="product-grid-item" ref="productItems">
-              <img class="product-photo" :src="`${backend}/uploads/${product.img}`" @click="togglePopup(product)" />
+              <!-- <img class="product-photo" 
+              :src="`https://res.cloudinary.com/dy6sxilvq/image/upload/v1693695572/issho/${product.img}`"
+              :alt="`${product.img}`"
+              @click="togglePopup(product)" /> -->
+              <img class="product-photo" :src="getImageURL(product.img)" :alt="`${product.img}`" 
+              @click="togglePopup(product)"
+              />
               <div class="product-title">
                 <h3>{{ product.title }}</h3>
                 <h4>${{ (product.price/100).toFixed(2) }}</h4>
