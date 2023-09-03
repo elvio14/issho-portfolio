@@ -33,7 +33,9 @@ const corsOptions = {
     origin: [
     'http://localhost:5000/', 
     'https://vercel.com/andrewelvio14-gmailcom/issho-portfolio/3ZkRJsXaYMmazZEyvtSdtZWywSom',
-    'https://issho-deploy-465e55c6c2f1.herokuapp.com/api/products']
+    'https://issho-deploy-465e55c6c2f1.herokuapp.com/api/products',
+    'https://issho-deploy-465e55c6c2f1.herokuapp.com/api/get-images'
+]
 }
 app.use(cors(corsOptions))
 
@@ -67,8 +69,7 @@ app.use('/upload', express.static('upload'))
 cloudinary.config({ 
     cloud_name: 'dy6sxilvq', 
     api_key: process.env.CLOUDINARY_API_KEY, 
-    api_secret: process.env.CLOUDINARY_API_SECRET,
-    folder: 'issho'
+    api_secret: process.env.CLOUDINARY_API_SECRET
   })
 
 app.post('/upload', upload.single('file'), (req, res) => {
@@ -80,18 +81,6 @@ app.post('/upload', upload.single('file'), (req, res) => {
         }
         res.json(result)
     })
-})
-
-const cloudURL = `https://api.cloudinary.com/v1_1/${cloud_name}/resources/image?folder=${folder}&api_key=${api_key}`
-
-app.get('/api/get-images', async (req, res) => {
-    try{
-        const cloudinaryResponse = await fetch(cloudURL)
-        const data = await cloudinaryResponse.json()
-        res.json(data)
-    }catch(error) {
-        res.status(500).json(error)
-    }
 })
 
 mongoose
