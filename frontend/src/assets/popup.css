@@ -23,6 +23,8 @@ text-align: justify;
   height: 100vh;
   z-index: 1;
   cursor: pointer;
+  background-color: black;
+  opacity: 25%;
 }
 .container-in{
     width: 90vw;

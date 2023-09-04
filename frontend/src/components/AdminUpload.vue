@@ -1,5 +1,6 @@
 <script>
-import { ref } from 'vue';
+import { image } from '@cloudinary/url-gen/qualifiers/source';
+import { ref, computed } from 'vue';
 
 export default {
     setup(){
@@ -10,8 +11,18 @@ export default {
         const price = ref(null)
         const category = ref('')
         const img = ref('')
+        const fileInput = ref(null)
+
+        const fileNameChanged = computed(()=>{
+            if (fileInput.value.files && fileInput.value.files.length > 0){
+                img.value = fileInput.value.files[0].name
+                console.log(img.value)
+            }
+        })
 
         const submitForm = async () => {
+            
+
             const productData = {
                 id: id.value,
                 title: title.value,
@@ -21,7 +32,21 @@ export default {
                 img: img.value
             }
 
+            const formImage = new FormData()
+            formImage.append("files", fileInput.value.files[0])
+
             try {
+                const imageResponse = await fetch(`${backend}/upload`, {
+                    method: 'POST',
+                    body: formImage
+                }
+                )
+                if(imageResponse.ok){
+                    console.log("Image uploaded")
+                } else{
+                    console.error(imageResponse.statusText)
+                }
+
                 const response = await fetch(`${backend}/api/products`, {
                     method: 'POST',
                     headers: {
@@ -40,18 +65,18 @@ export default {
         }
         
     return {
-        id, title, desc, price, category, img, submitForm
+        id, title, desc, price, category, img, submitForm, fileNameChanged, fileInput
     }
 }}
 </script>
 <template>
     <form
         @submit.prevent="submitForm">
+            Image:          <br/><input type="file" ref="fileInput" @change="fileNameChanged"><br>
             Title:          <br/><input     type="text" style="width: 200px;"   v-model="title" name="title" placeholder="title"><br/>
             Description:    <br/><textarea  rows="5" cols="50"                  v-model="desc" name="desc" placeholder="desc"></textarea><br/>
             Price (in cents)<br/><input     type="number"                       v-model="price" name="price" placeholder="price"><br/>
             Category        <br/><input     type="text"                         v-model="category" name="category" placeholder="category"><br/>
-            Image Path (file-name.jpg)<br/><input     type="text"               v-model="img" name="img" placeholder="img"><br/>
             <button type="submit">Create Product</button>
     </form>
     

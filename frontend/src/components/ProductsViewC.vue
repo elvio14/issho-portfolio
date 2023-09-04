@@ -102,10 +102,6 @@ export default {
 <template>    
     <div class="product-grid">
         <div v-for="product in filteredProducts" :key="product.id" class="product-grid-item" ref="productItems">
-              <!-- <img class="product-photo" 
-              :src="`https://res.cloudinary.com/dy6sxilvq/image/upload/v1693695572/issho/${product.img}`"
-              :alt="`${product.img}`"
-              @click="togglePopup(product)" /> -->
               <img class="product-photo" :src="getImageURL(product.img)" :alt="`${product.img}`" 
               @click="togglePopup(product)"
               />
