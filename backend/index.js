@@ -74,7 +74,8 @@ cloudinary.config({
 app.post('/upload', upload.single('file'), (req, res) => {
     const file = req.file.path
 
-    cloudinary.v2.uploader.upload(file, (error,result)=>{
+    cloudinary.v2.uploader.upload(file, 'tngkldzn', {folder: "issho"})
+    .then((error,result)=>{
         if (error){
             return res.status(500).json({error: error.message})
         }
