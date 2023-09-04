@@ -76,7 +76,7 @@ export default {
             Title:          <br/><input     type="text" style="width: 200px;"   v-model="title" name="title" placeholder="title"><br/>
             Description:    <br/><textarea  rows="5" cols="50"                  v-model="desc" name="desc" placeholder="desc"></textarea><br/>
             Price (in cents)<br/><input     type="number"                       v-model="price" name="price" placeholder="price"><br/>
-            Category        <br/><input     type="text"                         v-model="category" name="category" placeholder="category"><br/>
+            Category (pastry / coffee)   <br/><input     type="text"                         v-model="category" name="category" placeholder="category"><br/>
             <button type="submit">Create Product</button>
     </form>
     

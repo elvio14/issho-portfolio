@@ -74,7 +74,7 @@ cloudinary.config({
 app.post('/upload', upload.single('file'), (req, res) => {
     const file = req.file.path
 
-    cloudinary.uploader.upload(file, (error,result)=>{
+    cloudinary.v2.uploader.upload(file, (error,result)=>{
         if (error){
             return res.status(500).json({error: error.message})
         }
@@ -83,14 +83,16 @@ app.post('/upload', upload.single('file'), (req, res) => {
 })
 
 app.get('/getimages', (req,res) => {
-    cloudinary.v2.api.resources_by_asset_folder('issho', {max_results: 100}, (error, result) => {
-        if(error) {
-            return res.status(400).json({error})
-        }
-        res.status(200).json(result.resources)
-    })
+    cloudinary.v2.api.resources_by_asset_folder('issho', 'tngkldzn', {max_results: 100, folder: "issho"})
+        .then(
+            (error, result) => {
+                if(error) {
+                    return res.status(400).json({error})
+                }
+                res.status(200).json(result.resources)
+            }
+        )
 }
-
 )
 
 mongoose
