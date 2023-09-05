@@ -68,7 +68,8 @@ app.use('/upload', express.static('upload'))
 cloudinary.config({ 
     cloud_name: 'dy6sxilvq', 
     api_key: '494449584914118', 
-    api_secret: process.env.CLOUDINARY_API_SECRET
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+    secure:true
   })
 
 const cloudURL = "https://api.cloudinary.com/v1_1/dy6sxilvq"
@@ -76,7 +77,7 @@ const cloudURL = "https://api.cloudinary.com/v1_1/dy6sxilvq"
 app.post(`${cloudURL}/image/upload`, upload.single('file'), (req, res) => {
     const file = req.file.path
 
-    cloudinary.v2.uploader.upload(file, {folder: "issho"})
+    cloudinary.v2.uploader.unsigned_upload(file, {upload_preset: "tngkldzn" }, {folder: "issho"})
     .then((error,result)=>{
         if (error){
             return res.status(500).json({error: error.message})
