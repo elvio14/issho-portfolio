@@ -38,31 +38,6 @@ const corsOptions = {
 }
 app.use(cors(corsOptions))
 
-app.post('/uploads', upload.array('files', 12), (req,res) => {
-    console.log(req.files)
-    res.send('Files uploaded.')
-  })
-
-app.use('/uploads', express.static('uploads'))
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
-const UPLOADS_DIRECTORY = path.join(__dirname, './uploads')
-
-app.get('/uploaded-filenames', (req,res)=> {
-    fs.readdir(UPLOADS_DIRECTORY, (err, files) => {
-        if (err){
-            return res.status(500).json(err)
-        }
-
-        const fileNames = files.filter(file => {
-            return fs.statSync(path.join(UPLOADS_DIRECTORY, file)).isFile()
-        })
-
-        res.json(fileNames)
-    })
-})
-
 app.use('/upload', express.static('upload'))
 
 cloudinary.config({ 
@@ -83,6 +58,18 @@ app.post(`${cloudURL}/image/upload`, upload.single('file'), (req, res) => {
             return res.status(500).json({error: error.message})
         }
         res.json(result)
+    })
+})
+
+app.post(`${cloudURL}/image/destroy`, (req, res) => {
+    const public_id = req.body.publicId
+
+    cloudinary.v2.uploader.destroy(`${public_id}`)
+    .then((error,result)=>{
+        if (error){
+            return res.status(500).json({error: error.message})
+        }
+        console.log(result)
     })
 })
 

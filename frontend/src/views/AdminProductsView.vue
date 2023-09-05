@@ -4,6 +4,11 @@ export default {
     setup(){
         const backend = import.meta.env.VITE_BACKEND_URL
         const products = ref([])
+        const cloudURL = "https://api.cloudinary.com/v1_1/dy6sxilvq"
+
+        const getImageURL =(publicId) => {
+            return `https://res.cloudinary.com/dy6sxilvq/image/upload/issho/${publicId}`
+        }
 
         const fetchProducts = () => {
             fetch(`${backend}/api/products`)
@@ -30,13 +35,25 @@ export default {
                         'token':'bearer ' + localStorage.getItem('accessToken')
                     }
                 })
-
                 if(response.ok){
                     const data = await response.json()
                     console.log(data)
                     fetchProducts()
                 } else {
                     console.error("Error deleting product.", await response.text())
+                }
+
+                const publicId = product.img
+                const imageResponse = await fetch(`${cloudURL}/image/destroy`, {
+                    method: 'POST',
+                    body: {
+                        'publicId': publicId
+                    }
+                })
+                if(imageResponse.ok){
+                    console.log("Image uploaded")
+                } else{
+                    console.error(imageResponse.statusText)
                 }
                 
 
@@ -48,7 +65,7 @@ export default {
         }
 
     return {
-        products, deleteProduct, backend
+        products, deleteProduct, backend, getImageURL
     }
     }
 }
@@ -70,7 +87,8 @@ export default {
             <div class="price grid-item">{{ (product.price/100).toFixed(2) }}</div>
             <div class="category grid-item">{{ product.category }}</div>
             <div class="img grid-item">
-                <img :src="`${backend}/uploads/${product.img}`" style="width: 80px; padding: 0.5rem; display: flex;">
+                <img class="product-photo" :src="getImageURL(product.img)" :alt="`${product.img}`"
+                    style="width: 80px; padding: 0.5rem; display: flex;" />
                 {{ product.img }}</div>
             <div class="id grid-item">{{ product._id }}</div>
             <div class="delete grid-item">
@@ -81,9 +99,6 @@ export default {
 </template>
 <style scoped>
 
-.refresh{
-    margin-left: 2rem;
-}
 .table{
     margin: 2rem;
     border: 1px solid lightslategray;
