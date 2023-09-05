@@ -36,7 +36,7 @@ export default {
             formImage.append("file", fileInput.value.files[0])
 
             try {
-                const imageResponse = await fetch(`${backend}/upload`, {
+                const imageResponse = await fetch(`${backend}/image/upload`, {
                     method: 'POST',
                     body: formImage
                 }

@@ -71,10 +71,10 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET
   })
 
-app.post('/upload', upload.single('file'), (req, res) => {
+app.post('/image/upload', upload.single('file'), (req, res) => {
     const file = req.file.path
 
-    cloudinary.v2.uploader.upload(file, 'tngkldzn', {folder: "issho"})
+    cloudinary.v2.uploader.unsigned_upload(file, 'tngkldzn', {folder: "issho"})
     .then((error,result)=>{
         if (error){
             return res.status(500).json({error: error.message})
