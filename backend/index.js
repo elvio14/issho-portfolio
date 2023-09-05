@@ -76,7 +76,7 @@ const cloudURL = "https://api.cloudinary.com/v1_1/dy6sxilvq"
 app.post(`${cloudURL}/image/upload`, upload.single('file'), (req, res) => {
     const file = req.file.path
 
-    cloudinary.v2.uploader.unsigned_upload(file, 'tngkldzn', {folder: "issho"})
+    cloudinary.v2.uploader.unsigned_upload(file, "tngkldzn", {folder: "issho"})
     .then((error,result)=>{
         if (error){
             return res.status(500).json({error: error.message})
@@ -86,7 +86,7 @@ app.post(`${cloudURL}/image/upload`, upload.single('file'), (req, res) => {
 })
 
 app.get('/getimages', (req,res) => {
-    cloudinary.v2.api.resources_by_asset_folder('issho', 'tngkldzn', {max_results: 100, folder: "issho"})
+    cloudinary.v2.api.resources_by_asset_folder('issho', {max_results: 100})
         .then(
             (error, result) => {
                 if(error) {
