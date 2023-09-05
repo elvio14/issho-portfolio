@@ -14,14 +14,6 @@ import AdminShowUploads from '../components/AdminShowUploads.vue'
             <h4>Update existing product</h4>
             <AdminUpdateProduct/>
         </div>
-        <div class="grid-item">
-            <h4>Upload images</h4>
-            <AdminUploadImage/>
-        </div>
-        <div class="grid-item">
-            <h4>Uploaded images</h4>
-            <AdminShowUploads/>
-        </div>
     </div>
 </template>
 <style scoped>
