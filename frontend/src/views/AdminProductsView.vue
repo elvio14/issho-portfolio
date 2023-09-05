@@ -44,14 +44,17 @@ export default {
                 }
 
                 const publicId = product.img
+                const timestamp = Math.round((new Date()).getTime() / 1000)
+                const formData = new FormData()
+                formData.append("public_id", publicId)
+                formData.append("api_key", "494449584914118")
+                formData.append("timestamp", timestamp)
                 const imageResponse = await fetch(`${cloudURL}/image/destroy`, {
                     method: 'POST',
-                    body: {
-                        'publicId': publicId
-                    }
+                    body: formData
                 })
                 if(imageResponse.ok){
-                    console.log("Image uploaded")
+                    console.log("Image destroyed")
                 } else{
                     console.error(imageResponse.statusText)
                 }

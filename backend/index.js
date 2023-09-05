@@ -10,10 +10,6 @@ import { Buffer } from 'buffer'
 globalThis.Buffer = Buffer
 import cors from 'cors'
 import { upload } from './multer.js'
-import fs from 'fs'
-import path from 'path'
-import { fileURLToPath } from 'url'
-import { dirname } from 'path'
 import {v2 as cloudinary} from 'cloudinary'
 
 export const app = express()
@@ -40,51 +36,49 @@ app.use(cors(corsOptions))
 
 app.use('/upload', express.static('upload'))
 
-cloudinary.config({ 
-    cloud_name: 'dy6sxilvq', 
-    api_key: '494449584914118', 
-    api_secret: process.env.CLOUDINARY_API_SECRET,
-    secure:true
-  })
+// cloudinary.config({ 
+//     cloud_name: 'dy6sxilvq', 
+//     api_key: '494449584914118', 
+//     api_secret: process.env.CLOUDINARY_API_SECRET,
+//     secure:true
+//   })
 
-const cloudURL = "https://api.cloudinary.com/v1_1/dy6sxilvq"
+// app.post("/image/upload", upload.single('file'), (req, res) => {
+//     const file = req.file.path
 
-app.post(`${cloudURL}/image/upload`, upload.single('file'), (req, res) => {
-    const file = req.file.path
+//     cloudinary.v2.uploader.unsigned_upload(file, {upload_preset: "tngkldzn" }, {folder: "issho"})
+//     .then((error,result)=>{
+//         if (error){
+//             return res.status(500).json({error: error.message})
+//         }
+//         res.json(result)
+//     })
+// })
 
-    cloudinary.v2.uploader.unsigned_upload(file, {upload_preset: "tngkldzn" }, {folder: "issho"})
-    .then((error,result)=>{
-        if (error){
-            return res.status(500).json({error: error.message})
-        }
-        res.json(result)
-    })
-})
+// app.post(`${cloudURL}/image/destroy`, (req, res) => {
+//     const public_id = req.body.publicId
 
-app.post(`${cloudURL}/image/destroy`, (req, res) => {
-    const public_id = req.body.publicId
+//     cloudinary.v2.uploader.destroy(`${public_id}`)
+//     .then((error,result)=>{
+//         if (error){
+//             return res.status(500).json({error: error.message})
+//         }
+//         console.log(result)
+//     })
+// })
 
-    cloudinary.v2.uploader.destroy(`${public_id}`)
-    .then((error,result)=>{
-        if (error){
-            return res.status(500).json({error: error.message})
-        }
-        console.log(result)
-    })
-})
-
-app.get('/getimages', (req,res) => {
-    cloudinary.v2.api.resources_by_asset_folder('issho', {max_results: 100})
-        .then(
-            (error, result) => {
-                if(error) {
-                    return res.status(400).json({error})
-                }
-                res.status(200).json(result.resources)
-            }
-        )
-}
-)
+// app.get('/getimages', (req,res) => {
+//     cloudinary.v2.api.resources_by_asset_folder('issho', {max_results: 100})
+//         .then(
+//             (error, result) => {
+//                 if(error) {
+//                     return res.status(400).json({error})
+//                 }
+//                 res.status(200).json(result.resources)
+//             }
+//         )
+// }
+// )
 
 mongoose
     .connect(

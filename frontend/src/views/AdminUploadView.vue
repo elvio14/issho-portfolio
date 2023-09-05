@@ -1,8 +1,6 @@
 <script setup>
 import AdminUpdateProduct from '../components/AdminUpdateProduct.vue'
 import AdminUpload from '../components/AdminUpload.vue'
-import AdminUploadImage from '../components/AdminUploadImage.vue'
-import AdminShowUploads from '../components/AdminShowUploads.vue'
 </script>
 <template>
     <div class="grid-container">
