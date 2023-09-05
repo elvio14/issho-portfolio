@@ -35,15 +35,12 @@ export default {
 
             const formImage = new FormData()
             formImage.append("file", fileInput.value.files[0])
+            formImage.append("upload_preset", "tngkldzn")
 
             try {
                 const imageResponse = await fetch(`${cloudURL}/image/upload`, {
                     method: 'POST',
-                    body: {
-                        file: formImage,
-                        upload_preset: "tngkldzn",
-                        api_key: "494449584914118"
-                    }
+                    body: formImage
                     
                 }
                 )
