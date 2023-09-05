@@ -12,6 +12,7 @@ export default {
         const category = ref('')
         const img = ref('')
         const fileInput = ref(null)
+        const cloudURL = "https://api.cloudinary.com/v1_1/dy6sxilvq"
 
         const fileNameChanged = computed(()=>{
             if (fileInput.value.files && fileInput.value.files.length > 0){
@@ -36,7 +37,7 @@ export default {
             formImage.append("file", fileInput.value.files[0])
 
             try {
-                const imageResponse = await fetch(`${backend}/image/upload`, {
+                const imageResponse = await fetch(`${cloudURL}/image/upload`, {
                     method: 'POST',
                     body: formImage
                 }

@@ -71,7 +71,9 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET
   })
 
-app.post('/image/upload', upload.single('file'), (req, res) => {
+const cloudURL = "https://api.cloudinary.com/v1_1/dy6sxilvq"
+
+app.post(`${cloudURL}/image/upload`, upload.single('file'), (req, res) => {
     const file = req.file.path
 
     cloudinary.v2.uploader.unsigned_upload(file, 'tngkldzn', {folder: "issho"})
