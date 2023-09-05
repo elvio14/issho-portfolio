@@ -39,7 +39,12 @@ export default {
             try {
                 const imageResponse = await fetch(`${cloudURL}/image/upload`, {
                     method: 'POST',
-                    body: formImage
+                    body: {
+                        file: formImage,
+                        upload_preset: "tngkldzn",
+                        api_key: "494449584914118"
+                    }
+                    
                 }
                 )
                 if(imageResponse.ok){
