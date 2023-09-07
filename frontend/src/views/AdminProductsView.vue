@@ -45,7 +45,7 @@ export default {
                 }
 
                 const apiSecret = import.meta.env.CLOUDINARY_API_SECRET
-                const publicId = product.img.split('.')[0]
+                const publicId = product.img
                 const timestamp = Math.round((new Date()).getTime() / 1000)
                 const signatureString = `public_id=${publicId}&timestamp=${timestamp}${apiSecret}`
                 const signature = CryptoJS.SHA1(signatureString)
