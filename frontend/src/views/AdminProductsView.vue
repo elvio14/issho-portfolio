@@ -44,7 +44,7 @@ export default {
                     console.error("Error deleting product.", await response.text())
                 }
 
-                const apiSecret = import.meta.env.CLOUDINARY_API_SECRET
+                const apiSecret = import.meta.env.VITE_CLOUDINARY_SECRET
                 const publicId = product.img
                 const timestamp = Math.round((new Date()).getTime() / 1000)
                 const signatureString = `public_id=${publicId}&timestamp=${timestamp}${apiSecret}`
