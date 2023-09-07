@@ -44,10 +44,12 @@ export default {
                     console.error("Error deleting product.", await response.text())
                 }
 
-                const publicId = product.img
+                const apiSecret = import.meta.env.CLOUDINARY_API_SECRET
+                const publicId = product.img.split('.')[0]
                 const timestamp = Math.round((new Date()).getTime() / 1000)
-                const signatureString = `public_id=${product.img}&timestamp=${timestamp}`
+                const signatureString = `public_id=${product.img}&timestamp=${timestamp}${apiSecret}`
                 const signature = CryptoJS.SHA1(signatureString)
+                
                 const formData = new FormData()
                 formData.append("public_id", publicId)
                 formData.append("api_key", "494449584914118")
