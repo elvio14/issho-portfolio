@@ -1,5 +1,6 @@
 <script>
 import { ref, onMounted } from 'vue'
+import CryptoJS from 'crypto-js'
 export default {
     setup(){
         const backend = import.meta.env.VITE_BACKEND_URL
