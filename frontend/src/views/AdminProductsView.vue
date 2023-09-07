@@ -45,10 +45,13 @@ export default {
 
                 const publicId = product.img
                 const timestamp = Math.round((new Date()).getTime() / 1000)
+                const signatureString = `public_id=${product.img}&timestamp=${timestamp}`
+                const signature = CryptoJS.SHA1(signatureString)
                 const formData = new FormData()
                 formData.append("public_id", publicId)
                 formData.append("api_key", "494449584914118")
                 formData.append("timestamp", timestamp)
+                formData.append("signature", signature)
                 const imageResponse = await fetch(`${cloudURL}/image/destroy`, {
                     method: 'POST',
                     body: formData
