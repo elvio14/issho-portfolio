@@ -11,6 +11,7 @@ export default {
         const category = ref('')
         const img = ref('')
         const fileInput = ref(null)
+        const status = ref('')
         const cloudURL = "https://api.cloudinary.com/v1_1/dy6sxilvq"
 
         const fileNameChanged = computed(()=>{
@@ -37,6 +38,7 @@ export default {
             formImage.append("upload_preset", "tngkldzn")
 
             try {
+                status.value = "Uploading..."
                 const imageResponse = await fetch(`${cloudURL}/image/upload`, {
                     method: 'POST',
                     body: formImage
@@ -47,6 +49,7 @@ export default {
                     console.log("Image uploaded")
                 } else{
                     console.error(imageResponse.statusText)
+                    status.value = "Image upload error. Ask Andrew."
                 }
 
                 const response = await fetch(`${backend}/api/products`, {
@@ -59,6 +62,9 @@ export default {
                 });
 
                 const data = await response.json()
+                if(response.ok && imageResponse.ok){
+                    status.value = "Product uploaded."
+                }
                 console.log(data)
                 
             } catch (error) {
@@ -67,7 +73,7 @@ export default {
         }
         
     return {
-        id, title, desc, price, category, img, submitForm, fileNameChanged, fileInput
+        id, title, desc, price, category, img, submitForm, fileNameChanged, fileInput, status
     }
 }}
 </script>
@@ -81,5 +87,8 @@ export default {
             Category (pastry / coffee)   <br/><input     type="text"                         v-model="category" name="category" placeholder="category"><br/>
             <button type="submit">Create Product</button>
     </form>
+    <div v-if="status">
+        <h3>{{ status }}</h3>
+    </div>
     
 </template>
