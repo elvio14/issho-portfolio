@@ -47,7 +47,7 @@ export default {
                 const apiSecret = import.meta.env.CLOUDINARY_API_SECRET
                 const publicId = product.img.split('.')[0]
                 const timestamp = Math.round((new Date()).getTime() / 1000)
-                const signatureString = `public_id=${product.img}&timestamp=${timestamp}${apiSecret}`
+                const signatureString = `public_id=${publicId}&timestamp=${timestamp}${apiSecret}`
                 const signature = CryptoJS.SHA1(signatureString)
                 
                 const formData = new FormData()
