@@ -23,7 +23,7 @@ export default {
             
             <div class="text-container">
                 <div class="center-heading">
-                    <h3>Flour we use:</h3>
+                    <h3>Our Flour</h3>
                     <h1>1847 Stone Milling</h1>
                 </div>
                 

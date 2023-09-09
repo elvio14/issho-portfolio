@@ -23,7 +23,7 @@ export default {
             
             <div class="text-container">
                 <div class="center-heading">
-                    <h3>Honey we carry:</h3>
+                    <h3>The Beekeepers</h3>
                     <h1>Miels D'Anicet</h1>
                 </div>
                 

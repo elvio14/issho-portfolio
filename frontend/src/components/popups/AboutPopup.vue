@@ -23,7 +23,7 @@ export default {
             
             <div class="text-container">
                 <div class="center-heading">
-                    <h1>About Us</h1>
+                    <h1>The Team</h1>
                 </div>
                 
                 <h4>

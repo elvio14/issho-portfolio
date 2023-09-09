@@ -23,7 +23,7 @@ export default {
             
             <div class="text-container">
                 <div class="center-heading">
-                    <h3>Coffee we carry:</h3>
+                    <h3>Coffee Program</h3>
                     <h1>Detour Coffee Roasters</h1>
                 </div>
                 
