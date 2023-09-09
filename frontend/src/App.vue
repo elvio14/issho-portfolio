@@ -2,7 +2,7 @@
 import ShopView from './views/ShopView.vue'
 import HelloWorld from './components/HelloWorld.vue'
 import Cart from './components/Cart.vue'
-import {BaseTransition, ref, watch, onMounted} from 'vue'
+import {BaseTransition, ref, watch, onMounted, computed} from 'vue'
 import CartCounter from './components/CartCounter.vue'
 import Checkout from './Checkout.vue'
 import OrderPlaced from './components/OrderPlaced.vue'
@@ -69,6 +69,10 @@ const goToResources = ()=>{
   window.location.href = '../resources.html'
 }
 
+const closeAbout = ()=>{
+    showAbout.value = false
+}
+
 </script>
 
 <template>
@@ -89,12 +93,15 @@ const goToResources = ()=>{
           <button class="a-button" @click="showAbout = !showAbout">About</button>
         </nav>
         <transition name="drop">
-          <div v-if="showAbout" class="dropdown">
-            <a class="drop-item" href="#" @click="aboutCoffeeRef = true">Coffee we carry</a>
-            <a class="drop-item" href="#" @click="aboutHoneyRef = true">Honey we carry</a>
-            <a class="drop-item" href="#" @click="aboutFlourRef = true">Flour we use</a>
-            <a class="drop-item" href="#" @click="aboutPopupRef = true">Us</a>
+        <div v-if="showAbout">
+          <div id="overlay" @click="closeAbout"></div>
+          <div class="dropdown">  
+            <a class="drop-item" href="#" @click="aboutFlourRef = true, showAbout = false">Our Flour</a>
+            <a class="drop-item" href="#" @click="aboutCoffeeRef = true, showAbout = false">Coffee Program</a>
+            <a class="drop-item" href="#" @click="aboutHoneyRef = true, showAbout = false">The Beekeepers</a>
+            <a class="drop-item" href="#" @click="aboutPopupRef = true, showAbout = false">The Team</a>
           </div>
+        </div>
         </transition>
       </div>
     </div>
@@ -185,6 +192,15 @@ const goToResources = ()=>{
 
 <style scoped>
 
+#overlay{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+
 .drop-enter-active, .drop-leave-active {
   transition: all 300ms;
 }
@@ -201,7 +217,7 @@ const goToResources = ()=>{
   cursor: pointer;
 }
 .dropdown{
-  z-index: 1;
+  z-index: 2;
   padding: 0.5rem;
   background-color: var(--green-popup);
   color: white;
@@ -223,6 +239,7 @@ const goToResources = ()=>{
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+  z-index: -1;
 }
 .cookie{
   margin-top: 10%;
