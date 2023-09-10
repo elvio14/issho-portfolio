@@ -23,31 +23,13 @@ export default {
 
         const submitForm = async () => {
             const productData = {
-                id: id.value, title, desc, price, category, img
+                id: id.value,
+                title: title.value,
+                desc: desc.value,
+                price: price.value,
+                category: category.value,
+                img: img.value
             }
-            if(title.value.length > 0){
-                productData.title = title.value
-            }
-            if(desc.value.length > 0){
-                productData.desc = desc.value
-            }
-            if(price.value.length > 0){
-                productData.price = price.value
-            }
-            if(category.value.length > 0){
-                productData.category = category.value
-            }
-            if(img.value.length > 0){
-                productData.img = img.value
-            }
-            // const productData = {
-            //     id: id.value,
-            //     title: title.value,
-            //     desc: desc.value,
-            //     price: price.value,
-            //     category: category.value,
-            //     img: img.value
-            // }
 
             const formImage = new FormData()
             formImage.append("file", fileInput.value.files[0])

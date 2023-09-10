@@ -10,16 +10,26 @@ export default {
         const price = ref(null)
         const category = ref('')
         const img = ref('')
+        const status = ref('')
 
         const updateProduct = async () => {
-            const productData = {
-                title: title.value,
-                desc: desc.value,
-                price: price.value,
-                category: category.value,
-                img: img.value
+            status.value = 'updating...'
+            const productData = {}
+            if(title.value.length > 0){
+                productData["title"] = title.value
             }
-
+            if(desc.value.length > 0){
+                productData["desc"] = desc.value
+            }
+            if(price.value !== null){
+                productData["price"] = price.value
+            }
+            if(category.value.length > 0){
+                productData["category"] = category.value
+            }
+            if(img.value.length > 0){
+                productData["img"] = img.value
+            }
             const idInput = id.value
 
             try {
@@ -35,14 +45,16 @@ export default {
 
                 const data = await response.json();
                 console.log(data);
-                
+                if(response.ok){
+                    status.value = 'Product updated!'
+                }
             } catch (error) {
                 console.error('There was an error:', error)
             }
         }
         
     return {
-        id, title, desc, price, category, img, updateProduct
+        id, title, desc, price, category, img, updateProduct, status
     }
 }}
 </script>
@@ -58,5 +70,8 @@ export default {
             Image Path (file-name.jpg)<br/><input     type="text"               v-model="img" name="img" placeholder="img"><br/>
             <button type="submit">Update Product</button>
     </form>
+    <div v-if="status">
+        <h3>{{ status }}</h3>
+    </div>
     
 </template>

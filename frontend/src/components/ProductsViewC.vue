@@ -114,16 +114,29 @@ export default {
                 <button class="add-button" @click="addToCartButtonClicked(product)" >Add to Basket</button>
               </div>
         </div>
-        <div class="desc-container" v-if="showPopup" >
-                <button @click="closeDiv" class="x-button">X</button>
+        <div v-if="showPopup">
+          <div id="overlay" @click="closeDiv"></div>
+          <div class="desc-container"  >
                 <h3 class="desc-title">{{ selectedTitle }}</h3>
                 <p class="desc-content">{{selectedDesc}}</p>
                 <img class="desc-logo" src="../assets/issho_logo_white.png"/>
+          </div>
         </div>
         
     </div>
 </template>
 <style scoped>
+
+#overlay{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  opacity: 25%;
+  cursor: pointer;
+}
 
 .product-title{
   height: 4.5rem;
@@ -176,7 +189,7 @@ h3{
 }
 
 
-.x-button{
+/* .x-button{
     position: absolute;
     top: 0;
     left: 0;
@@ -187,7 +200,7 @@ h3{
     border: none;
     cursor:pointer;
     font-weight: 1000;
-}
+} */
 
 p {
     margin: auto;
