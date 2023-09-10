@@ -145,10 +145,12 @@ const closeAbout = ()=>{
         <button class="shop-tab a-button tab-active" id="pastries" @click="activateTab('pastries')">Pastries</button>
         <button class="shop-tab a-button" id="coffee" @click="activateTab('coffee')">Coffee</button>
       </div>
-      <div v-if="showTab === 'pastries'">
+      <div v-if="showTab === 'pastries'" class="scroll-tab">
+        <div class="scroll-cloud"></div>
         <ShopView viewCategoryView="pastry" />
       </div>
-      <div v-if="showTab === 'coffee'">
+      <div v-if="showTab === 'coffee'" class="scroll-tab">
+        <div class="scroll-cloud"></div>
         <ShopView viewCategoryView="coffee" />
       </div>
     </div>
@@ -191,6 +193,15 @@ const closeAbout = ()=>{
 
 
 <style scoped>
+
+.scroll-cloud{
+  height: 40px;
+  width: 60vw;
+  background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+  z-index: 1;
+  position:fixed;
+  top: 165px;
+}
 
 #overlay{
   position: absolute;
@@ -345,6 +356,10 @@ button:hover {
 /* MOBILE VIEW */
 @media (max-width: 850px){
 
+  .scroll-cloud{
+    display:none;
+  }
+
   nav button{
     margin: 0;
   }
@@ -402,6 +417,11 @@ button:hover {
 
 /* PC VIEW */
 @media (min-width: 851px) {
+  .scroll-tab{
+  height: 80vh;
+  overflow: auto;
+  }
+
   #backgroundContainer{
     display: grid;
     grid-template-columns: 3fr 4fr;
