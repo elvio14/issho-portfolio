@@ -57,6 +57,7 @@ export default {
     position: absolute;
     left: 42%;
     width: 30vw;
+    font-weight: 600;
 }
 
 .desc-logo{

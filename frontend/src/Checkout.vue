@@ -71,14 +71,14 @@ export default {
 <template>
 <div class="root">
     <div id="checkout">
-            <h3>CHECKOUT</h3>
+            <h2>CHECKOUT</h2>
     </div>
     <div class="grid-container">
         
         <div class="info">
             <p>
-                To ensure you receive a quality product, everything is baked fresh to order. <br/>
-                Orders require 48 hours to fulfill and will be made available on the next delivery date.<br/>
+                To ensure you receive a quality product, everything is baked fresh to order. <br/><br/>
+                Orders require 48 hours to fulfill and will be made available on the next delivery date.<br/><br/>
                 Flat fee of $10 for <a id="delivery" @click="deliveryLink"><u>Zero Emission Delivery.</u></a>Zero Emission Delivery.
             </p>
         </div>
