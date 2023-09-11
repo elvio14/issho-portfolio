@@ -127,6 +127,10 @@ export default {
 </template>
 <style scoped>
 
+.desc-container{
+  border-radius: 2rem;
+}
+
 #overlay{
   position: absolute;
   left: 0;
@@ -244,12 +248,12 @@ p {
 .product-title{
     width: 44vw;
 }
-.desc-container{
+/* .desc-container{
     position: relative;
     width: 95vw;
     height: 90vh;
     overflow: auto;
-}
+} */
 
 .add-to-cart{
   width: 40vw;

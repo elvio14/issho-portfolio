@@ -57,23 +57,29 @@ export default {
         const cancelCheckout = () => {
             emit('update:showCheckoutProp', false)
         }
-        return { formattedDate, flexibleDelivery, deliveryDate, fullName, address, postalCode, placeOrder, cancelCheckout, email };
+
+        const deliveryLink = () => {
+            emit('update:showCheckoutProp', false)
+            emit('update:showDelivery', true)
+        }
+
+        return { formattedDate, flexibleDelivery, deliveryDate, 
+            fullName, address, postalCode, placeOrder, cancelCheckout, email, deliveryLink };
     }
 }
 </script>
 <template>
 <div class="root">
-    <div style="margin-left: 2rem;">
-        <h3>Checkout</h3>
-    </div>
+    
     <div class="grid-container">
+        <div id="checkout">
+            <h3>Checkout</h3>
+        </div>
         <div class="info">
             <p>
                 To ensure you receive a quality product, everything is baked fresh to order. <br/>
                 Orders require 48 hours to fulfill and will be made available on the next delivery date.<br/>
-                We have changed our delivery policy to be more customer friendly.<br/>
-                There will be free shipping on orders that have a flexible delivery date.<br/>
-                We'll group your order with others in the neighborhood.
+                Flat fee of $10 for <a id="delivery" @click="deliveryLink"><u>Zero Emission Delivery.</u></a>Zero Emission Delivery.
             </p>
         </div>
         <div class="checkout">
@@ -97,8 +103,9 @@ export default {
                 </form>
             </div>
         
-            <button class="place-order" @click="placeOrder">Place Order</button>
-            <button class="place-order red" @click="cancelCheckout">Cancel Checkout</button>
+            <button class="place-order button" @click="placeOrder">Place Order</button>
+            <button class="place-order red button" @click="cancelCheckout">Cancel Checkout</button>
+            <img class="desc-logo" src="./assets/issho_logo.png"/>
         </div>
     </div>
     <div>
@@ -107,8 +114,28 @@ export default {
 </template>
 <style scoped>
 
+#delivery{
+    cursor: pointer;
+}
+
+.desc-logo{
+    position: absolute;
+    bottom: 1rem;
+    left: 3rem;
+    width: 100px;
+    height:auto;
+}
+
+.info{
+    padding: 1rem;
+}
+
+#checkout{
+    grid-column-start: 2;
+}
+
 p{
-    font-size: small;
+    font-size: medium;
 }
 
 input.text{
@@ -118,6 +145,7 @@ input.text{
 .grid-container{
     margin: 2rem;
     display: grid;
+    gap: 1.5rem;
     grid-template-columns: 1fr 1fr;
 }
 
@@ -130,10 +158,9 @@ input.text{
 .place-order {
     margin: 1rem;
     border: none;
+    border-radius: 1rem;
     padding: 1rem;
-    font-weight: 800;
-    font-size: medium;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     cursor: pointer;
 }
 

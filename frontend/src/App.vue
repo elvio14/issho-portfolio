@@ -144,6 +144,7 @@ const closeAbout = ()=>{
         <h2>Shop</h2>
         <button class="shop-tab a-button tab-active" id="pastries" @click="activateTab('pastries')">Pastries</button>
         <button class="shop-tab a-button" id="coffee" @click="activateTab('coffee')">Coffee</button>
+        <button class="shop-tab a-button" id="honey" @click="activateTab('honey')">Honey</button>
       </div>
       <div v-if="showTab === 'pastries'" class="scroll-tab">
         <ShopView viewCategoryView="pastry" />
@@ -179,7 +180,9 @@ const closeAbout = ()=>{
       <CartCounter/>
   </div>
   <div class="checkoutView" v-if="showCheckout" >
-    <Checkout @update:orderIsPlaced="orderIsPlaced = $event" @update:showCheckoutProp="showCheckout = $event"/>
+    <Checkout @update:orderIsPlaced="orderIsPlaced = $event" 
+              @update:showCheckoutProp="showCheckout = $event"
+              @update:showDelivery="deliveryPopupRef = $event"/>
   </div>
   <div class="orderPlaced" v-if="orderIsPlaced" >
     <button class="close-order" @click="orderIsPlaced = false, showCheckout = false">x</button>
@@ -187,10 +190,30 @@ const closeAbout = ()=>{
   </div>
 
 </div>
+<div id="insta-div">
+  <img id="insta-logo" src="./assets/instaLogo.png" alt="instagram logo">
+  <a id="insta-handle" href="https://www.instagram.com/isshobakery/">@isshobakery</a>
+</div>
 </template>
 
 
 <style scoped>
+#insta-div{
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+}
+
+#insta-handle{
+  position: relative;
+  bottom: 0.7rem;
+}
+
+#insta-logo{
+  width: 2vw;
+  height: auto;
+  
+}
 
 #overlay{
   position: absolute;
@@ -289,6 +312,7 @@ const closeAbout = ()=>{
   transform: translate(-50%, -50%);
   background-color: white;
   border: 5px solid var(--green-popup);
+  border-radius: 2rem;
   box-shadow: var(--popup-shadow);
   overflow: auto;
 }
@@ -301,8 +325,10 @@ const closeAbout = ()=>{
   color: black;
   position: absolute;
   font-size: large;
-  left: 0px;
   border: none;
+  background-color: white;
+  border-bottom-right-radius: 1rem;
+  left: 0px;
   width: 40px;
   height: 40px;
 }

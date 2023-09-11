@@ -46,29 +46,37 @@ export default {
             <h3>Total: ${{ (total/100).toFixed(2) }} </h3>
             <button class="checkout-button" @click="checkoutDirect">Checkout</button>
         </div>
+        <img class="desc-logo" src="../assets/issho_logo.png"/>
     </div>
    
 
 </template>
 <style scoped>
+.desc-logo{
+    position: absolute;
+    bottom: 2rem;
+    left: 3rem;
+    width: 100px;
+    height:auto;
+}
+
 button{
     color: black;
+    border-radius: 1rem;
 }
  .remove-button{
     border: none;
     height: 1.5rem;
     width: 5rem;
     color: rgb(130, 0, 0);
-    font-weight: 800;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     cursor: pointer;
  }
 .checkout-button{
     border: none;
     padding: 1rem;
     font-weight: 800;
-    font-size: larger;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     cursor: pointer;
 }
 .checkout-button:hover{
