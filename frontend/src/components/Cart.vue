@@ -25,7 +25,6 @@ export default {
         }
         const removeItem = (index) => {
             items.value.splice(index, 1)
-            getTotal()
         }
         
         return { items, removeItem, subtotal, checkoutDirect, total };
@@ -33,6 +32,7 @@ export default {
 }
 </script>
 <template>
+    <div id="title"><h2>BASKET</h2></div>
     <div class="cart-container">
         <div v-for="(item, index) in items" :key="index" class="cart-grid">
             <div class="title">{{ item.title }}</div>
@@ -52,6 +52,13 @@ export default {
 
 </template>
 <style scoped>
+
+#title{
+    position: absolute;
+    left: 42%;
+    width: 30vw;
+}
+
 .desc-logo{
     position: absolute;
     bottom: 2rem;
@@ -96,8 +103,9 @@ h4{
     color: var(--color-text);
 }
 .cart-container{
-    margin-top: 15%;
+    margin-top: 10%;
     padding: 2rem;
+    width: 35vw;
 }
 
 .cart-grid{

@@ -70,11 +70,11 @@ export default {
 </script>
 <template>
 <div class="root">
-    
+    <div id="checkout">
+            <h3>CHECKOUT</h3>
+    </div>
     <div class="grid-container">
-        <div id="checkout">
-            <h3>Checkout</h3>
-        </div>
+        
         <div class="info">
             <p>
                 To ensure you receive a quality product, everything is baked fresh to order. <br/>
@@ -131,7 +131,9 @@ export default {
 }
 
 #checkout{
-    grid-column-start: 2;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 p{
@@ -147,6 +149,7 @@ input.text{
     display: grid;
     gap: 1.5rem;
     grid-template-columns: 1fr 1fr;
+    padding-top: 10%;
 }
 
 .place-order:hover{
