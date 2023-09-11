@@ -106,7 +106,7 @@ const closeAbout = ()=>{
       </div>
     </div>
     <div class="banner">
-      <img class="cookie" src="https://static.wixstatic.com/media/e48be4_9c5c90cf6e354592b70dd5c0674b6988~mv2.jpg/v1/crop/x_72,y_0,w_1885,h_778/fill/w_962,h_360,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/cookiebanner.jpg">
+      <img class="cookie" src="./assets/cookieBanner.jpg">
       <h2>"Helping the planet, one cookie at a time." </h2>
     </div>
     
