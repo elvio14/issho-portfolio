@@ -260,6 +260,8 @@ p {
 
 .add-button{
   left: 2%;
+  font-size: 11px;
+  margin-right: 0.1rem;
 }
 .add-button:active{
   background-color: red;
