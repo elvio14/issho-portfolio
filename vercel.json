@@ -3,7 +3,7 @@
         {
             "source": "/",
             "destination": "/temporary.html",
-            "permanent": true
+            "permanent": false
         }
     ]
 }
