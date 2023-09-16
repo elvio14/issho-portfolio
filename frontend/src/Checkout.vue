@@ -1,34 +1,45 @@
 <script>
 import { useCartStore } from './stores/cartStore'
 import {storeToRefs} from 'pinia'
-import {ref, computed, toRefs} from 'vue'
+import {ref, computed, watch} from 'vue'
+import { cloneDeep } from 'lodash'
 
 export default {
     setup(props, {emit}) {
         const backend = import.meta.env.VITE_BACKEND_URL
-        const flexibleDelivery = ref(false);
-        const deliveryDate = ref();
-        const fullName = ref('');
-        const address = ref('');
-        const postalCode = ref('');
-        const email = ref('')
+        
 
-        const store = useCartStore();
-        const { items } = storeToRefs(store);
+        const flexibleDelivery = ref(false)
+        const deliveryDate = ref()
+        const fullName = ref('')
+        const address = ref('')
+        const postalCode = ref('')
+        const email = ref('')
+        const dateAlert = ref(false)
+
+        const store = useCartStore()
+        const { items } = storeToRefs(store)
         const {storeOrderTotal} = storeToRefs(store)
 
-        const productsInItems = items.value.map(item => ({
-            title: item.title,
-            quantity: item.quantity
-        }));
-        let currentDate = new Date();
-        let formattedDate = currentDate.toISOString();
+        watch(deliveryDate, (newVal) => {
+            if(newVal !== null){
+            dateAlert.value = false;
+            }
+        })
+
+        const totalOrderRef = storeOrderTotal.value
 
         const placeOrder = async () => {
-            const total = storeOrderTotal.value;
+            const productsInItems = cloneDeep(
+                items.value.map(item => ({
+                    title: item.title,
+                    quantity: item.quantity
+            }))
+            )
+            const totalOrder = storeOrderTotal.value;
             const orderData = {
                 products: productsInItems,
-                total: total,
+                total: totalOrder.value,
                 email: email.value,
                 fullName: fullName.value,
                 flexibleDelivery: flexibleDelivery.value,
@@ -36,22 +47,32 @@ export default {
                 address: address.value,
                 postalCode: postalCode.value,
                 status: "pending",
-            };
-            try {
-                const response = await fetch(`${backend}/api/order`, {
+            }
+                
+            if (flexibleDelivery.value === false && deliveryDate.value === null){
+                dateAlert.value = true
+            } else{
+                try {
+                    const response = await fetch(`${backend}/api/order`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify(orderData)
-                });
-                const data = await response.json()
-                console.log(data)
-                emit('update:orderIsPlaced', true)
-            }
+                    });
+                
+                    if(response.ok){
+                        const data = await response.json()
+                        console.log(data)
+                        emit('update:orderIsPlaced', true)
+                    }
+            } 
             catch (error) {
                 console.log(error);
             }
+            }
+            
+            
         };
 
         const cancelCheckout = () => {
@@ -63,8 +84,8 @@ export default {
             emit('update:showDelivery', true)
         }
 
-        return { formattedDate, flexibleDelivery, deliveryDate, 
-            fullName, address, postalCode, placeOrder, cancelCheckout, email, deliveryLink };
+        return { flexibleDelivery, deliveryDate, 
+            fullName, address, postalCode, placeOrder, cancelCheckout, email, deliveryLink, dateAlert, totalOrderRef };
     }
 }
 </script>
@@ -90,6 +111,9 @@ export default {
                 <label for="flexibleDelivery">I'm flexible with the delivery date.</label><br/>
                 <input type="date" name="delivery-date" v-model="deliveryDate" id="inputDate" 
                 :disabled="flexibleDelivery" style="height: 2rem; margin-top: 1rem;">
+                <div v-if="dateAlert" style="color: red;">
+                    <p>Please select date above.</p>
+                </div>
             </div>
             <div>
                 <h4>Order info:</h4>
@@ -101,6 +125,7 @@ export default {
                 Delivery Address:<br/> <input type="text" v-model="address" placeholder="Number and Street" class="text" required><br/><br/>
                 Postal Code:<br/> <input type="text" v-model="postalCode" placeholder="e.g. A1A 1A1" class="text" required><br/><br/>
                 </form>
+                <p>Total: ${{ (totalOrderRef/100).toFixed(2) }}</p>
             </div>
         
             <button class="place-order button" @click="placeOrder">Place Order</button>

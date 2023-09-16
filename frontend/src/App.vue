@@ -212,6 +212,7 @@ const closeAbout = ()=>{
 #insta-logo{
   width: 2vw;
   height: auto;
+  margin-right: 0.5rem;
   
 }
 

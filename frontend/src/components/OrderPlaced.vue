@@ -34,7 +34,7 @@ export default {
 
                 orderID.value = order._id
                 const total = storeOrderTotal.value
-                totalFixed.value = (total/100).toFixed(2)
+                totalFixed.value = (total.value/100).toFixed(2)
             }catch(error){
                 console.log(error)
             }
