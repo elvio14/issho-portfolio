@@ -116,4 +116,11 @@ h4{
     color: var(--color-text)
 }
 
+/* MOBILE */
+@media (max-width: 850px){
+    .cart-container{
+        width: auto;
+    }
+}
+
 </style>

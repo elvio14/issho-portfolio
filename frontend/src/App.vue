@@ -380,6 +380,10 @@ button:hover {
 /* MOBILE VIEW */
 @media (max-width: 850px){
 
+  #insta-div{
+    display: none;
+  }
+
   nav button{
     margin: 0;
   }

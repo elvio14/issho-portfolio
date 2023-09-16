@@ -107,6 +107,8 @@ export default {
               />
               <div class="product-title">
                 <h3>{{ product.title }}</h3>
+              </div>
+              <div class="price">
                 <h4>${{ (product.price/100).toFixed(2) }}</h4>
               </div>
               <div class="add-to-cart">
@@ -143,9 +145,7 @@ export default {
 }
 
 .product-title{
-  height: 4.5rem;
-  /* text-align: center; */
-  margin-bottom: 1rem;
+  height: 3.5rem;
 }
 .product-grid-item{
   margin-top: 2rem;
@@ -161,9 +161,9 @@ h3{
   display: inline-block;
 }
 .add-button{
-  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
   position: relative;
-  max-width: 30rem;
   left:10%;
   color: var(--green-text);
   border: none;
@@ -171,6 +171,7 @@ h3{
   cursor: pointer;
   background-color: white;
   transition: background-color 0.5s ease;
+  margin-right: 1.2rem;
 }
 
 .add-button:hover{
