@@ -16,7 +16,7 @@ export default defineConfig({
         login: './login.html',
         admin: './admin.html',
         resources: './resources.html',
-        temporary: '.temporary.html'
+        temporary: './temporary.html'
       }
     }
   },
