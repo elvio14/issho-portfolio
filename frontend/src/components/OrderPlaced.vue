@@ -54,7 +54,7 @@ export default {
         <h3>Order placed!</h3>
         <p> Your order number is: </p>
         <h3>{{ orderNumber }}</h3>
-        <p> Please e-transfer the amount: ${{ totalFixed }} to martin@etransfer.com with your order number as the note.</p>
+        <p> Please e-transfer the amount: ${{ totalFixed }} to isshobakery@gmail.com with your order number as the note.</p>
     </div>
     
 </template>
