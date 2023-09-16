@@ -134,7 +134,7 @@ export default {
 }
 
 #overlay{
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100vw;
@@ -249,12 +249,6 @@ p {
 .product-title{
     width: 44vw;
 }
-/* .desc-container{
-    position: relative;
-    width: 95vw;
-    height: 90vh;
-    overflow: auto;
-} */
 
 .add-to-cart{
   width: 40vw;
@@ -276,7 +270,9 @@ p {
     height:85vh;
     overflow: auto;
     position: fixed;
-    top: 8%;
+    top: 53%;
+    left: 50%;
+    transform: translate(-50%,-50%);
     background-color: var(--green-popup);
     box-shadow: var(--popup-shadow);
 }
