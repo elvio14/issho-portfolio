@@ -14,18 +14,15 @@
 }
 
 .header-logo{
-  width: 240px;
+  width: 15vw;
   height: auto;
+  /* padding-left: 2rem; */
 }
 
-h3{
-  font-weight: 300;
-  text-align: center;
-}
-/* PC VIEW */
-@media (min-width: 1024px) {
-  .greetings  {
-    text-align: left;
+/* MOBILE */
+@media (max-width: 850px) {
+  .header-logo{
+    width: 35vw;
   }
 }
 </style>

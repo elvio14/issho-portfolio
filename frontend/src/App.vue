@@ -79,7 +79,7 @@ const closeAbout = ()=>{
 <div class="root">
   <div id="backgroundContainer">
     <div class="header">
-      <img alt="Issho Logo" class="logo" src="./assets/isshotemp.png" width="180" height="180" />
+      <img alt="Issho Logo" class="logo" src="./assets/isshotemp.png" />
 
       <div class="wrapper">
         <HelloWorld />
@@ -418,6 +418,7 @@ button:hover {
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+    width: 40vw;
     
   }
 
@@ -469,6 +470,7 @@ button:hover {
     position: relative;
     left: 68%;
     transform: translateX(-50%);
+    width: 12vw;
   }
 
   .wrapper {
