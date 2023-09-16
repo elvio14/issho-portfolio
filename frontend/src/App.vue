@@ -275,11 +275,11 @@ const closeAbout = ()=>{
   color: black;
   border: none;
   margin-right: 1rem;
-  padding : 1rem;
+  padding : 0.8rem;
   cursor: pointer;
   background-color: white;
   font-family: 'Montserrat', sans-serif;
-  font-size: 15px;
+  font-size: 13px;
   border: 1px solid var(--green-popup);
   border-radius: 1rem;
 }
