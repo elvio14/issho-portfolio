@@ -107,7 +107,7 @@ const closeAbout = ()=>{
     </div>
     <div class="banner">
       <img class="cookie" src="./assets/cookieBanner.jpg">
-      <h2>"Helping the planet, one cookie at a time." </h2>
+      <h3>"Helping the planet, one cookie at a time." </h3>
     </div>
     
     
@@ -192,7 +192,7 @@ const closeAbout = ()=>{
 </div>
 <div id="insta-div">
   <img id="insta-logo" src="./assets/instaLogo.png" alt="instagram logo">
-  <a id="insta-handle" href="https://www.instagram.com/isshobakery/">@isshobakery</a>
+  <a id="insta-handle" href="https://www.instagram.com/isshobakery/" target="_blank">@isshobakery</a>
 </div>
 </template>
 
@@ -315,6 +315,15 @@ const closeAbout = ()=>{
   border-radius: 2rem;
   box-shadow: var(--popup-shadow);
   overflow: auto;
+  scrollbar-width: none;
+}
+
+.checkoutView::-webkit-scrollbar{
+  display: none;
+}
+
+.cart::-webkit-scrollbar{
+  display: none;
 }
 .cart-counter{
   position: fixed;

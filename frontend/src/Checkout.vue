@@ -79,12 +79,12 @@ export default {
             <p>
                 To ensure you receive a quality product, everything is baked fresh to order. <br/><br/>
                 Orders require 48 hours to fulfill and will be made available on the next delivery date.<br/><br/>
-                Flat fee of $10 for <a id="delivery" @click="deliveryLink"><u>Zero Emission Delivery.</u></a>Zero Emission Delivery.
+                Flat fee of $10 for <a id="delivery" @click="deliveryLink"><u>Zero Emission Delivery.</u></a>
             </p>
         </div>
         <div class="checkout">
             <div>
-                <h4>Preferred Delivery Date: </h4>
+                <p>Preferred Delivery Date: </p>
                 <input type="checkbox" name="flexibleDelivery" id="flexibleDelivery" 
                 v-model="flexibleDelivery" style="width: 30px; margin: 1rem;">
                 <label for="flexibleDelivery">I'm flexible with the delivery date.</label><br/>
@@ -105,14 +105,25 @@ export default {
         
             <button class="place-order button" @click="placeOrder">Place Order</button>
             <button class="place-order red button" @click="cancelCheckout">Cancel Checkout</button>
-            <img class="desc-logo" src="./assets/issho_logo.png"/>
+            
         </div>
     </div>
     <div>
     </div>
+    <img class="desc-logo" src="./assets/issho_logo.png"/>
 </div>
 </template>
 <style scoped>
+
+#flexibleDelivery{
+    width: 40px;
+}
+
+.checkout{
+    padding: 1rem;
+    padding-right: 1rem;
+    
+}
 
 #delivery{
     cursor: pointer;
@@ -171,6 +182,10 @@ input.text{
     .grid-container{
         grid-template-columns: 1fr;
 
+    }
+
+    .desc-logo{
+        display: none;
     }
 }
 </style>
