@@ -115,6 +115,9 @@ app.post('/sendMail', async (req, res) => {
                If you have any questions about the order, please email us at isshobakery@gmail.com
            </p>`
         })
+        if(info.ok){
+            res.status(200).json(`Email sent to ${email}`)
+        }
     }
     catch(err){
         res.status(500).json("Error sending email.")
