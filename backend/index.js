@@ -11,6 +11,7 @@ globalThis.Buffer = Buffer
 import cors from 'cors'
 import { upload } from './multer.js'
 import {v2 as cloudinary} from 'cloudinary'
+import nodemailer from 'nodemailer'
 
 export const app = express()
 app.use(express.json());
@@ -79,6 +80,40 @@ app.use('/upload', express.static('upload'))
 //         )
 // }
 // )
+
+const transporter = nodemailer.createTransport({
+    host: "smtp.forwardemail.net",
+    port: 587,
+    secure: false,
+    auth: {
+        user: "order@isshobakery.com",
+        pass: process.env.FORWARD_PASS
+    }
+})
+
+app.post('/sendMail', async (req, res) => {
+    const email = req.body.email
+    const order = req.body.order
+    const info = await transporter.sendMail({
+        from: '"Issho Bakery" <order@isshobakery.com>',
+        to: email,
+        subject: `Confirmation for Order ${order}`,
+        html: `<img src="https://res.cloudinary.com/dy6sxilvq/image/upload/v1696694205/ISSHO_Icon_green_72dpi_salhyz.png"
+        alt="issho logo" style="width: 90px; height: auto;">
+       <p>Thank you for your order!<br>
+           Please complete the payment via e-transfer with the details below:<br><br>
+           to: isshobakery@gmail.com<br>
+           amount: $25<br>
+           note: ordernumber <br><br>
+   
+           Thank you!<br><br>
+   
+           If you have any questions about the order, please email us at isshobakery@gmail.com
+       </p>`
+    })
+}
+
+)
 
 mongoose
     .connect(
