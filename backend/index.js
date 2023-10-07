@@ -94,23 +94,33 @@ const transporter = nodemailer.createTransport({
 app.post('/sendMail', async (req, res) => {
     const email = req.body.email
     const order = req.body.order
-    const info = await transporter.sendMail({
-        from: '"Issho Bakery" <order@isshobakery.com>',
-        to: email,
-        subject: `Confirmation for Order ${order}`,
-        html: `<img src="https://res.cloudinary.com/dy6sxilvq/image/upload/v1696694205/ISSHO_Icon_green_72dpi_salhyz.png"
-        alt="issho logo" style="width: 90px; height: auto;">
-       <p>Thank you for your order!<br>
-           Please complete the payment via e-transfer with the details below:<br><br>
-           to: isshobakery@gmail.com<br>
-           amount: $25<br>
-           note: ordernumber <br><br>
-   
-           Thank you!<br><br>
-   
-           If you have any questions about the order, please email us at isshobakery@gmail.com
-       </p>`
-    })
+    const amount = req.body.amount
+    try{
+        const info = await transporter.sendMail({
+            from: '"Issho Bakery" <order@isshobakery.com>',
+            to: email,
+            subject: `Confirmation for Order ${order}`,
+            html: `<img src="https://res.cloudinary.com/dy6sxilvq/image/upload/v1696694205/ISSHO_Icon_green_72dpi_salhyz.png"
+            alt="issho logo" style="width: 90px; height: auto;">
+           <p>Thank you for your order!<br><br>
+            Order# : ${order}
+
+               Please complete the payment via e-transfer with the details below:<br><br>
+               to: isshobakery@gmail.com<br>
+               amount: $${amount}<br>
+               note: ${order} <br><br>
+       
+               Thank you!<br><br>
+       
+               If you have any questions about the order, please email us at isshobakery@gmail.com
+           </p>`
+        })
+    }
+    catch(err){
+        res.status(500).json("Error sending email.")
+    }
+    
+    
 }
 
 )

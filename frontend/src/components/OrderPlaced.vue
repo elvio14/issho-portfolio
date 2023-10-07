@@ -13,6 +13,7 @@ export default {
     setup(props, {emit}){
         const backend = import.meta.env.VITE_BACKEND_URL
         const orderID = ref('')
+        const email = ref('')
         const {orderPlaced} = toRefs(props)
         const store = useCartStore()
         const {storeOrderTotal} = storeToRefs(store)
@@ -22,6 +23,7 @@ export default {
             function orderJustPlaced(){
                 if (orderPlaced){
                     getLatestOrder()
+                    sendMail()
                 }
             }
         )
@@ -33,16 +35,39 @@ export default {
                 const order = await response.json()
 
                 orderID.value = order._id
+                email.value = order.email
                 const total = storeOrderTotal.value
                 totalFixed.value = (total.value/100).toFixed(2)
             }catch(error){
                 console.log(error)
             }
-        }
+       }
 
-        const orderNumber = computed(()=>{
+       const orderNumber = computed(()=>{
             return orderID.value.slice(-7)
         })
+
+       const sendMail = async () => {
+            const mailInfo = {
+                email: email.value,
+                order: orderNumber,
+                amount: totalFixed.value
+            }
+            try{
+                const sendMail = await fetch(`${backend}/sendMail`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(mailInfo)
+                })
+            }
+            catch(error){
+                console.log(error)
+            }
+       }
+
+        
 
         return { orderNumber, storeOrderTotal, totalFixed}
     }

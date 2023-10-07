@@ -66,10 +66,10 @@ export default {
                         console.log(data)
                         emit('update:orderIsPlaced', true)
                     }
-            } 
-            catch (error) {
-                console.log(error);
-            }
+                } 
+                catch (error) {
+                    console.log(error);
+                }
             }
             
             
