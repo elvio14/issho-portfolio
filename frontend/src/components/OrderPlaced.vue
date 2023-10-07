@@ -61,6 +61,10 @@ export default {
                     },
                     body: JSON.stringify(mailInfo)
                 })
+
+                if(sendMail.ok){
+                    console.log("Mail sent.")
+                }
             }
             catch(error){
                 console.log(error)
