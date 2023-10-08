@@ -4,15 +4,15 @@ import SMTPTransport from "nodemailer/lib/smtp-transport/index.js"
 
 const router = express.Router()
 
-const transporter = nodemailer.createTransport(new SMTPTransport({
+let transporter = nodemailer.createTransport({
     host: "smtp.forwardemail.net",
     port: 587,
     secure: false,
     auth: {
-        user: "order@isshobakery.com",
-        pass: "d6bbd03aeec6b2551c0d9c9b",
+        user: process.env.FORWARD_USER,
+        pass: process.env.FORWARD_PASS,
     },
-}))
+})
 
 router.post('/', async (req, res) => {
     const email = req.body.email
@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
     try{
         const info = await transporter.sendMail({
             from: '"Issho Bakery" <order@isshobakery.com>',
-            to: email,
+            to: `${email}`,
             subject: `Confirmation for Order ${order}`,
             html: `<img src="https://res.cloudinary.com/dy6sxilvq/image/upload/v1696694205/ISSHO_Icon_green_72dpi_salhyz.png"
             alt="issho logo" style="width: 90px; height: auto;">
@@ -45,6 +45,16 @@ router.post('/', async (req, res) => {
     catch(err){
         console.error(err)
         res.status(500).json(err.message)
+    }
+})
+
+router.get('/test', (req,res) =>{
+    try{
+        const name = req.body.name
+        const secret = process.env.SECRET_TEST
+        res.status(200).json(`Hello ${name}, ${secret}!`)
+    } catch{
+        res.status(500).json("Test failed")
     }
 })
 
