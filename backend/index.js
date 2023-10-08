@@ -6,12 +6,12 @@ import {router as authRoute} from "./routes/auth.js"
 import {router as productRoute} from "./routes/product.js"
 import {router as cartRoute} from "./routes/cart.js"
 import {router as orderRoute} from "./routes/order.js"
+import {router as mailRoute} from "./routes/mail.js"
 import { Buffer } from 'buffer'
 globalThis.Buffer = Buffer
 import cors from 'cors'
 import { upload } from './multer.js'
 import {v2 as cloudinary} from 'cloudinary'
-import nodemailer from 'nodemailer'
 
 export const app = express()
 app.use(express.json());
@@ -81,52 +81,9 @@ app.use('/upload', express.static('upload'))
 // }
 // )
 
-const transporter = nodemailer.createTransport({
-    host: "smtp.forwardemail.net",
-    port: 587,
-    secure: false,
-    auth: {
-        user: "order@isshobakery.com",
-        pass: process.env.FORWARD_PASS
-    }
-})
 
-app.post('/sendMail', async (req, res) => {
-    const email = req.body.email
-    const order = req.body.order
-    const amount = req.body.amount
-    try{
-        const info = await transporter.sendMail({
-            from: '"Issho Bakery" <order@isshobakery.com>',
-            to: email,
-            subject: `Confirmation for Order ${order}`,
-            html: `<img src="https://res.cloudinary.com/dy6sxilvq/image/upload/v1696694205/ISSHO_Icon_green_72dpi_salhyz.png"
-            alt="issho logo" style="width: 90px; height: auto;">
-           <p>Thank you for your order!<br><br>
-            Order# : ${order}
 
-               Please complete the payment via e-transfer with the details below:<br><br>
-               to: isshobakery@gmail.com<br>
-               amount: $${amount}<br>
-               note: ${order} <br><br>
-       
-               Thank you!<br><br>
-       
-               If you have any questions about the order, please email us at isshobakery@gmail.com
-           </p>`
-        })
-        if(info.ok){
-            res.status(200).json(`Email sent to ${email}`)
-        }
-    }
-    catch(err){
-        res.status(500).json("Error sending email.")
-    }
-    
-    
-}
 
-)
 
 mongoose
     .connect(
@@ -149,6 +106,7 @@ app.use("/api/users", userRoute);
 app.use("/api/products", productRoute);
 app.use("/api/cart", cartRoute);
 app.use("/api/order", orderRoute);
+app.use("/api/mail", mailRoute);
 
 
 
