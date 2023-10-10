@@ -18,12 +18,12 @@ export default {
         const store = useCartStore()
         const {storeOrderTotal} = storeToRefs(store)
         const totalFixed = ref()
+        const orderNumberRef = ref('')
 
         onMounted(
             function orderJustPlaced(){
                 if (orderPlaced){
                     getLatestOrder()
-                    sendMail()
                 }
             }
         )
@@ -38,23 +38,14 @@ export default {
                 email.value = order.email
                 const total = storeOrderTotal.value
                 totalFixed.value = (total.value/100).toFixed(2)
-            }catch(error){
-                console.log(error)
-            }
-       }
 
-       const orderNumber = computed(()=>{
-            return orderID.value.slice(-7)
-        })
-
-       const sendMail = async () => {
-            const mailInfo = {
+                const mailInfo = {
                 email: email.value,
-                order: orderNumber,
+                order: orderID.value.slice(-7),
                 amount: totalFixed.value
-            }
-            try{
-                const sendMail = await fetch(`${backend}/api/mail`, {
+                }
+
+                const result = await fetch(`${backend}/api/mail`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -62,7 +53,33 @@ export default {
                     body: JSON.stringify(mailInfo)
                 })
 
-                console.log("Mail sent.")
+                if (!result.ok) {
+                    throw new Error(`Server responded with a ${result.status} status.`);
+                } else{
+                    console.log(result)
+                }
+            }catch(error){
+                console.log(error)
+            }
+       }
+
+    //    -------------------
+
+       const sendMail = async () => {
+            const mailInfo = {
+                email: email.value,
+                order: orderID.value.slice(-7),
+                amount: totalFixed.value
+            }
+            try{
+                const result = await fetch(`${backend}/api/mail`, {
+                    method: 'POST',
+                    body: JSON.stringify(mailInfo)
+                })
+
+                if (!result.ok) {
+                    throw new Error(`Server responded with a ${result.status} status.`);
+                }
 
             }
             catch(error){
@@ -72,7 +89,7 @@ export default {
 
         
 
-        return { orderNumber, storeOrderTotal, totalFixed}
+        return { orderID, storeOrderTotal, totalFixed}
     }
 }
 </script>
@@ -81,7 +98,7 @@ export default {
     
         <h3>Order placed!</h3>
         <p> Your order number is: </p>
-        <h3>{{ orderNumber }}</h3>
+        <h3>{{ orderID.slice(-7) }}</h3>
         <p> Please e-transfer the amount: ${{ totalFixed }} to isshobakery@gmail.com with your order number as the note.</p>
     </div>
     
