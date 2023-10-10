@@ -2,17 +2,25 @@ import express from "express"
 import nodemailer from "nodemailer"
 import SMTPTransport from "nodemailer/lib/smtp-transport/index.js"
 import { MailtrapClient } from "mailtrap"
+import dotenv from "dotenv"
+
+dotenv.config()
 
 const router = express.Router()
 
 let transporter = nodemailer.createTransport({
     host: "smtp.forwardemail.net",
     port: 587,
-    secure: true,
+    secure: false,
     auth: {
         user: process.env.FORWARD_USER,
         pass: process.env.FORWARD_PASS,
     },
+    tls: {
+        rejectUnauthorized: false
+    },
+    debug: true,
+    logger: true
 })
 
 router.post('/', async (req, res) => {
@@ -24,24 +32,35 @@ router.post('/', async (req, res) => {
             from: '"Issho Bakery" <order@isshobakery.com>',
             to: `${email}`,
             subject: `Confirmation for Order ${order}`,
-            html: `<img src="https://res.cloudinary.com/dy6sxilvq/image/upload/v1696694205/ISSHO_Icon_green_72dpi_salhyz.png"
-            alt="issho logo" style="width: 90px; height: auto;">
-           <p>Thank you for your order!<br><br>
-            Order# : ${order}
-
-               Please complete the payment via e-transfer with the details below:<br><br>
-               to: isshobakery@gmail.com<br>
-               amount: $${amount}<br>
-               note: ${order} <br><br>
-       
-               Thank you!<br><br>
-       
-               If you have any questions about the order, please email us at isshobakery@gmail.com
-           </p>`
+            html: `
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Document</title>
+            </head>
+            <body>
+                <img src="https://res.cloudinary.com/dy6sxilvq/image/upload/v1696694205/ISSHO_Icon_green_72dpi_salhyz.png"
+                 alt="issho logo" style="width: 90px; height: auto;">
+                <p>Thank you for your order!<br><br>
+                Order# : ${order}
+                    Please complete the payment via e-transfer with the details below:<br><br>
+                    to: isshobakery@gmail.com<br>
+                    amount: $${amount}<br>
+                    note: ${order} <br><br>
+    
+                    Thank you!<br><br>
+    
+                    If you have any questions about the order, please email us at isshobakery@gmail.com
+                </p>
+            </body>
+            </html>
+            `
         })
-        if(info.ok){
-            res.status(200).json(`Email sent to ${email}`)
-        }
+        
+        res.status(200).json(`Email sent to ${email}`)
+        
     }
     catch(err){
         console.error(err)
@@ -60,7 +79,7 @@ router.get('/test', (req,res) =>{
 })
 
 router.post('/trap', (req,res) => {
-    const TOKEN = process.env.TRAP_TOKEN
+    const TOKEN = process.env.FORWARD_PASS
     const SENDER_EMAIL = "order@isshobakery.com"
     const RECIPIENT_EMAIL = req.body.email
 

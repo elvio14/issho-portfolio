@@ -54,7 +54,7 @@ export default {
                 amount: totalFixed.value
             }
             try{
-                const sendMail = await fetch(`${backend}/api/mail/trap`, {
+                const sendMail = await fetch(`${backend}/api/mail`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
