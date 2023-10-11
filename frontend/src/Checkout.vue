@@ -8,7 +8,6 @@ export default {
     setup(props, {emit}) {
         const backend = import.meta.env.VITE_BACKEND_URL
         
-
         const flexibleDelivery = ref(false)
         const deliveryDate = ref()
         const fullName = ref('')
@@ -29,6 +28,10 @@ export default {
 
         const totalOrderRef = storeOrderTotal.value
 
+        const formatNumber = (num) => {
+            return "#" + num.toString().padStart(5, '0')
+        }
+
         const placeOrder = async () => {
             const productsInItems = cloneDeep(
                 items.value.map(item => ({
@@ -36,7 +39,18 @@ export default {
                     quantity: item.quantity
             }))
             )
+
             const totalOrder = storeOrderTotal.value;
+
+            const count = await fetch(`${backend}/api/count`, {
+                method: 'GET',
+                headers: {
+                        'Content-Type': 'application/json'
+                }
+            })
+
+            const orderNumber = formatNumber(count)
+
             const orderData = {
                 products: productsInItems,
                 total: totalOrder.value,
@@ -47,6 +61,7 @@ export default {
                 address: address.value,
                 postalCode: postalCode.value,
                 status: "pending",
+                number: orderNumber
             }
                 
             if (flexibleDelivery.value === false && deliveryDate.value === null){
@@ -66,6 +81,16 @@ export default {
                         console.log(data)
                         emit('update:orderIsPlaced', true)
                     }
+
+                    await fetch(`${backend}/api/count/update`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: {
+                            current: count
+                        }
+                    })
                 } 
                 catch (error) {
                     console.log(error);

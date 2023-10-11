@@ -11,7 +11,7 @@ export default {
         }
     },
     setup(props, {emit}){
-        const backend = import.meta.env.VITE_BACKEND_URL
+        const backend = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"
         const orderID = ref('')
         const email = ref('')
         const {orderPlaced} = toRefs(props)
@@ -34,14 +34,14 @@ export default {
                 const response = await fetch(`${backend}/api/order/latest-order`)
                 const order = await response.json()
 
-                orderID.value = order._id
+                orderID.value = order.number
                 email.value = order.email
                 const total = storeOrderTotal.value
                 totalFixed.value = (total.value/100).toFixed(2)
 
                 const mailInfo = {
                 email: email.value,
-                order: orderID.value.slice(-7),
+                order: orderID.value,
                 amount: totalFixed.value
                 }
 
@@ -63,32 +63,6 @@ export default {
             }
        }
 
-    //    -------------------
-
-       const sendMail = async () => {
-            const mailInfo = {
-                email: email.value,
-                order: orderID.value.slice(-7),
-                amount: totalFixed.value
-            }
-            try{
-                const result = await fetch(`${backend}/api/mail`, {
-                    method: 'POST',
-                    body: JSON.stringify(mailInfo)
-                })
-
-                if (!result.ok) {
-                    throw new Error(`Server responded with a ${result.status} status.`);
-                }
-
-            }
-            catch(error){
-                console.log(error)
-            }
-       }
-
-        
-
         return { orderID, storeOrderTotal, totalFixed}
     }
 }
@@ -98,7 +72,7 @@ export default {
     
         <h3>Order placed!</h3>
         <p> Your order number is: </p>
-        <h3>{{ orderID.slice(-7) }}</h3>
+        <h3>{{ orderID }}</h3>
         <p> Please e-transfer the amount: ${{ totalFixed }} to isshobakery@gmail.com with your order number as the note.</p>
     </div>
     

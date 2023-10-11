@@ -7,11 +7,10 @@ import {router as productRoute} from "./routes/product.js"
 import {router as cartRoute} from "./routes/cart.js"
 import {router as orderRoute} from "./routes/order.js"
 import {router as mailRoute} from "./routes/mail.js"
+import {router as orderCountRoute} from "./routes/orderCount.js"
 import { Buffer } from 'buffer'
 globalThis.Buffer = Buffer
 import cors from 'cors'
-import { upload } from './multer.js'
-import {v2 as cloudinary} from 'cloudinary'
 
 export const app = express()
 app.use(express.json());
@@ -37,54 +36,6 @@ app.use(cors(corsOptions))
 
 app.use('/upload', express.static('upload'))
 
-// cloudinary.config({ 
-//     cloud_name: 'dy6sxilvq', 
-//     api_key: '494449584914118', 
-//     api_secret: process.env.CLOUDINARY_API_SECRET,
-//     secure:true
-//   })
-
-// app.post("/image/upload", upload.single('file'), (req, res) => {
-//     const file = req.file.path
-
-//     cloudinary.v2.uploader.unsigned_upload(file, {upload_preset: "tngkldzn" }, {folder: "issho"})
-//     .then((error,result)=>{
-//         if (error){
-//             return res.status(500).json({error: error.message})
-//         }
-//         res.json(result)
-//     })
-// })
-
-// app.post(`${cloudURL}/image/destroy`, (req, res) => {
-//     const public_id = req.body.publicId
-
-//     cloudinary.v2.uploader.destroy(`${public_id}`)
-//     .then((error,result)=>{
-//         if (error){
-//             return res.status(500).json({error: error.message})
-//         }
-//         console.log(result)
-//     })
-// })
-
-// app.get('/getimages', (req,res) => {
-//     cloudinary.v2.api.resources_by_asset_folder('issho', {max_results: 100})
-//         .then(
-//             (error, result) => {
-//                 if(error) {
-//                     return res.status(400).json({error})
-//                 }
-//                 res.status(200).json(result.resources)
-//             }
-//         )
-// }
-// )
-
-
-
-
-
 mongoose
     .connect(
         process.env.MONGODB_URI
@@ -107,6 +58,7 @@ app.use("/api/products", productRoute);
 app.use("/api/cart", cartRoute);
 app.use("/api/order", orderRoute);
 app.use("/api/mail", mailRoute);
+app.use("/api/count", orderCountRoute);
 
 
 

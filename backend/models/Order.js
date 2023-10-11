@@ -13,6 +13,7 @@ export const OrderSchema = new mongoose.Schema({
     address: { type: String},
     postalCode: {type: String},
     status: { type: String, default: "pending"},
+    number: {type: String}
 },
 { timestamps: true }
 );
