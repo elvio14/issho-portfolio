@@ -42,7 +42,7 @@ router.post('/', async (req, res) => {
                 <img src="https://res.cloudinary.com/dy6sxilvq/image/upload/v1696694205/ISSHO_Icon_green_72dpi_salhyz.png"
                  alt="issho logo" style="width: 90px; height: auto;">
                 <p>Thank you for your order!<br><br>
-                Order# : ${order}
+                <b>Order# : ${order}</b><br><br>
                     Please complete the payment via e-transfer with the details below:<br><br>
                     to: isshobakery@gmail.com<br>
                     amount: $${amount}<br>

@@ -73,6 +73,11 @@ const closeAbout = ()=>{
     showAbout.value = false
 }
 
+const closeBothCheckout = () => {
+  orderIsPlaced.value = false
+  showCheckout.value = false
+}
+
 </script>
 
 <template>
@@ -185,7 +190,7 @@ const closeAbout = ()=>{
               @update:showDelivery="deliveryPopupRef = $event"/>
   </div>
   <div class="orderPlaced" v-if="orderIsPlaced" >
-    <button class="close-order" @click="orderIsPlaced = false, showCheckout = false">x</button>
+    <button class="close-order" @click="closeBothCheckout">x</button>
     <OrderPlaced :orderPlaced="orderIsPlaced"/>
   </div>
 

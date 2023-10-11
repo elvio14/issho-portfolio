@@ -15,22 +15,26 @@ import cors from 'cors'
 export const app = express()
 app.use(express.json());
 dotenv.config();
-app.use((req, res, next) =>{
-    res.header('Access-Control-Allow-Origin', '*')
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, token')
-    next()
-})
+// app.use((req, res, next) =>{
+//     res.header('Access-Control-Allow-Origin', '*')
+//     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+//     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, token')
+//     next()
+// })
 
 app.use(express.urlencoded({extended: true}))
 
 const corsOptions = {
     allowedHeaders: ['Content-Type', 'token'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
     origin: [
     'http://localhost:5000/', 
     'https://vercel.com/andrewelvio14-gmailcom/issho-portfolio/3ZkRJsXaYMmazZEyvtSdtZWywSom',
-    'https://issho-deploy-465e55c6c2f1.herokuapp.com/api/products'
-]
+    'https://issho-deploy-465e55c6c2f1.herokuapp.com/api/products',
+    'https://issho-deploy-465e55c6c2f1.herokuapp.com/api/count/update',
+    'http://localhost:5173',
+    'https://isshobakery.com'
+    ]
 }
 app.use(cors(corsOptions))
 

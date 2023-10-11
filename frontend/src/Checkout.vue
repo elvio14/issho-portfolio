@@ -48,8 +48,10 @@ export default {
                         'Content-Type': 'application/json'
                 }
             })
+            const countResponse = await count.json()
+            console.log(countResponse)
 
-            const orderNumber = formatNumber(count)
+            const orderNumber = formatNumber(countResponse)
 
             const orderData = {
                 products: productsInItems,
@@ -82,15 +84,19 @@ export default {
                         emit('update:orderIsPlaced', true)
                     }
 
-                    await fetch(`${backend}/api/count/update`, {
+                    const update = await fetch(`${backend}/api/count/update`, {
                         method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json'
                         },
                         body: {
-                            current: count
+                            current: countResponse
                         }
                     })
+
+                    if(update.ok){
+                        console.log("Updated count.")
+                    }
                 } 
                 catch (error) {
                     console.log(error);
