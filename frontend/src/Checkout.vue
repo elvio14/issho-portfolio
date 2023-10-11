@@ -84,13 +84,14 @@ export default {
                         emit('update:orderIsPlaced', true)
                     }
 
+                    const tempCount = countResponse
                     const update = await fetch(`${backend}/api/count/update`, {
-                        method: 'PUT',
+                        method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
                         },
                         body: {
-                            current: countResponse
+                            current: tempCount
                         }
                     })
 

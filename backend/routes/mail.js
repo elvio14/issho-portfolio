@@ -46,7 +46,7 @@ router.post('/', async (req, res) => {
                     Please complete the payment via e-transfer with the details below:<br><br>
                     to: isshobakery@gmail.com<br>
                     amount: $${amount}<br>
-                    note: ${order} <br><br>
+                    message: ${order} <br><br>
     
                     Thank you!<br><br>
     

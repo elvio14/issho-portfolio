@@ -19,7 +19,7 @@ router.get("/", async (req,res) => {
     }
 })
 
-router.put("/update", async (req,res) => {
+router.post("/update", async (req,res) => {
     try{
         const updatedNumber = req.body.current + 1
         const updateData = await OrderCount.updateOne({id: "main"},
