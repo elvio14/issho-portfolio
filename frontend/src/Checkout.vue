@@ -90,9 +90,9 @@ export default {
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        body: {
+                        body: JSON.stringify({
                             current: tempCount
-                        }
+                        })
                     })
 
                     if(update.ok){
