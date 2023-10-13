@@ -126,6 +126,7 @@ export default {
 }
 .grid-item{
     border-right: 1px solid lightslategray;
+    overflow: auto;
 }
 .grid-container{
     display: grid;
@@ -141,7 +142,7 @@ export default {
 .delete-button{
     background-color: lightcoral;
     cursor: pointer;
-    padding:0.7rem;
+    padding:0.5rem;
 }
 .delete-button:hover{
     background-color: red;  

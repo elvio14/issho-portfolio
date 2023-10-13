@@ -142,7 +142,7 @@ export default {
             <div class="header-item">Name/Email</div>
             <div class="header-item">Address</div>
             <div class="header-item">Postal Code</div>
-            <div class="header-item">Flexible?</div>
+            <div class="header-item">Flex</div>
             <div class="header-item">Delivery Date</div>
             <div class="header-item">Order Items</div>
             <div class="header-item">Total</div>
@@ -152,7 +152,7 @@ export default {
         <div v-for="order in orders" :key="order._id" class="grid">
             <div class="grid-item">
                 ID: <br/>
-                {{ order._id.slice(-7) }}<br/>
+                <b>{{ order.number }}</b><br/>
                 Created at: <br/>
                 {{ convertedDate(order) }}
             </div>
@@ -201,9 +201,9 @@ export default {
     font-weight: 600;
     grid-template-columns:
     /* Created At */
-    3fr
-     /*Name  */
     2fr
+     /*Name  */
+    3fr
     /* Address */
     3fr
     /* PostalCode */
@@ -223,9 +223,9 @@ export default {
     display: grid;
     grid-template-columns:
     /* Created At */
-    3fr
-     /*Name  */
     2fr
+     /*Name  */
+    3fr
     /* Address */
     3fr
     /* PostalCode */
@@ -244,5 +244,6 @@ export default {
 .grid-item{
     border: 1px solid lightslategray;
     padding: 0.5rem;
+    overflow-x: auto;
 }
 </style>
