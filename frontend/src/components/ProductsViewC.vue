@@ -9,14 +9,16 @@ export default {
   },
   setup(props) {
     const backend = import.meta.env.VITE_BACKEND_URL
-    const products = ref([]);
-    const loading = ref(true);
+    const products = ref([])
+    const loading = ref(true)
     const error = ref(null);
-    const showPopup = ref(false);
+    const showPopup = ref(false)
     const showButton = ref(false)
-    const selectedDesc = ref('');
-    const selectedTitle = ref('');
-    const selectedQuantity = ref(1);
+    const selectedDesc = ref('')
+    const selectedTitle = ref('')
+    const selectedImage = ref('')
+    const selectedQuantity = ref(1)
+    const selectedProduct = ref()
     let nonReactiveSelectedQuantity = 1;
     const store = useCartStore()
     const cartItems = ref(store.items)
@@ -26,9 +28,11 @@ export default {
     }
 
     const togglePopup = (product) => {
-      selectedDesc.value = product.desc;
-      selectedTitle.value = product.title;
-      showPopup.value = !showPopup.value;
+      selectedDesc.value = product.desc
+      selectedTitle.value = product.title
+      selectedImage.value = product.img
+      selectedProduct.value = product
+      showPopup.value = !showPopup.value
     };
 
     const triggerButton = ()=>{
@@ -94,7 +98,9 @@ export default {
       triggerButton,
       backend,
       filteredProducts,
-      getImageURL
+      getImageURL,
+      selectedImage,
+      selectedProduct
     };
   },
 };
@@ -106,28 +112,43 @@ export default {
               @click="togglePopup(product)"
               />
               <div class="product-title">
-                <h3>{{ product.title }}</h3>
+                <h3>{{ product.title }}</h3><h4>${{ (product.price/100).toFixed(2) }}</h4>
               </div>
-              <div class="price">
-                <h4>${{ (product.price/100).toFixed(2) }}</h4>
-              </div>
-              <div class="add-to-cart">
+              
+              <!-- <div class="add-to-cart">
                 <input class="input-number" type="number" value="1" @input="updateQuantity">
                 <button class="add-button" @click="addToCartButtonClicked(product)" >Add to Basket</button>
-              </div>
+              </div> -->
         </div>
         <div v-if="showPopup">
           <div id="overlay" @click="closeDiv"></div>
           <div class="desc-container"  >
                 <h3 class="desc-title">{{ selectedTitle }}</h3>
+                <img class="product-photoP" :src="getImageURL(selectedImage)" :alt="`${selectedImage}`"/>
                 <p class="desc-content">{{selectedDesc}}</p>
                 <img class="desc-logo" src="../assets/issho_logo_white.png"/>
+
+                <div class="add-to-cartP">
+                  <input class="input-number" type="number" value="1" @input="updateQuantity">
+                  <button class="add-button" @click="addToCartButtonClicked(selectedProduct)" >Add to Basket</button>
+                </div>
           </div>
+          
         </div>
-        
     </div>
 </template>
 <style scoped>
+
+.add-to-cartP{
+  border: 1px solid var(--green-popup);
+  background-color: white;
+  border-radius: 1rem;
+  padding: 0.1rem;
+  width: 12vw;
+  position: fixed;
+  left: 65vw;
+  top: 75vh;
+}
 
 .desc-container{
   border-radius: 2rem;
@@ -153,13 +174,13 @@ export default {
 h3{
   margin-bottom: -1rem;
 }
-.add-to-cart{
+/* .add-to-cart{
   border: 1px solid var(--green-popup);
   border-radius: 1rem;
   padding: 0.1rem;
   width: 12vw;
   display: inline-block;
-}
+} */
 .add-button{
   font-family: 'Montserrat', sans-serif;
   font-size: 11px;
@@ -189,7 +210,7 @@ h3{
   height: 2rem;
   background-color: none;
 }
-.product-photo {
+.product-photo, .product-photoP {
     border-radius: 2rem;
 }
 
@@ -246,13 +267,19 @@ p {
     cursor: pointer;
 }
 
+.product-photoP{
+  width: 44vw;
+  height: 40vw;
+  object-fit: cover;
+}
+
 .product-title{
     width: 44vw;
 }
 
-.add-to-cart{
+/* .add-to-cart{
   width: 40vw;
-}
+} */
 .input-number{
   width: 8vw;
   margin-left: 0;
@@ -278,7 +305,14 @@ p {
     background-color: var(--green-popup);
     box-shadow: var(--popup-shadow);
 }
+.add-to-cartP{
+  width: 45vw;
+  left: 45%;
+  top: 90%;
 }
+}
+
+
 
 /* PC VIEW */
 @media (min-width: 851px){
@@ -296,19 +330,29 @@ p {
     object-fit: cover;
     cursor: pointer;
 }
+
+.product-photoP{
+  width: 12vw;
+  height: 12vw;
+  object-fit: cover;
+  position: relative;
+
+}
+
 .product-title{
     width: 12vw;
 }
 
 .desc-container{
     width: 30vw;
-    height:35vw;
+    height:75vh;
     overflow: auto;
     position: fixed;
     top: 10%;
     left: 50%;
     background-color: var(--green-popup);
     box-shadow: var(--popup-shadow);
+    text-align: center;
 }
 
 }
