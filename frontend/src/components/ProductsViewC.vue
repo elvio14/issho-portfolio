@@ -54,6 +54,12 @@ export default {
         price: product.price,
         quantity: nonReactiveSelectedQuantity
       }
+      const sameItem = cartItems.value.find(item => item.title === product.title)
+
+      if(sameItem !== undefined && nonReactiveSelectedQuantity > 0){
+        sameItem.quantity += nonReactiveSelectedQuantity
+        store.hasChanged = true
+      } else
       if(nonReactiveSelectedQuantity > 0){
         cartItems.value.push(newItem)
         store.hasChanged = true
@@ -163,6 +169,7 @@ export default {
   background-color: black;
   opacity: 25%;
   cursor: pointer;
+  z-index: 1;
 }
 
 .product-title{
@@ -304,6 +311,7 @@ p {
     transform: translate(-50%,-50%);
     background-color: var(--green-popup);
     box-shadow: var(--popup-shadow);
+    z-index: 2;
 }
 .add-to-cartP{
   width: 45vw;
@@ -353,6 +361,7 @@ p {
     background-color: var(--green-popup);
     box-shadow: var(--popup-shadow);
     text-align: center;
+    z-index: 2;
 }
 
 }
