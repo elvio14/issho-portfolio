@@ -266,6 +266,10 @@ p {
 /* MOBILE VIEW */
 @media (max-width: 850px){
 
+  .scrollable{
+    max-height: 60vh;
+  }
+
 .product-grid-item{
   margin-top: 4.5rem;
 }
