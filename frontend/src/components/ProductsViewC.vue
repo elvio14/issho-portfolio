@@ -130,8 +130,13 @@ export default {
           <div id="overlay" @click="closeDiv"></div>
           <div class="desc-container"  >
                 <h3 class="desc-title">{{ selectedTitle }}</h3>
-                <img class="product-photoP" :src="getImageURL(selectedImage)" :alt="`${selectedImage}`"/>
-                <p class="desc-content">{{selectedDesc}}</p>
+                <div class="scrollable">
+                  <img class="product-photoP" :src="getImageURL(selectedImage)" :alt="`${selectedImage}`"/>
+                  <p class="desc-content">{{selectedDesc}}</p>
+                </div>
+                
+
+
                 <img class="desc-logo" src="../assets/issho_logo_white.png"/>
 
                 <div class="add-to-cartP">
@@ -144,6 +149,11 @@ export default {
     </div>
 </template>
 <style scoped>
+
+.scrollable{
+  overflow-y: auto;
+  max-height: 48vh;
+}
 
 .add-to-cartP{
   border: 1px solid var(--green-popup);

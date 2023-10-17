@@ -64,7 +64,7 @@ export default {
 
             Product ID: (as reference) <br/><input     type="text" style="width: 200px;"   v-model="id" name="id" placeholder="id"><br/>
             Title:          <br/><input     type="text" style="width: 200px;"   v-model="title" name="title" placeholder="title"><br/>
-            Description:    <br/><textarea  rows="5" cols="50"                  v-model="desc" name="desc" placeholder="desc"></textarea><br/>
+            Description:    <br/><textarea  rows="5" cols="50" wrap="hard"  v-model="desc" name="desc" placeholder="desc"></textarea><br/>
             Price (in cents)<br/><input     type="number"                       v-model="price" name="price" placeholder="price"><br/>
             Category        <br/><input     type="text"                         v-model="category" name="category" placeholder="category"><br/>
             Image Path (file-name.jpg)<br/><input     type="text"               v-model="img" name="img" placeholder="img"><br/>
