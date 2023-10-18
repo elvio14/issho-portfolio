@@ -21,11 +21,17 @@ export default {
             }
         })
 
+        const formatDesc = (desc) => {
+            const formattedDesc = desc.replace(/\n/g, '<br>')
+            return formattedDesc
+        }
+
         const submitForm = async () => {
+            const formattedDesc = formatDesc(desc.value)
             const productData = {
                 id: id.value,
                 title: title.value,
-                desc: desc.value,
+                desc: formattedDesc,
                 price: price.value,
                 category: category.value,
                 img: img.value

@@ -12,14 +12,22 @@ export default {
         const img = ref('')
         const status = ref('')
 
+        const formatDesc = (desc) => {
+            const formattedDesc = desc.replace(/\n/g, '<br>')
+            return formattedDesc
+        }
+
         const updateProduct = async () => {
             status.value = 'updating...'
+
+            const formattedDesc = formatDesc(desc.value)
+
             const productData = {}
             if(title.value.length > 0){
                 productData["title"] = title.value
             }
             if(desc.value.length > 0){
-                productData["desc"] = desc.value
+                productData["desc"] = formattedDesc
             }
             if(price.value !== null){
                 productData["price"] = price.value

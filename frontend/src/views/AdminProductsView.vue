@@ -92,7 +92,9 @@ export default {
             
         <div v-for="product in products" :key="product._id" class="grid-container">
             <div class="title grid-item">{{ product.title }}</div>
-            <div class="desc grid-item">{{ product.desc }}</div>
+            <div class="desc grid-item">
+                <p v-html="product.desc"></p>
+            </div>
             <div class="price grid-item">{{ (product.price/100).toFixed(2) }}</div>
             <div class="category grid-item">{{ product.category }}</div>
             <div class="img grid-item">
@@ -107,6 +109,11 @@ export default {
     </div>
 </template>
 <style scoped>
+
+.desc{
+    overflow-y: auto;
+    max-height: 20vh;
+}
 
 .table{
     margin: 2rem;

@@ -132,7 +132,7 @@ export default {
                 <h3 class="desc-title">{{ selectedTitle }}</h3>
                 <div class="scrollable">
                   <img class="product-photoP" :src="getImageURL(selectedImage)" :alt="`${selectedImage}`"/>
-                  <p class="desc-content">{{selectedDesc}}</p>
+                  <p class="desc-content" v-html="selectedDesc"></p>
                 </div>
                 
 
@@ -153,6 +153,12 @@ export default {
 .scrollable{
   overflow-y: auto;
   max-height: 48vh;
+  scrollbar-width: none;
+}
+
+.scrollable::-webkit-scrollbar{
+  width: 0;
+  height: 0;
 }
 
 .add-to-cartP{
