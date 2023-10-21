@@ -157,6 +157,9 @@ const closeBothCheckout = () => {
       <div v-if="showTab === 'coffee'" class="scroll-tab">
         <ShopView viewCategoryView="coffee" />
       </div>
+      <div v-if="showTab === 'honey'" class="scroll-tab">
+        <ShopView viewCategoryView="honey" />
+      </div>
     </div>
     <div class="cart" v-if="showCart">
       <button class="cart-x" @click="showCart = false">X</button>
