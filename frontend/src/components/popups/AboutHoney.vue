@@ -8,8 +8,11 @@ export default {
             emit('update:aboutHoney-popup', false)
         }
 
+        const params = "cloud_name=dy6sxilvq&public_id=miel_video_k25xa3"
+        const url = "https://player.cloudinary.com/embed/?"+ params
+
         return {
-            emitClose
+            emitClose, url
         }
     }
 }
@@ -24,7 +27,7 @@ export default {
             <div class="text-container">
                 <div class="center-heading">
                     <h3>The Beekeepers</h3>
-                    <h1>Miels D'Anicet</h1>
+                <img src="/miel_logo.png" alt="Miels logo" id="logo">
                 </div>
                 
                 <h4>
@@ -53,12 +56,19 @@ export default {
                     By purchasing from local beekeepers, you are supporting the local economy and creating a positive impact in the natural environment. Armed with this newfound knowledge, we hope this helps your search for good quality, local, uncontaminated honey.
                 </h4>
             </div>
+            <iframe :src="url" class="video" allow="fullscreen">
+            </iframe>
         </div> 
     </div>
     </div>
     
 </template>
 <style scoped>
+.video{
+    margin-top: 3rem;
+    width: 1080px;
+    height: 720px;
+}
 .banner{
     width: 60%;
     display:inline-block;
@@ -74,12 +84,22 @@ export default {
 }
 
 @media (max-width: 850px){
+
+#logo{
+    width: 60vw;
+    height: auto;
+}
 .bottom-logo{
     width: 40vw;
 }
 
 .banner{
     width: 95%;
+}
+
+.video{
+    width: 80vw;
+    height: auto;
 }
 }
 </style>
