@@ -19,7 +19,7 @@ export default {
         <div class="overlay" @click="emitClose"></div>
         <div class="container-in">
         <div class="content">
-            <img src="../../assets/martinYukaBrad.jpg" class="banner">
+            <img src="/martinYukaBrad.jpg" class="banner">
             
             <div class="text-container">
                 <div class="center-heading">
