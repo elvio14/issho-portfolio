@@ -505,6 +505,7 @@ button:hover {
     grid-column-start: 2;
     grid-row:1 / span 2;
     padding-top: 2rem;
+    margin-top: 3rem;
   }
 
   .header {
