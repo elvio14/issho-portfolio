@@ -13,6 +13,8 @@ import DeliveryPopup from './components/popups/DeliveryPopup.vue'
 import AboutCoffee from './components/popups/AboutCoffee.vue'
 import AboutHoney from './components/popups/AboutHoney.vue'
 import AboutFlour from './components/popups/AboutFlour.vue'
+import 'vue3-carousel/dist/carousel.css'
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 
 const showCheckout = ref(false)
 
@@ -39,6 +41,21 @@ const aboutFlourRef = ref(false)
 const tabs = ref(null)
 
 const showTab = ref('pastries')
+
+const photos = [
+  {src: '/IsshoBakery_ 47.jpg', alt: 'Photo of caneles and coffee'},
+  {src: '/IsshoBakery_ 50.jpg', alt: 'Photo of canele making'},
+  {src: '/martinYukaBrad.jpg', alt: 'Photo of Martin and Yuka'},
+  {src: '/IsshoBakery_ 25.jpg', alt: 'Photo of pastries and coffee'},
+  {src: '/cupsBrad.jpg', alt: 'Photo Issho cups'},
+  {src: '/IsshoBakery_ 34.jpg', alt: 'Photo of cookies'},
+  {src: '/IsshoBakery_ 53.jpg', alt: 'Photo of Martin Yuka Standing'},
+  {src: '/IsshoBakery_ 63.jpg', alt: 'Photo of issho exterior'},
+  {src: '/IsshoBakery_ 8.jpg', alt: 'Photo of interior'},
+  {src: '/IsshoBakery_ 11.jpg', alt: 'Photo of espresso machine'},
+  {src: '/IsshoBakery_ 16.jpg', alt: 'Photo of pastries'},
+  {src: '/IsshoBakery_ 35.jpg', alt: 'Photo of sables'},
+]
 
 onMounted(()=>{
   tabs.value = document.querySelectorAll('.shop-tab')
@@ -144,7 +161,7 @@ const closeBothCheckout = () => {
       <FaqPopup @update:faq-popup="faqPopupRef = $event"/>
     </div>
 
-    <div class="shop-view">
+    <!-- <div class="shop-view">
       <div style="text-align: center;">
         <h2>Shop</h2>
         <button class="shop-tab a-button tab-active" id="pastries" @click="activateTab('pastries')">Pastries</button>
@@ -160,7 +177,21 @@ const closeBothCheckout = () => {
       <div v-if="showTab === 'honey'" class="scroll-tab">
         <ShopView viewCategoryView="honey" />
       </div>
+    </div> -->
+    <div class="shop-view">
+      <Carousel :autoplay="4000" :wrap-around="true" :items-to-show="1">
+        <Slide v-for="(photo, index) in photos" :key="index">
+          <img :src="photo.src" :alt="photo.alt" class="car-photo">
+        </Slide>
+        <template #addons>
+          <Navigation />
+          <Pagination />
+        </template>
+      </Carousel>
+
+    <div style="text-align: center; margin-top: 3rem;margin-left: 3rem;">Online Shop Coming Soon!</div>
     </div>
+
     <div class="cart" v-if="showCart">
       <button class="cart-x" @click="showCart = false">X</button>
       <Cart @update:showCheckoutProp="showCheckout = $event"/>
@@ -206,6 +237,11 @@ const closeBothCheckout = () => {
 
 
 <style scoped>
+.car-photo{
+  object-fit: cover;
+  width: 38vw;
+  height: 60vh;
+}
 #insta-div{
   position: fixed;
   bottom: 1rem;
@@ -388,6 +424,9 @@ button:hover {
 
 /* MOBILE VIEW */
 @media (max-width: 850px){
+  .car-photo{
+    width: 100%;
+  }
 
   #insta-div{
     display: none;
