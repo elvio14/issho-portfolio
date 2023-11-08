@@ -179,7 +179,7 @@ const closeBothCheckout = () => {
       </div>
     </div> -->
     <div class="shop-view">
-      <Carousel :autoplay="4000" :wrap-around="true" :items-to-show="1">
+      <Carousel :autoplay="5000" :wrap-around="true" :items-to-show="1" :transition="600">
         <Slide v-for="(photo, index) in photos" :key="index">
           <img :src="photo.src" :alt="photo.alt" class="car-photo">
         </Slide>
@@ -241,6 +241,7 @@ const closeBothCheckout = () => {
   object-fit: cover;
   width: 38vw;
   height: 60vh;
+  border-radius: 3rem;
 }
 #insta-div{
   position: fixed;
