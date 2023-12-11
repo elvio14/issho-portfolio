@@ -43,18 +43,18 @@ const tabs = ref(null)
 const showTab = ref('pastries')
 
 const photos = [
-  {src: '/IsshoBakery_ 47.jpg', alt: 'Photo of caneles and coffee'},
-  {src: '/IsshoBakery_ 50.jpg', alt: 'Photo of canele making'},
-  {src: '/martinYukaBrad.jpg', alt: 'Photo of Martin and Yuka'},
-  {src: '/IsshoBakery_ 25.jpg', alt: 'Photo of pastries and coffee'},
-  {src: '/cupsBrad.jpg', alt: 'Photo Issho cups'},
-  {src: '/IsshoBakery_ 34.jpg', alt: 'Photo of cookies'},
-  {src: '/IsshoBakery_ 53.jpg', alt: 'Photo of Martin Yuka Standing'},
-  {src: '/IsshoBakery_ 63.jpg', alt: 'Photo of issho exterior'},
-  {src: '/IsshoBakery_ 8.jpg', alt: 'Photo of interior'},
-  {src: '/IsshoBakery_ 11.jpg', alt: 'Photo of espresso machine'},
-  {src: '/IsshoBakery_ 16.jpg', alt: 'Photo of pastries'},
-  {src: '/IsshoBakery_ 35.jpg', alt: 'Photo of sables'},
+  {src: '/IsshoBakery_ 47.webp', alt: 'Photo of caneles and coffee'},
+  {src: '/IsshoBakery_ 50.webp', alt: 'Photo of canele making'},
+  {src: '/martinYukaBrad.webp', alt: 'Photo of Martin and Yuka'},
+  {src: '/IsshoBakery_ 25.webp', alt: 'Photo of pastries and coffee'},
+  {src: '/cupsBrad.webp', alt: 'Photo Issho cups'},
+  {src: '/IsshoBakery_ 34.webp', alt: 'Photo of cookies'},
+  {src: '/IsshoBakery_ 53.webp', alt: 'Photo of Martin Yuka Standing'},
+  {src: '/IsshoBakery_ 63.webp', alt: 'Photo of issho exterior'},
+  {src: '/IsshoBakery_ 8.webp', alt: 'Photo of interior'},
+  {src: '/IsshoBakery_ 11.webp', alt: 'Photo of espresso machine'},
+  {src: '/IsshoBakery_ 16.webp', alt: 'Photo of pastries'},
+  {src: '/IsshoBakery_ 35.webp', alt: 'Photo of sables'},
 ]
 
 onMounted(()=>{
