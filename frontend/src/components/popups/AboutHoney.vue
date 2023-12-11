@@ -27,7 +27,7 @@ export default {
             <div class="text-container">
                 <div class="center-heading">
                     <h3>The Beekeepers</h3>
-                <img src="/miel_logo.png" alt="Miels logo" id="logo">
+                <img src="/miel_logo.webp" alt="Miels logo" id="logo">
                 </div>
                 
                 <h4>
