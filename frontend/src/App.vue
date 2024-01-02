@@ -176,8 +176,8 @@ const closeBothCheckout = () => {
       </div>
       <div v-if="showTab === 'honey'" class="scroll-tab">
         <ShopView viewCategoryView="honey" />
-      </div>
-    </div> -->
+      </div>-->
+  
     <div class="shop-view">
       <Carousel :autoplay="5000" :wrap-around="true" :items-to-show="1" :transition="600">
         <Slide v-for="(photo, index) in photos" :key="index">
@@ -189,10 +189,12 @@ const closeBothCheckout = () => {
         </template>
       </Carousel>
 
-    <div style="text-align: center; margin-top: 3rem;margin-left: 3rem;">Online Shop Coming Soon!</div>
+    <!-- <div style="text-align: center; margin-top: 3rem;margin-left: 3rem;">Online Shop Coming Soon!</div> -->
     </div>
+  </div>
 
-    <div class="cart" v-if="showCart">
+<!-- CART -->
+    <!-- <div class="cart" v-if="showCart">
       <button class="cart-x" @click="showCart = false">X</button>
       <Cart @update:showCheckoutProp="showCheckout = $event"/>
     </div>
@@ -213,12 +215,13 @@ const closeBothCheckout = () => {
       <svg class="basket-button" width="50" height="39" viewBox="0 0 54 42" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M17.5 18H5.5L13.5 39H40.5L48.5 18H36M17.5 18L25 5H28L36 18M17.5 18H36M19 31.5H34.5M26.5 34.5V22.5M13.5 24.5H40.5" stroke="#266B26" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-      
   </div>
+
   <div class="cart-counter">
       <CartCounter/>
-  </div>
-  <div class="checkoutView" v-if="showCheckout" >
+  </div> -->
+  
+  <!-- <div class="checkoutView" v-if="showCheckout" >
     <Checkout @update:orderIsPlaced="orderIsPlaced = $event" 
               @update:showCheckoutProp="showCheckout = $event"
               @update:showDelivery="deliveryPopupRef = $event"/>
@@ -226,12 +229,12 @@ const closeBothCheckout = () => {
   <div class="orderPlaced" v-if="orderIsPlaced" >
     <button class="close-order" @click="closeBothCheckout">x</button>
     <OrderPlaced :orderPlaced="orderIsPlaced"/>
-  </div>
+  </div>-->
 
 </div>
 <div id="insta-div">
+  <a id="insta-handle" href="https://www.instagram.com/isshobakery/" target="_blank">@isshobakery  </a>
   <img id="insta-logo" src="./assets/instaLogo.png" alt="instagram logo">
-  <a id="insta-handle" href="https://www.instagram.com/isshobakery/" target="_blank">@isshobakery</a>
 </div>
 </template>
 
@@ -245,8 +248,8 @@ const closeBothCheckout = () => {
 }
 #insta-div{
   position: fixed;
-  bottom: 1rem;
-  left: 1rem;
+  bottom: 0.5rem;
+  right: 0.5rem;
 }
 
 #insta-handle{
