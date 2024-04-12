@@ -1,12 +1,7 @@
 <script setup>
 import ShopView from './views/ShopView.vue'
 import HelloWorld from './components/HelloWorld.vue'
-import Cart from './components/Cart.vue'
 import {BaseTransition, ref, watch, onMounted, computed} from 'vue'
-import CartCounter from './components/CartCounter.vue'
-import Checkout from './Checkout.vue'
-import OrderPlaced from './components/OrderPlaced.vue'
-import PlanetPopup from './components/popups/PlanetPopup.vue'
 import AboutPopup from './components/popups/AboutPopup.vue'
 import FaqPopup from './components/popups/FaqPopupC.vue'
 import DeliveryPopup from './components/popups/DeliveryPopup.vue'
@@ -24,6 +19,8 @@ const orderIsPlaced = ref(false)
 
 const planetPopupRef = ref(false)
 
+const showContact = ref(false)
+
 const aboutPopupRef = ref(false)
 
 const faqPopupRef = ref(false)
@@ -37,6 +34,8 @@ const aboutCoffeeRef = ref(false)
 const aboutHoneyRef = ref(false)
 
 const aboutFlourRef = ref(false)
+
+const popupShown = ref('about-coffee')
 
 const tabs = ref(null)
 
@@ -82,9 +81,7 @@ watch(showCheckout, ()=>{
   showCart.value = false
 })
 
-const goToResources = ()=>{
-  window.location.href = '../resources.html'
-}
+
 
 const closeAbout = ()=>{
     showAbout.value = false
@@ -100,65 +97,32 @@ const closeBothCheckout = () => {
 <template>
 <div class="root">
   <div id="backgroundContainer">
-    <div class="header">
-      <img alt="Issho Logo" class="logo" src="./assets/isshotemp.png" />
-
-      <div class="wrapper">
-        <HelloWorld />
-      </div>
-      <div class="nav-container">
-        <nav>
-          <button class="a-button" @click="planetPopupRef = true">1% for the Planet</button>
-          <button class="a-button" @click="deliveryPopupRef = true">Delivery</button>
-          <button class="a-button" @click="faqPopupRef = true">FAQ</button>
-          <button class="a-button" @click="goToResources">Resources</button>
-          <button class="a-button" @click="showAbout = !showAbout">About</button>
-        </nav>
-        <transition name="drop">
-        <div v-if="showAbout">
-          <div id="overlay" @click="closeAbout"></div>
-          <div class="dropdown">  
-            <a class="drop-item" href="#" @click="aboutFlourRef = true, showAbout = false">Our Flour</a>
-            <a class="drop-item" href="#" @click="aboutCoffeeRef = true, showAbout = false">Coffee Program</a>
-            <a class="drop-item" href="#" @click="aboutHoneyRef = true, showAbout = false">The Beekeepers</a>
-            <a class="drop-item" href="#" @click="aboutPopupRef = true, showAbout = false">The Team</a>
-          </div>
-        </div>
-        </transition>
-      </div>
+    <div id="header">
+      <HelloWorld @show="(page) => popupShown = page"/>
     </div>
     <div class="banner">
       <img class="cookie" src="./assets/cookieBanner.jpg">
       <h3>"Helping the planet, one cookie at a time." </h3>
     </div>
-    
-    
-    <div v-if="planetPopupRef">
-      <PlanetPopup @update:planet-popup="planetPopupRef = $event"/>
+
+    <div v-if="popupShown == 'about-coffee'">
+      <AboutCoffee @update:aboutCoffee-popup="popupShown = $event" />
     </div>
 
-    <div v-if="aboutCoffeeRef">
-      <AboutCoffee @update:aboutCoffee-popup="aboutCoffeeRef = $event" />
+    <div v-if="popupShown == 'about-honey'">
+      <AboutHoney @update:aboutHoney-popup="popupShown = $event" />
     </div>
 
-    <div v-if="aboutHoneyRef">
-      <AboutHoney @update:aboutHoney-popup="aboutHoneyRef = $event" />
+    <div v-if="popupShown == 'about-flour'">
+      <AboutFlour @update:aboutFlour-popup="popupShown = $event" />
     </div>
 
-    <div v-if="aboutFlourRef">
-      <AboutFlour @update:aboutFlour-popup="aboutFlourRef = $event" />
+    <div v-if="popupShown == 'about-team'">
+      <AboutPopup @update:about-popup="popupShown = $event" />
     </div>
 
-    <div v-if="aboutPopupRef">
-      <AboutPopup @update:about-popup="aboutPopupRef = $event" />
-    </div>
-
-    <div v-if="deliveryPopupRef">
-      <DeliveryPopup @update:delivery-popup="deliveryPopupRef = $event" />
-    </div>
-
-    <div v-if="faqPopupRef">
-      <FaqPopup @update:faq-popup="faqPopupRef = $event"/>
+    <div v-if="popupShown == 'faq'">
+      <FaqPopup @update:faq-popup="popupShown = $event"/>
     </div>
 
     <!-- <div class="shop-view">
@@ -295,6 +259,7 @@ const closeBothCheckout = () => {
   color: white;
   display: grid;
   position: relative;
+  
   width: 140px;
   grid-template-columns: 1fr;
   gap: 1rem;
@@ -426,6 +391,13 @@ button:hover {
   background-color: var(--green-light);
 }
 
+#header {
+  position: relative;
+  left: 4rem;
+  top: 2rem;
+  width: 65%;
+}
+
 /* MOBILE VIEW */
 @media (max-width: 850px){
   .car-photo{
@@ -462,20 +434,9 @@ button:hover {
   }
 
   .header {
-    display:grid;
-    grid-template-rows: 1fr 1fr;
+    margin-left: 4rem;
     line-height: 1.5;
-    margin:auto;
     margin-top: 4rem;
-    grid-row-start: 1;
-  }
-
-  .logo{
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40vw;
-    
   }
 
 
@@ -512,15 +473,6 @@ button:hover {
     margin-top: 3rem;
   }
 
-  .header {
-    display:grid;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns:1fr 1fr;
-    line-height: 1.5;
-    grid-column-start: 1;
-    margin-top:5%;
-  }
-
   .logo {
     grid-row-start: 1;
     grid-column-start: 1;
@@ -530,21 +482,18 @@ button:hover {
     width: 12vw;
   }
 
-  .wrapper {
-    grid-column-start: 2;
-    margin-top: 0.7rem;
-    position: relative;
-    left: -5%;
-  }
-
   .nav-container{
     grid-column: 1 / span 2 ;
     grid-row-start: 2;
     margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 80%;
   }
 
-  .dropdown{
-    left: 73.8%;
+  .nav-item{
+    text-align: center;
+    cursor: pointer;
   }
 }
 </style>
