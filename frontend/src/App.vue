@@ -35,7 +35,7 @@ const aboutHoneyRef = ref(false)
 
 const aboutFlourRef = ref(false)
 
-const popupShown = ref('about-coffee')
+const popupShown = ref('')
 
 const tabs = ref(null)
 
