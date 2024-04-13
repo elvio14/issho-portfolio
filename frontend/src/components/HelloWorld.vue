@@ -123,7 +123,8 @@ import { ref } from 'vue';
 @media (max-width: 850px) {
   #greetings{
     display: grid;
-    grid-template-rows: 2fr 2fr 1fr 1fr;
+    grid-template-rows: 120px 60px 60px;
+    margin-bottom: 2rem;
   }
   #logo{
     width: 35vw;
