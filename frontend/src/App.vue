@@ -1,10 +1,8 @@
 <script setup>
-import ShopView from './views/ShopView.vue'
 import HelloWorld from './components/HelloWorld.vue'
-import {BaseTransition, ref, watch, onMounted, computed} from 'vue'
+import { ref, watch, onMounted, computed} from 'vue'
 import AboutPopup from './components/popups/AboutPopup.vue'
 import FaqPopup from './components/popups/FaqPopupC.vue'
-import DeliveryPopup from './components/popups/DeliveryPopup.vue'
 import AboutCoffee from './components/popups/AboutCoffee.vue'
 import AboutHoney from './components/popups/AboutHoney.vue'
 import AboutFlour from './components/popups/AboutFlour.vue'
@@ -16,24 +14,6 @@ const showCheckout = ref(false)
 const showCart = ref(false)
 
 const orderIsPlaced = ref(false)
-
-const planetPopupRef = ref(false)
-
-const showContact = ref(false)
-
-const aboutPopupRef = ref(false)
-
-const faqPopupRef = ref(false)
-
-const deliveryPopupRef = ref(false)
-
-const showAbout = ref(false)
-
-const aboutCoffeeRef = ref(false)
-
-const aboutHoneyRef = ref(false)
-
-const aboutFlourRef = ref(false)
 
 const popupShown = ref('')
 
@@ -56,41 +36,41 @@ const photos = [
   {src: '/IsshoBakery_ 35.webp', alt: 'Photo of sables'},
 ]
 
-onMounted(()=>{
-  tabs.value = document.querySelectorAll('.shop-tab')
-})
+// onMounted(()=>{
+//   tabs.value = document.querySelectorAll('.shop-tab')
+// })
 
-const activateTab = (id) => {
-  tabs.value.forEach(tab => {
-    tab.classList.remove('tab-active')
-  })
-  const activeTab = document.getElementById(`${id}`)
-  if(activeTab){
-    activeTab.classList.add('tab-active')
-    showTab.value = `${id}`
-  }
-} 
-
-
-watch(orderIsPlaced, (value)=>{
-  showCheckout.value = !value
-  showCart.value = false
-})
-
-watch(showCheckout, ()=>{
-  showCart.value = false
-})
+// const activateTab = (id) => {
+//   tabs.value.forEach(tab => {
+//     tab.classList.remove('tab-active')
+//   })
+//   const activeTab = document.getElementById(`${id}`)
+//   if(activeTab){
+//     activeTab.classList.add('tab-active')
+//     showTab.value = `${id}`
+//   }
+// } 
 
 
+// watch(orderIsPlaced, (value)=>{
+//   showCheckout.value = !value
+//   showCart.value = false
+// })
 
-const closeAbout = ()=>{
-    showAbout.value = false
-}
+// watch(showCheckout, ()=>{
+//   showCart.value = false
+// })
 
-const closeBothCheckout = () => {
-  orderIsPlaced.value = false
-  showCheckout.value = false
-}
+
+
+// const closeAbout = ()=>{
+//     showAbout.value = false
+// }
+
+// const closeBothCheckout = () => {
+//   orderIsPlaced.value = false
+//   showCheckout.value = false
+// }
 
 </script>
 

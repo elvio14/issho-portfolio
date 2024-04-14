@@ -95,10 +95,13 @@ import { ref } from 'vue';
 
 #about{
   z-index: 0;
+  
 }
 
-.about-open {
+.nav-item.about-open {
   grid-column: 1 / 4;
+  background-image: linear-gradient(to right, var(--green-light), white, white, white);
+  transition: background-image 1s ease-in-out;
 }
 
 .first-about-item{
