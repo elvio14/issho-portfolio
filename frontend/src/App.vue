@@ -81,7 +81,7 @@ const photos = [
       <HelloWorld @show="(page) => popupShown = page"/>
     </div>
     <div class="banner">
-      <img class="cookie" src="./assets/cookieBanner.jpg">
+      <img class="cookie" src="/cookiebanner_edited1.webp">
       <h3>"Helping the planet, one cookie at a time." </h3>
     </div>
 
