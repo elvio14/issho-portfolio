@@ -60,6 +60,7 @@ const showFlour = ref(false)
 </template>
 <style scoped>
 .thumbnail-title{
+    font-size: x-large;
     color: black;
     position:absolute;
     top: 45%;
@@ -68,6 +69,8 @@ const showFlour = ref(false)
     z-index: 2;
     cursor: pointer;
 }
+
+
 .thumbnail-div{
     text-align: center;
     position: relative;
@@ -102,6 +105,10 @@ const showFlour = ref(false)
     cursor: pointer;
     z-index: 1;
     opacity: 0.5;
+}
+
+.thumbnail:hover{
+    opacity: 0.8;
 }
 
 @media (max-width: 850px){
