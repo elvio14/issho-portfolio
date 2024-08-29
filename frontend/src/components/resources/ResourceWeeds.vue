@@ -26,7 +26,7 @@ export default {
                     <h1>Understanding Weeds and What They're Really Telling Us?</h1>
                 </div>
                 <div class="center-heading">
-                    <img class="image-center" src="../../assets/weeds.jpg">
+                    <img class="image-center" src="../../assets/weeds.webp">
                 </div>
                 
                 <h4>
@@ -59,13 +59,13 @@ export default {
                         We support the idea of letting the dandelions bloom since it's a great early source of food for bees (so help a sister out) and other pollinators!  Spring is an important time for bees to build up their colonies, especially if they're coming out of a long cold winter.
                     </h4>
                     <div class="center-heading" style="grid-column: 2; grid-row: 1 / span 2;">
-                        <img src="../../assets/weeds2.jpg" alt="Portrait photo at farm." style="width: 80%;">
+                        <img src="../../assets/weeds2.webp" alt="Portrait photo at farm." style="width: 80%;">
                     </div>
                 </div>
 
                 <div class="mobile-only">
                     <div class="center-heading">
-                        <img src="../../assets/weeds2.jpg" alt="Portrait photo at farm." style="width: 80%;">
+                        <img src="../../assets/weeds2.webp" alt="Portrait photo at farm." style="width: 80%;">
                     </div>
                     <h4>
                         Soil that is densely compacted need some form of aeration for proper root growth and development for plants.  These kinds of soil can be naturally changed over time with the presence of dandelions.  Dandelions have a root system that aerate your soil as it grows.  If you don't want to have a field of dandelion (or any weeds), just mow the lawn before the flowers turn into seeds.

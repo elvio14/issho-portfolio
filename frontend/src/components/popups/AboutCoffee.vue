@@ -19,7 +19,7 @@ export default {
         <div class="overlay" @click="emitClose"></div>
         <div class="container-in">
         <div class="content">
-            <img src="../../assets/detourBanner.png" alt="shelf view of detour coffee bags" class="banner">
+            <img src="../../assets/detourBanner.webp" alt="shelf view of detour coffee bags" class="banner">
             
             <div class="text-container">
                 <div class="center-heading">
@@ -38,7 +38,7 @@ export default {
                     Detour's commitment to sustainability is also notable, with efforts to minimize its environmental impact. From sourcing eco-friendly packaging to supporting environmentally conscious initiatives, the roastery strives to contribute positively to both the coffee industry and the planet.
                 </h4>
             </div>
-            <img src="../../assets/detourLogo.png" class="bottom-logo">
+            <img src="../../assets/detourLogo.webp" class="bottom-logo">
         </div> 
     </div>
     </div>

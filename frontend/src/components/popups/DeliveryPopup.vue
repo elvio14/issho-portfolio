@@ -22,7 +22,7 @@ export default {
         <div class="content">
             
             <div class="text-container"> 
-                <img class="img-center" src="https://static.wixstatic.com/media/937c8c_928aa69b7a464f0480fa05e22ae80d87~mv2.jpg/v1/fill/w_960,h_547,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/937c8c_928aa69b7a464f0480fa05e22ae80d87~mv2.jpg">
+                <img class="img-center" src="https://static.wixstatic.com/media/937c8c_928aa69b7a464f0480fa05e22ae80d87~mv2.webp/v1/fill/w_960,h_547,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/937c8c_928aa69b7a464f0480fa05e22ae80d87~mv2.webp">
 
                 <div class="center-heading">
                     <h1>Delivery with NRBI</h1>
@@ -38,7 +38,7 @@ export default {
                 <h4>
                     Our NRBI zero emission cycling deliveries are currently available within a designated delivery zone. To see if your location falls within this area and explore more about our delivery services, please refer to the image below.
                 </h4>
-                <img class="img-center map" src="https://static.wixstatic.com/media/937c8c_cd03a48a8cd84161bd738bf46714a846~mv2.jpg/v1/fill/w_1152,h_503,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/937c8c_cd03a48a8cd84161bd738bf46714a846~mv2.jpg">
+                <img class="img-center map" src="https://static.wixstatic.com/media/937c8c_cd03a48a8cd84161bd738bf46714a846~mv2.webp/v1/fill/w_1152,h_503,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/937c8c_cd03a48a8cd84161bd738bf46714a846~mv2.webp">
                 <div class="center-heading">
                     <h1>Convenient Delivery Hours: 12:00 pm - 4:00 pm</h1>
                 </div>

@@ -55,7 +55,7 @@ export default {
                     They work with farmers who focus on the care of their land and the grains they produce. The result is healthier flour with unique flavour profiles that reflect the land from where it grew.
                 </h4>
             </div>
-            <img src="../../assets/isshotemp.png" class="bottom-logo">
+            <img src="../../assets/isshotemp.webp" class="bottom-logo">
         </div> 
     </div>
     </div>

@@ -26,7 +26,7 @@ export default {
                     <h1>Flour</h1>
                 </div>
                 <div class="center-heading">
-                    <img class="image-center" src="../../assets/wheat.jpg" alt="a heap of flour">
+                    <img class="image-center" src="../../assets/wheat.webp" alt="a heap of flour">
                 </div>
                 
                 <h4>
@@ -36,7 +36,7 @@ export default {
                     You might be wondering, "Why should I use flour that has been milled between two big stones?" The answer to that question is: nutrition and flavor. To fully understand the benefits, we need to first look at the anatomy of a wheat kernel and the milling process.
                 </h4>
                 <div class="center-heading">
-                    <img class="image-center" src="../../assets/wheat2.jpg" style="width: 200px;" alt="wheat anatomy">
+                    <img class="image-center" src="../../assets/wheat2.webp" style="width: 200px;" alt="wheat anatomy">
                 </div>
                 <h4>A kernel of wheat can be broken down to into three parts: bran, endosperm and germ.</h4>
                 <h4>Bran: is the outer husk of the wheat kernel. It contains three types of vitamin B, trace minerals and a good source of fibre.</h4>

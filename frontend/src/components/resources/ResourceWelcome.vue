@@ -30,7 +30,7 @@ export default {
                     Just a friendly baker and creative pastry chef sharing thoughtful ideas and recipes to help you in your food baking adventure.
                 </h4>
                 <div class="center-heading">
-                    <img class="image-center" src="../../assets/easterBunnies.jpg">
+                    <img class="image-center" src="../../assets/easterBunnies.webp">
                 </div>
                 
                 <h4>

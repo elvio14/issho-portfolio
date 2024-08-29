@@ -26,7 +26,7 @@ export default {
                     <h1>Local Honey vs Imported Honey</h1>
                 </div>
                 <div class="center-heading">
-                    <img class="image-center" src="../../assets/localHoney.jpg">
+                    <img class="image-center" src="../../assets/localHoney.webp">
                 </div>
                 
                 <h4>

@@ -13,33 +13,33 @@ const showFlour = ref(false)
 <template>
 <div class="root">
     <div class="title">
-        <img src="./assets/isshotemp.png" alt="issho logo" class="logo">
+        <img src="./assets/isshotemp.webp" alt="issho logo" class="logo">
         <h1 class="title-h1">Resources</h1><br><br>
         <a href="../index.html">Back to Home</a>
     </div>
     <div class="thumbnail-container">
         <div class="thumbnail-div" @click="showWelcome = true">
-            <img class="thumbnail" src="./assets/easterBunnies.jpg">
+            <img class="thumbnail" src="./assets/easterBunnies.webp">
             <h2 class="thumbnail-title">Welcome</h2>
         </div>
         <div class="thumbnail-div" @click="showWeeds = true">
-            <img class="thumbnail"  src="./assets/weeds.jpg">
+            <img class="thumbnail"  src="./assets/weeds.webp">
             <h2 class="thumbnail-title">Weeds</h2>
         </div>
         <!-- <div class="thumbnail-div">
-            <img class="thumbnail" src="./assets/beeWasp.jpg">
+            <img class="thumbnail" src="./assets/beeWasp.webp">
             <h2 class="thumbnail-title">Bee vs Wasp</h2>
         </div> -->
         <div class="thumbnail-div" @click="showHoney = true">
-            <img class="thumbnail" src="./assets/localHoney.jpg">
+            <img class="thumbnail" src="./assets/localHoney.webp">
             <h2 class="thumbnail-title">Local Honey</h2>
         </div>
         <div class="thumbnail-div" @click="showFlour = true">
-            <img class="thumbnail" src="./assets/wheat.jpg">
+            <img class="thumbnail" src="./assets/wheat.webp">
             <h2 class="thumbnail-title">Flour</h2>
         </div>
         <!-- <div class="thumbnail-div">
-            <img class="thumbnail" src="./assets/sourdough.jpg">
+            <img class="thumbnail" src="./assets/sourdough.webp">
             <h2 class="thumbnail-title">Sourdough</h2>
         </div> -->
     </div>

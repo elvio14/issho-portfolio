@@ -22,7 +22,7 @@ export default {
         <div class="overlay" @click="emitClose"></div>
         <div class="container-in">
         <div class="content">
-            <img src="../../assets/honeyBanner.png" alt="shelf view of honey jars" class="banner">
+            <img src="../../assets/honeyBanner.webp" alt="shelf view of honey jars" class="banner">
             
             <div class="text-container">
                 <div class="center-heading">

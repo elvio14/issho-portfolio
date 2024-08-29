@@ -22,8 +22,8 @@ import { ref } from 'vue';
 
 <template>
   <div id="greetings">
-    <img alt="Issho Logo" id="logo" src="../assets/isshotemp.png" />
-    <img src="../assets/issho_logo.png" id="header-logo">
+    <img alt="Issho Logo" id="logo" src="../assets/isshotemp.webp" />
+    <img src="../assets/issho_logo.webp" id="header-logo">
     <span id="tagline">Bakery, Chocolate, and Coffee.</span>
     <div id="nav">
           <div class="nav-item hover" id="about" @click="openAbout()"><span id="about-title">About</span>

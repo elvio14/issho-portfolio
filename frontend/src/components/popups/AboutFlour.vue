@@ -19,7 +19,7 @@ export default {
         <div class="overlay" @click="emitClose"></div>
         <div class="container-in">
         <div class="content">
-            <img src="../../assets/flourBanner.jpg" alt="shelf view of honey jars" class="banner">
+            <img src="../../assets/flourBanner.webp" alt="shelf view of honey jars" class="banner">
             
             <div class="text-container">
                 <div class="center-heading">
@@ -34,7 +34,7 @@ export default {
                 <h4>
                     The business name comes from the original 1847 stone house still standing on our family farm in the agricultural heartland of rural Ontario where the business was founded. Built in a simpler time when quality materials were used to make a home last for centuries and the inspiration for our flour. Surrounded by a community of hardworking farmers, we work closely with our neighbours to continuously improving the quality and flavour of the grains to deliver the finest flours directly to your kitchen.
                 </h4>
-                <img src="../../assets/peopleInWheat2.jpg" alt="3 people in a wheat field" class="banner">
+                <img src="../../assets/peopleInWheat2.webp" alt="3 people in a wheat field" class="banner">
                 <h4>
                     Since the beginning, 1847 has valued balancing social responsibility with profitability and has eliminated plastic from its packaging favouring compostable bags as an alternate, remained carbon negative through 100% solar electricity and sourcing only Canadian grown grains.
                 </h4>
@@ -49,7 +49,7 @@ export default {
                 </h4>
                 
             </div>
-            <img src="../../assets/peopleInWheat.jpg" alt="3 people in a wheat field" class="banner">
+            <img src="../../assets/peopleInWheat.webp" alt="3 people in a wheat field" class="banner">
         </div> 
     </div>
     </div>

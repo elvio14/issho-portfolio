@@ -20,7 +20,7 @@ export default {
         <div class="overlay" @click="emitClose"></div>
         <div class="container-in">
             <div class="content" >
-                <img src="../../assets/planetCircle.png" class="planetCircle">
+                <img src="../../assets/planetCircle.webp" class="planetCircle">
                 <h1>1% for the Planet</h1>
                 <div class="text-container">
                     <h4 class="p">
@@ -44,8 +44,8 @@ By joining 1% for the Planet, we are  implementing an environmental tax on ourse
 We will be directing our donations to Ontario nonprofit partners who have a focus on water, land, and wildlife preservation.
                 </h4>
                 </div>
-                <img src="../../assets/PlanetTrigger.jpg" class="bottom-img pc">
-                <img src="../../assets/planetVertical.png" class="bottom-img mobile">
+                <img src="../../assets/PlanetTrigger.webp" class="bottom-img pc">
+                <img src="../../assets/planetVertical.webp" class="bottom-img mobile">
             </div>
         </div>
     </div>
