@@ -137,7 +137,7 @@ export default {
                 
 
 
-                <img class="desc-logo" src="../assets/issho_logo_white.png"/>
+                <img class="desc-logo" src="../assets/issho_logo_white.webp"/>
 
                 <div class="add-to-cartP">
                   <input class="input-number" type="number" value="1" @input="updateQuantity">
