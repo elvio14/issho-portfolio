@@ -27,6 +27,8 @@ text-align: justify;
   opacity: 25%;
 }
 .container-in{
+    border-top-left-radius: 3rem;
+    border-top-right-radius: 3rem;
     width: 90vw;
     height: 90vh;
     position: fixed;
@@ -36,7 +38,13 @@ text-align: justify;
     left:50%;
     transform: translate(-50%, -50%);
     overflow:scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     z-index: 2;
+}
+
+.container-in::-webkit-scrollbar{
+    display: none;
 }
 
 .content{

@@ -135,6 +135,10 @@ const photos = [
 
     <!-- <div style="text-align: center; margin-top: 3rem;margin-left: 3rem;">Online Shop Coming Soon!</div> -->
     </div>
+    <div id="insta-div">
+      <a id="insta-handle" href="https://www.instagram.com/isshobakery/" target="_blank">@isshobakery  </a>
+      <img id="insta-logo" src="./assets/instaLogo.png" alt="instagram logo">
+    </div>
   </div>
 
 <!-- CART -->
@@ -176,10 +180,7 @@ const photos = [
   </div>-->
 
 </div>
-<div id="insta-div">
-  <a id="insta-handle" href="https://www.instagram.com/isshobakery/" target="_blank">@isshobakery  </a>
-  <img id="insta-logo" src="./assets/instaLogo.png" alt="instagram logo">
-</div>
+
 </template>
 
 
