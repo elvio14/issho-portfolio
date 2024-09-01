@@ -1,5 +1,8 @@
 @import './base.css';
 
+img{
+  border-radius: 1rem;
+}
 
 a,
 .green {
