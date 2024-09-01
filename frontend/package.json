@@ -12,6 +12,8 @@
   "dependencies": {
     "@cloudinary/url-gen": "^1.11.2",
     "@cloudinary/vue": "^1.11.2",
+    "@fawmi/vue-google-maps": "^0.9.79",
+    "@googlemaps/js-api-loader": "^1.16.8",
     "axios": "^1.4.0",
     "body-parser": "^1.20.2",
     "buffer": "^6.0.3",

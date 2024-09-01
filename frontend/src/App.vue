@@ -1,25 +1,18 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
-import { ref, watch, onMounted, computed} from 'vue'
+import { ref } from 'vue'
 import AboutPopup from './components/popups/AboutPopup.vue'
 import FaqPopup from './components/popups/FaqPopupC.vue'
 import AboutCoffee from './components/popups/AboutCoffee.vue'
 import AboutHoney from './components/popups/AboutHoney.vue'
 import AboutFlour from './components/popups/AboutFlour.vue'
+import FooterVue from './components/Footer.vue'
+import GoogleMap from './components/GoogleMap.vue'
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 
-const showCheckout = ref(false)
-
-const showCart = ref(false)
-
-const orderIsPlaced = ref(false)
 
 const popupShown = ref('')
-
-const tabs = ref(null)
-
-const showTab = ref('pastries')
 
 const photos = [
   {src: '/IsshoBakery_ 47.webp', alt: 'Photo of caneles and coffee'},
@@ -35,42 +28,6 @@ const photos = [
   {src: '/IsshoBakery_ 16.webp', alt: 'Photo of pastries'},
   {src: '/IsshoBakery_ 35.webp', alt: 'Photo of sables'},
 ]
-
-// onMounted(()=>{
-//   tabs.value = document.querySelectorAll('.shop-tab')
-// })
-
-// const activateTab = (id) => {
-//   tabs.value.forEach(tab => {
-//     tab.classList.remove('tab-active')
-//   })
-//   const activeTab = document.getElementById(`${id}`)
-//   if(activeTab){
-//     activeTab.classList.add('tab-active')
-//     showTab.value = `${id}`
-//   }
-// } 
-
-
-// watch(orderIsPlaced, (value)=>{
-//   showCheckout.value = !value
-//   showCart.value = false
-// })
-
-// watch(showCheckout, ()=>{
-//   showCart.value = false
-// })
-
-
-
-// const closeAbout = ()=>{
-//     showAbout.value = false
-// }
-
-// const closeBothCheckout = () => {
-//   orderIsPlaced.value = false
-//   showCheckout.value = false
-// }
 
 </script>
 
@@ -104,24 +61,6 @@ const photos = [
     <div v-if="popupShown == 'faq'">
       <FaqPopup @update:faq-popup="popupShown = $event"/>
     </div>
-
-    <!-- <div class="shop-view">
-      <div style="text-align: center;">
-        <h2>Shop</h2>
-        <button class="shop-tab a-button tab-active" id="pastries" @click="activateTab('pastries')">Pastries</button>
-        <button class="shop-tab a-button" id="coffee" @click="activateTab('coffee')">Coffee</button>
-        <button class="shop-tab a-button" id="honey" @click="activateTab('honey')">Honey</button>
-      </div>
-      <div v-if="showTab === 'pastries'" class="scroll-tab">
-        <ShopView viewCategoryView="pastry" />
-      </div>
-      <div v-if="showTab === 'coffee'" class="scroll-tab">
-        <ShopView viewCategoryView="coffee" />
-      </div>
-      <div v-if="showTab === 'honey'" class="scroll-tab">
-        <ShopView viewCategoryView="honey" />
-      </div>-->
-  
     <div class="shop-view">
       <Carousel :autoplay="5000" :wrap-around="true" :items-to-show="1" :transition="600">
         <Slide v-for="(photo, index) in photos" :key="index">
@@ -132,81 +71,21 @@ const photos = [
           <Pagination />
         </template>
       </Carousel>
-
-    <!-- <div style="text-align: center; margin-top: 3rem;margin-left: 3rem;">Online Shop Coming Soon!</div> -->
-    </div>
-    <div id="insta-div">
-      <a id="insta-handle" href="https://www.instagram.com/isshobakery/" target="_blank">@isshobakery  </a>
-      <img id="insta-logo" src="./assets/instaLogo.png" alt="instagram logo">
     </div>
   </div>
-
-<!-- CART -->
-    <!-- <div class="cart" v-if="showCart">
-      <button class="cart-x" @click="showCart = false">X</button>
-      <Cart @update:showCheckoutProp="showCheckout = $event"/>
-    </div>
-  </div>
-    
-  <div class="cart-button" @click="showCart = true">
-      <svg  class="basket-bar" width="83" height="59" viewBox="0 0 83 57" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g clip-path="url(#clip0_2_13)">
-        <circle class="bar-geometry" cx="36" cy="30" r="23" fill="white"/>
-        <rect class="bar-geometry" x="36" y="7" width="52" height="46" fill="white"/>
-        </g>
-        <defs>
-        <clipPath id="clip0_2_13">
-        <rect width="83" height="57" fill="white"/>
-        </clipPath>
-        </defs>
-      </svg>
-      <svg class="basket-button" width="50" height="39" viewBox="0 0 54 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M17.5 18H5.5L13.5 39H40.5L48.5 18H36M17.5 18L25 5H28L36 18M17.5 18H36M19 31.5H34.5M26.5 34.5V22.5M13.5 24.5H40.5" stroke="#266B26" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-  </div>
-
-  <div class="cart-counter">
-      <CartCounter/>
-  </div> -->
-  
-  <!-- <div class="checkoutView" v-if="showCheckout" >
-    <Checkout @update:orderIsPlaced="orderIsPlaced = $event" 
-              @update:showCheckoutProp="showCheckout = $event"
-              @update:showDelivery="deliveryPopupRef = $event"/>
-  </div>
-  <div class="orderPlaced" v-if="orderIsPlaced" >
-    <button class="close-order" @click="closeBothCheckout">x</button>
-    <OrderPlaced :orderPlaced="orderIsPlaced"/>
-  </div>-->
-
+  <FooterVue />
 </div>
 
 </template>
 
 
 <style scoped>
+
 .car-photo{
   object-fit: cover;
   width: 38vw;
   height: 60vh;
   border-radius: 3rem;
-}
-#insta-div{
-  position: fixed;
-  bottom: 0.5rem;
-  right: 0.5rem;
-}
-
-#insta-handle{
-  position: relative;
-  bottom: 0.7rem;
-}
-
-#insta-logo{
-  width: 2vw;
-  height: auto;
-  margin-right: 0.5rem;
-  
 }
 
 #overlay{
@@ -385,10 +264,6 @@ button:hover {
     width: 100%;
   }
 
-  #insta-div{
-    display: none;
-  }
-
   nav button{
     margin: 0;
   }
@@ -411,7 +286,7 @@ button:hover {
   #backgroundContainer {
     margin: auto;
     display: grid;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: auto auto auto auto;
   }
 
   .header {
@@ -445,7 +320,6 @@ button:hover {
     display: grid;
     grid-template-columns: 3fr 4fr;
     grid-template-rows: 300px auto;
-    width: 100vw;
   }
   .shop-view{
     grid-column-start: 2;
