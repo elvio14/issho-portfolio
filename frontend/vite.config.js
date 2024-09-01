@@ -13,11 +13,7 @@ export default defineConfig({
       external: ['mime'],
       input: {
         main: './index.html',
-        login: './login.html',
-        admin: './admin.html',
-        resources: './resources.html',
-        temporary: './temporary.html',
-        products: './showproducts.html'
+        resources: './resources.html'
       }
     }
   },
