@@ -6,7 +6,7 @@ import GoogleMap from './GoogleMap.vue'
         <GoogleMap />
         <div id="col_2" style="display: flex;">
             <div id="col_2_in" style="display: inline-block; align-self: flex-end; margin-bottom: 2rem; color: white;">
-                <p>Wednesday - Sunday, 9AM - 5:30PM</p>
+                <p>Issho Bakery</p>
                 <p>583 Gerrard St E, Toronto, ON M4M 1Y2</p>
                 <br>
                 <p style="font-size: x-small;">Property of Issho c2024. Website by Andrew Febrian <a href="https://taef.ca" target="_blank" style="color: white;">[taef.ca]</a></p>
