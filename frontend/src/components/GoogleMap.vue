@@ -232,8 +232,6 @@ onMounted(async () => {
             libraries: ["places"]
         });
 
-        console.log('loader', loader);
-
         const google = await loader.load()
 
         map.value = new google.maps.Map(document.getElementById('map'), {

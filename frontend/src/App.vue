@@ -7,10 +7,28 @@ import AboutCoffee from './components/popups/AboutCoffee.vue'
 import AboutHoney from './components/popups/AboutHoney.vue'
 import AboutFlour from './components/popups/AboutFlour.vue'
 import FooterVue from './components/Footer.vue'
-import GoogleMap from './components/GoogleMap.vue'
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
+import {useHead} from '@vueuse/head'
 
+const siteDesc = 
+ `Bakeries were once used as a place of communal gathering.
+  They were places to for loved ones and the community to mingle, to gossip, and to celebrate.
+  They were, in essence, a place for togetherness.
+  So in early 2020, ISSHO was born.  Located in Toronto, Ontario we are a local Canadian bakery
+  that strives to use the best ingredients and practices in creating our artisanal bake goods.
+  By combining ingredients from local purveyors and freshly milled flour, we create a delicious 
+  product that is packed with flavor and loaded with nutrients.  We hope that by sharing our delicious 
+  baked goods with you, you too can take on this idea of "issho" and create lasting memories with your loved ones.`
+
+useHead({
+  meta: [
+    {
+      name: `description`,
+      content: siteDesc
+    }
+  ]
+})
 
 const popupShown = ref('')
 
