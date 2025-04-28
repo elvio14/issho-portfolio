@@ -8,8 +8,20 @@ export default {
             emit('update:aboutCoffee-popup', false)
         }
 
+        const roastersImg = [
+            {img: "detour", url: "https://detourcoffee.com/"},
+            {img: "hatch", url: "http://www.hatchcrafted.com/"},
+            {img: "hof", url: "https://www.houseoffunkbrewing.com/"},
+            {img: "lilo", url: "https://coffee.liloinveve.com/"},
+            {img: "lulo", url: "https://lulocoffee.ca"},
+            {img: "rooftop", url: "https://www.rooftopcoffeeroasters.com/"},
+            {img: "sept", url: "https://september.coffee/"},
+            {img: "yamabiko", url: "https://www.yamabikocoffeeroasters.com/"},
+        ]
+
         return {
-            emitClose
+            emitClose,
+            roastersImg
         }
     }
 }
@@ -17,53 +29,73 @@ export default {
 <template>
     <div class="root">
         <div class="overlay" @click="emitClose"></div>
-        <div class="container-in">
+        <div class="container-in fade-scale-in">
         <div class="content">
             <img src="../../assets/detourBanner.webp" alt="shelf view of detour coffee bags" class="banner">
             
             <div class="text-container">
                 <div class="center-heading">
-                    <h3>Coffee Program</h3>
-                    <h1>Detour Coffee Roasters</h1>
+                    <h1>Our Coffee Program</h1>
                 </div>
-                
                 <h4>
-                    Detour Coffee Roasters, located in Hamilton, Ontario, is a renowned coffee establishment known for its dedication to quality coffee sourcing, roasting, and a commitment to the craft of coffee making. Detour has grown to become a staple in the local and Canadian coffee scene.
-                </h4>
-                
-                <h4>
-                    The roastery takes pride in its emphasis on direct trade relationships with coffee producers around the world, ensuring fair and sustainable practices. Detour is committed to sourcing high-quality beans and often focuses on single-origin offerings, allowing customers to experience the unique flavors and profiles of different coffee-growing regions.
-                </h4>
-                <h4>
-                    Detour's commitment to sustainability is also notable, with efforts to minimize its environmental impact. From sourcing eco-friendly packaging to supporting environmentally conscious initiatives, the roastery strives to contribute positively to both the coffee industry and the planet.
-                </h4>
+                At Issho, we curate a coffee program that welcomes everyone—from the casual sipper to the curious connoisseur. Whether you're drawn to classic chocolatey, nutty profiles or prefer something bright, fruity, and unexpected, we’ve got a cup for you.
+                </h4><h4>
+Each week, we spotlight a different roaster. We start close to home with roasters from across Canada, then expand outwards—often featuring some of our favorite roasters from Japan and beyond. It's a rotating lineup that keeps things fresh and exciting.
+</h4><h4>
+Our house espresso is a comforting constant: always chocolatey and nutty at its core, with subtle hints of fruit and sweetness to keep it interesting. Every now and then, we’ll throw in a feature espresso that flips the script—think juicy, fruity, and a little bit funky.
+</h4><h4>
+There’s always something brewing at Issho.
+</h4>
             </div>
-            <img src="../../assets/detourLogo.webp" class="bottom-logo">
+            <div class="img-flex">
+                <a v-for="(roaster, index) in roastersImg" :href="roaster.url" target="_blank">
+                <img 
+                     :key="index" 
+                     :src="`/roasters/${roaster.img}.png`" 
+                     :alt="roaster.img" 
+                     class="roaster-img"
+                 />
+                </a>
+            </div>
+            
         </div> 
     </div>
     </div>
     
 </template>
 <style scoped>
+.roaster-img{
+    height: 10rem;
+    width: 14rem;
+    object-fit: scale-down;
+    cursor:pointer;
+    border: solid 2px transparent;
+}
+
+.roaster-img:hover{
+    border-color: var(--green-light);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.img-flex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centers items horizontally */
+    align-items: center; /* Centers items vertically */
+    gap: 2rem; /* Adds spacing between items */
+    padding-left: 14rem;
+    padding-right: 14rem;
+    padding-top: 5rem;
+}
 .banner{
     width: 60%;
     display:inline-block;
 }
 
-.bottom-logo{
-    display: block;
-    width: 10vw;
-    position: relative;
-    top: 3rem;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
 @media (max-width: 850px){
-.bottom-logo{
-    width: 40vw;
+.img-flex{
+    padding: 1rem;
 }
-
 .banner{
     width: 95%;
 }

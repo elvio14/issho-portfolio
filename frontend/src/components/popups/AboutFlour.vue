@@ -17,7 +17,7 @@ export default {
 <template>
     <div class="root">
         <div class="overlay" @click="emitClose"></div>
-        <div class="container-in">
+        <div class="container-in  fade-scale-in">
         <div class="content">
             <img src="../../assets/flourBanner.webp" alt="shelf view of honey jars" class="banner">
             
