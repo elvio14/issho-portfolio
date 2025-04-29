@@ -30,9 +30,7 @@ export default {
     <div class="root">
         <div class="overlay" @click="emitClose"></div>
         <div class="container-in fade-scale-in">
-        <div class="content">
-            <img src="../../assets/detourBanner.webp" alt="shelf view of detour coffee bags" class="banner">
-            
+        <div class="content">            
             <div class="text-container">
                 <div class="center-heading">
                     <h1>Our Coffee Program</h1>
@@ -82,9 +80,9 @@ There’s always something brewing at Issho.
     flex-wrap: wrap;
     justify-content: center; /* Centers items horizontally */
     align-items: center; /* Centers items vertically */
-    gap: 2rem; /* Adds spacing between items */
-    padding-left: 14rem;
-    padding-right: 14rem;
+    gap: 4rem; /* Adds spacing between items */
+    padding-left: 16rem;
+    padding-right: 16rem;
     padding-top: 5rem;
 }
 .banner{
