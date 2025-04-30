@@ -17,6 +17,7 @@ export default {
             {img: "rooftop", url: "https://www.rooftopcoffeeroasters.com/"},
             {img: "sept", url: "https://september.coffee/"},
             {img: "yamabiko", url: "https://www.yamabikocoffeeroasters.com/"},
+            {img: "even", url: "https://evencoffee.ca/"},
         ]
 
         return {
